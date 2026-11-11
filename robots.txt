@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /handbook/
+Disallow: /dashboard/
 Disallow: /login/
 Sitemap: https://relicstech.site/sitemap.xml

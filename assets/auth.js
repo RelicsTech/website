@@ -6,6 +6,7 @@
  * Expected API (same origin, cookie session, see README.md):
  *   GET  {api}/session        200 {user:{id,name,avatar},roles:[...]} | 401
  *   GET  {api}/auth/discord   starts Discord OAuth, redirects back to ?next=
+ * Only /dashboard/ is guarded. The handbooks are public.
  *   POST {api}/auth/logout    clears the session
  *
  * NOTE: a static page can only hide content in the browser. The real gate must
@@ -13,7 +14,7 @@
  */
 (function () {
   var CFG = window.RELICS_AUTH = Object.assign(
-    { enabled: false, api: '/api', login: '/login/', home: '/handbook/' },
+    { enabled: false, api: '/api', login: '/login/', home: '/dashboard/' },
     window.RELICS_AUTH || {}
   );
   var root = document.documentElement;
@@ -87,7 +88,7 @@
         var ok = !requires || roles.indexOf(requires) > -1 || roles.indexOf('admin') > -1;
         ready(function () {
           slot(session);
-          if (!ok) blocked('No access', 'Your account is signed in but does not have the ' + requires + ' role.', '<a class="button secondary" href="' + CFG.home + '">Back to handbooks</a>');
+          if (!ok) blocked('No access', 'Your account is signed in but does not have the ' + requires + ' role.', '<a class="button secondary" href="/">Back to the site</a>');
           done();
         });
       })
