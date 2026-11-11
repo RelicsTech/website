@@ -209,6 +209,7 @@ footer.site .brand{font-size:20px;color:var(--white)}footer.site .brand img{widt
   td:last-child{border-bottom:0}
   td::before{content:attr(data-label);display:block;margin-bottom:3px;font-size:10.5px;font-weight:750;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal)}
   td:first-child{font-size:15px}
+  code{white-space:normal;overflow-wrap:anywhere}
 }
 @media(max-width:560px){.wrap{padding:0 12px}.sheet{padding:18px 14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.page>*{opacity:1;transform:none}}
