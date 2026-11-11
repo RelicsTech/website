@@ -6,7 +6,7 @@
 <meta property="og:site_name" content="Relics"><meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="/assets/fonts/fonts.css">
 <script>document.documentElement.classList.add('mo-js');setTimeout(function(){document.documentElement.classList.add('mo-safe')},2500)</script>
-<link rel="modulepreload" href="/kit/effects/fx.js"><link rel="modulepreload" href="/kit/moments/moments.js">
+<link rel="modulepreload" href="/kit/effects/fx.js"><link rel="modulepreload" href="/kit/moments/moments.js"><link rel="modulepreload" href="/kit/moments/lib.js"><link rel="modulepreload" href="/kit/moments/headline-arrives/moment.js">
 <style>
 :root{--bg:#07151a;--surface:#0e2429;--ink:#f1f8f5;--muted:#9db4b5;--accent:#61e4d1;--accent-ink:#06262b;--salmon:#ff9b8b;--line:#ffffff17;--panel:#0c2025;
 --font-display:"Space Grotesk","Inter",system-ui,sans-serif;--display-weight:600;--display-tracking:-.035em;--t-h2:clamp(30px,4.4vw,60px);--ease:cubic-bezier(.2,.7,.2,1)}
@@ -43,7 +43,7 @@ h1 .grad{display:block;background:linear-gradient(95deg,#61e4d1 10%,#b6f5e6 45%,
 .trust{display:flex;gap:10px 22px;flex-wrap:wrap;margin-top:40px;font-size:13px;color:#c6d5d2}
 .trust span:before{content:"\2713";color:var(--accent);margin-right:8px;font-weight:800}
 /* the ticket window: glass, a loop that restarts */
-.stage{position:relative}
+.stage{position:relative;animation:enter .9s var(--ease) .25s both}
 .stage:before{content:"";position:absolute;inset:-10% -8%;background:radial-gradient(closest-side,#61e4d126,transparent);z-index:-1}
 .frame{background:linear-gradient(180deg,#0f292fe6,#091c21e6);border:1px solid #ffffff24;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px #000a,inset 0 1px 0 #ffffff14;backdrop-filter:blur(10px);transition:transform .4s var(--ease),border-color .3s}
 .frame:hover{transform:translateY(-3px);border-color:#61e4d155}
@@ -164,8 +164,8 @@ footer{padding:34px 0;border-top:1px solid var(--line)}.foot{display:flex;align-
 <header><nav class="navbar" aria-label="Main navigation"><a class="brand" href="#" aria-label="Relics home"><img src="/assets/logo.webp" width="34" height="34" alt="">Relics<span style="color:var(--accent)">.</span></a><div class="navlinks"><a href="#support">What we do</a><a href="#community">Community</a><a href="#faq">FAQ</a><a class="keep" href="/handbook/">Handbook</a><a class="keep" href="/login/?next=/dashboard/">Staff</a><a class="button" href="https://discord.gg/GBMChN9PAj">Join the Discord <span class="arrow">&#8599;</span></a></div></nav></header>
 <main id="main">
 <div class="hero-wrap" data-fx="grain-gradient" data-fx-seed="7" data-fx-params='{"calmX":0.3,"calmY":0.5}'>
-<section class="wrap hero" aria-labelledby="hero-title" data-enter>
-<div><div class="eyebrow"><span class="dot"></span>100% free. 100% human.</div><h1 id="hero-title">Tech problems.<span class="grad">Human solutions.</span></h1><p class="lead">Free tech support and PC building help, from real people who care. Meet your next go-to tech community on Discord.</p><div class="actions"><a class="button" href="https://discord.gg/GBMChN9PAj">Get help on Discord <span class="arrow">&#8599;</span></a><a class="button secondary" href="#support">Explore Relics <span class="arrow">&#8595;</span></a></div><p class="micro">No fees. No AI support. Just people helping people.</p><div class="trust"><span>Free, personalized support</span><span>PC builds for your budget</span><span>A community to come back to</span></div></div>
+<section class="wrap hero" aria-labelledby="hero-title">
+<div data-moment="headline-arrives" data-moment-opts='{"unit":"words","stagger":70}'><div class="eyebrow"><span class="dot"></span>100% free. 100% human.</div><h1 id="hero-title">Tech problems.<span class="grad">Human solutions.</span></h1><p class="lead">Free tech support and PC building help, from real people who care. Meet your next go-to tech community on Discord.</p><div class="actions"><a class="button" href="https://discord.gg/GBMChN9PAj">Get help on Discord <span class="arrow">&#8599;</span></a><a class="button secondary" href="#support">Explore Relics <span class="arrow">&#8595;</span></a></div><p class="micro">No fees. No AI support. Just people helping people.</p><div class="trust"><span>Free, personalized support</span><span>PC builds for your budget</span><span>A community to come back to</span></div></div>
 <div class="stage"><div class="frame" role="img" aria-label="Example of a Relics support ticket on Discord"><div class="bar"><span class="lights"><i></i><i></i><i></i></span><b># ticket-gpu-crash</b><em><span class="dot"></span>Specialist online</em></div>
 <div class="thread"><div class="msg"><div class="avatar">Y</div><div><strong>You</strong><small>Today</small><p>My PC keeps crashing in games and I have no idea where to start.</p></div></div>
 <div class="msg"><div class="avatar team">R</div><div><strong>Support Specialist</strong><span class="tag">HUMAN</span><p>Let&#8217;s work through it together. What happens right before it crashes?</p></div></div>

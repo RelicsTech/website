@@ -281,3 +281,7 @@ code{border-radius:6px;background:#ffffff12}
 #toast{border-radius:999px}
 footer.site{border-top-color:#ffffff14}
 @media(max-width:980px){header.site{padding:10px 12px 0}header.site nav{height:56px;padding-left:16px}.side{top:0;max-height:none;border-radius:0 28px 28px 0}.sheet{border-radius:22px}}
+
+/* shader ground in the handbook home hero (kit/effects, one WebGL context per page) */
+:root{--surface:#0e2429;--ink:#f1f8f5;--accent:#61e4d1;--accent-ink:#06262b}
+.hero[data-fx]{isolation:isolate}
