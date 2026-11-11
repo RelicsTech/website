@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Staff login | Relics</title><meta name="description" content="Sign in to the Relics staff area."><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#09191d"><link rel="icon" href="/assets/logo.webp"><link rel="stylesheet" href="/assets/handbook.css"><script src="/assets/auth.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a><header class="site"><nav class="wrap" aria-label="Main navigation"><a class="brand" href="/" aria-label="Relics home"><img src="/assets/logo.webp" width="40" height="40" alt="">Relics<span style="color:var(--teal)">.</span></a><div class="navlinks"><a href="/">Public site</a><a href="/handbook/">Handbooks</a><span id="auth-slot"></span></div></nav></header>
+<main id="main"><div class="gate"><div class="box">
+<div class="eyebrow"><span class="dot"></span>Staff area</div>
+<h1>Staff login</h1>
+<p>The handbooks are for Relics staff. Sign in with the Discord account you use on the server.</p>
+<a class="button" id="discord" href="/api/auth/discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 8l4 4-4 4M14 12H4"/></svg>Continue with Discord</a>
+<div class="note warn msg" id="msg" role="alert"><b class="t">Not available yet</b><p>Login is not connected yet, so there is nothing to sign in to. The handbooks are open in the meantime.</p><p><a class="button secondary small" id="preview" href="/handbook/">Open the handbooks</a></p></div>
+<div class="note stop msg" id="err" role="alert"><b class="t" id="errt">Sign-in failed</b><p id="errp"></p></div>
+<p class="fine">Access follows your Discord roles on the Relics server. Specialists see the Specialist Handbook, moderators also see the Moderation Handbook.</p>
+<a class="back" href="/">← Back to relicstech.site</a>
+</div></div></main><footer class="site"><div class="wrap foot"><a class="brand" href="/"><img src="/assets/logo.webp" width="40" height="40" alt="">Relics<span style="color:var(--teal)">.</span></a><small>© 2026 Relics · Staff area · Internal use only.</small><a href="/">Back to relicstech.site</a></div></footer>
+<script>
+(function(){
+  var A=window.RELICS_AUTH, q=new URLSearchParams(location.search), next=A.safeNext(q.get('next'));
+  var btn=document.getElementById('discord'); btn.href=A.discordUrl(next);
+  document.getElementById('preview').href=next;
+  var errs={forbidden:['No access','Your Discord account is not in the Relics staff roles.'],expired:['Session expired','Please sign in again.'],denied:['Sign-in cancelled','You declined the Discord authorization.']};
+  var e=q.get('error'); if(e){var m=errs[e]||['Sign-in failed','Something went wrong. Please try again.'];document.getElementById('errt').textContent=m[0];document.getElementById('errp').textContent=m[1];document.getElementById('err').classList.add('on');}
+  if(!A.enabled){btn.addEventListener('click',function(ev){ev.preventDefault();document.getElementById('msg').classList.add('on');});return;}
+  // Already signed in? Skip the form.
+  fetch(A.api+'/session',{credentials:'include'}).then(function(r){if(r.ok)location.replace(next);}).catch(function(){});
+})();
+</script></body></html>
