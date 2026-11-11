@@ -198,5 +198,18 @@ footer.site .brand{font-size:20px;color:var(--white)}footer.site .brand img{widt
   header.site nav{height:68px}
 }
 @media(max-width:560px){.bento{grid-template-columns:1fr}footer.site .foot{flex-wrap:wrap}.hub{padding-top:40px}}
+/* Phones: tables become stacked cards (labels come from data-label, set in handbook.js) */
+@media(max-width:720px){
+  .tw{overflow:visible;border:0;background:none}
+  table{display:block;min-width:0;width:100%}
+  thead{display:none}
+  tbody{display:block}
+  tbody tr{display:block;margin:0 0 12px;padding:4px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+  td{display:block;padding:10px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+  td:last-child{border-bottom:0}
+  td::before{content:attr(data-label);display:block;margin-bottom:3px;font-size:10.5px;font-weight:750;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal)}
+  td:first-child{font-size:15px}
+}
+@media(max-width:560px){.wrap{padding:0 12px}.sheet{padding:18px 14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.page>*{opacity:1;transform:none}}
 @media print{.side,header.site,footer.site,.menu-btn,.preview-bar{display:none}.hb{display:block}.sheet{border:0;background:#fff;color:#000}.page>*{opacity:1;transform:none}.page.hidden{display:block!important}}

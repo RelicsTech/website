@@ -54,6 +54,14 @@
   });
   $('#menu').onclick = function () { side.classList.toggle('open'); };
 
+  // Column labels for the stacked table layout on phones
+  $$('table').forEach(function (t) {
+    var h = $$('thead th', t).map(function (x) { return x.textContent.trim(); });
+    $$('tbody tr', t).forEach(function (r) {
+      $$('td', r).forEach(function (c, i) { if (h[i]) c.setAttribute('data-label', h[i]); });
+    });
+  });
+
   // Filters for long tables
   $$('.tw').forEach(function (w) {
     var rows = $$('tbody tr', w);
