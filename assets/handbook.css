@@ -429,6 +429,7 @@ tr.flash td{animation:flashrow 1.6s ease}
 /* Footer: link, privacy note, copyright, stacked and left aligned */
 .root footer{margin:72px var(--px) 0!important;padding:28px 0 44px!important;border-top:1px solid var(--ln);display:flex!important;flex-direction:column;align-items:flex-start;gap:14px!important;font-size:13px!important;line-height:1.55!important;color:var(--tx2)}
 .root footer .lnk{order:1}
+.root footer .fl-other{color:var(--lk)!important;font-size:14px}
 .root footer #privacy{order:2;flex:none!important;margin:0!important;max-width:640px;padding:0;border:0;background:none}
 .root footer #privacy strong{color:var(--tx)}
 .root footer>span{order:3;font-size:12px}

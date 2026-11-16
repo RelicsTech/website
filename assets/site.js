@@ -106,7 +106,7 @@
 
   /* ---- Smooth wheel scrolling (inertia). Off for touch, reduced motion, nested scrollers, zoom. ---- */
   if (reduce || window.matchMedia('(pointer:coarse)').matches) return;
-  var cur = window.scrollY, target = cur, running = false, EASE = 0.07;
+  var cur = window.scrollY, target = cur, running = false;
   function maxY() { return document.documentElement.scrollHeight - innerHeight; }
   function clamp(v) { return Math.max(0, Math.min(maxY(), v)); }
   function innerScroll(el, dy) {
@@ -119,22 +119,32 @@
     }
     return false;
   }
-  function tick() {
+  var TAU = 130, last = 0, hist = [], idle = 0;
+  function tick(ts) {
+    var dt = Math.min(48, Math.max(1, ts - (last || ts - 16))); last = ts;
     var d = target - cur;
-    if (Math.abs(d) < 0.5) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); running = false; return; }
-    cur += d * EASE;
+    if (Math.abs(d) < 0.4) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); running = false; last = 0; return; }
+    cur += d * (1 - Math.exp(-dt / TAU));
     window.scrollTo({ top: cur, behavior: 'instant' });
     requestAnimationFrame(tick);
   }
-  function go() { if (!running) { running = true; requestAnimationFrame(tick); } }
+  function go() { if (!running) { running = true; last = 0; requestAnimationFrame(tick); } }
   window.addEventListener('wheel', function (e) {
     if (e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
     if (innerScroll(e.target, e.deltaY)) return;
     e.preventDefault();
-    var dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
+    var dy = e.deltaMode === 1 ? e.deltaY * 34 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
     if (!running) cur = window.scrollY;
-    target = clamp(target + dy * 1.3);
+    target = clamp(target + dy);
     go();
+    /* a short, gentle glide after the wheel stops */
+    var now = Date.now(); hist.push([now, dy]);
+    while (hist.length && now - hist[0][0] > 160) hist.shift();
+    clearTimeout(idle);
+    idle = setTimeout(function () {
+      var v = 0; hist.forEach(function (h) { v += h[1]; }); hist = [];
+      if (Math.abs(v) > 120) { target = clamp(target + Math.max(-240, Math.min(240, v * 0.45))); go(); }
+    }, 70);
   }, { passive: false });
   window.addEventListener('scroll', function () { if (!running) { cur = target = window.scrollY; } }, { passive: true });
   window.addEventListener('resize', function () { target = clamp(target); });
