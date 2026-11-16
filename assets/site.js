@@ -27,9 +27,26 @@
     if (!b) return;
     var r = b.closest('.root');
     var next = effective(r) ? 'light' : 'dark';
-    r.setAttribute('data-th', next);
-    sync();
-    try { localStorage.setItem('relics-th', next); } catch (x) {}
+    function apply() {
+      r.setAttribute('data-th', next);
+      sync();
+      try { localStorage.setItem('relics-th', next); } catch (x) {}
+    }
+    b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { apply(); return; }
+    if (document.startViewTransition) {
+      var bb = b.getBoundingClientRect(), x = bb.left + bb.width / 2, y = bb.top + bb.height / 2;
+      var rad = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      var vt = document.startViewTransition(apply);
+      vt.ready.then(function () {
+        document.documentElement.animate(
+          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + rad + 'px at ' + x + 'px ' + y + 'px)'] },
+          { duration: 700, easing: 'cubic-bezier(.3,.7,.2,1)', pseudoElement: '::view-transition-new(root)' });
+      }, function () {});
+    } else {
+      r.classList.add('theme-anim'); apply();
+      setTimeout(function () { r.classList.remove('theme-anim'); }, 700);
+    }
   });
   window.addEventListener('storage', function (e) {
     if (e.key !== 'relics-th' || !root()) return;
@@ -64,9 +81,32 @@
     }, { passive: true });
   }
 
+  /* ---- Gear in the hero art: click (or Enter) to spin it with a ripple ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    Array.prototype.forEach.call(document.querySelectorAll('svg.artsvg'), function (svg) {
+      var g = svg.querySelector('g[transform^="translate"]'); if (!g) return;
+      var paths = g.querySelectorAll('path'); if (!paths.length) return;
+      var spin = document.createElementNS(NS, 'g');
+      spin.setAttribute('class', 'gear-spin'); spin.setAttribute('role', 'button'); spin.setAttribute('tabindex', '0'); spin.setAttribute('aria-label', 'Spin the gear');
+      var ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('class', 'gear-ring'); ring.setAttribute('r', '70');
+      Array.prototype.forEach.call(paths, function (pa) { spin.appendChild(pa); });
+      g.appendChild(ring); g.appendChild(spin);
+      var turns = 0;
+      function go() {
+        turns += 1;
+        spin.style.transform = 'rotate(' + (turns * 540) + 'deg) scale(' + (turns % 2 ? 1.12 : 1) + ')';
+        ring.classList.remove('go'); void ring.getBoundingClientRect(); ring.classList.add('go');
+      }
+      spin.addEventListener('click', go);
+      spin.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+  });
+
   /* ---- Smooth wheel scrolling (inertia). Off for touch, reduced motion, nested scrollers, zoom. ---- */
   if (reduce || window.matchMedia('(pointer:coarse)').matches) return;
-  var cur = window.scrollY, target = cur, running = false, EASE = 0.12;
+  var cur = window.scrollY, target = cur, running = false, EASE = 0.07;
   function maxY() { return document.documentElement.scrollHeight - innerHeight; }
   function clamp(v) { return Math.max(0, Math.min(maxY(), v)); }
   function innerScroll(el, dy) {
@@ -93,7 +133,7 @@
     e.preventDefault();
     var dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
     if (!running) cur = window.scrollY;
-    target = clamp(target + dy);
+    target = clamp(target + dy * 1.3);
     go();
   }, { passive: false });
   window.addEventListener('scroll', function () { if (!running) { cur = target = window.scrollY; } }, { passive: true });
