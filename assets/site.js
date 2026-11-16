@@ -135,32 +135,20 @@
     update();
   });
 
-  /* ---- Gear button (bottom right): scroll progress ring; opens search in handbooks, back to top elsewhere ---- */
-  var GEAR = 'M47.1 -9.0 L63.6 -6.8 L63.6 6.8 L47.1 9.0 L43.4 20.4 L55.5 31.9 L47.5 42.9 L32.9 35.0 L23.1 42.1 L26.2 58.4 L13.2 62.6 L6.0 47.6 L-6.0 47.6 L-13.2 62.6 L-26.2 58.4 L-23.1 42.1 L-32.9 35.0 L-47.5 42.9 L-55.5 31.9 L-43.4 20.4 L-47.1 9.0 L-63.6 6.8 L-63.6 -6.8 L-47.1 -9.0 L-43.4 -20.4 L-55.5 -31.9 L-47.5 -42.9 L-32.9 -35.0 L-23.1 -42.1 L-26.2 -58.4 L-13.2 -62.6 L-6.0 -47.6 L6.0 -47.6 L13.2 -62.6 L26.2 -58.4 L23.1 -42.1 L32.9 -35.0 L47.5 -42.9 L55.5 -31.9 L43.4 -20.4 Z M22 0 A22 22 0 1 0 -22 0 A22 22 0 1 0 22 0 Z';
+  /* ---- The corner gear (it flies in from the hero while you scroll): click = search in handbooks, back to top elsewhere ---- */
   window.RelicsGear = function () {
     if (window.RelicsSearch) window.RelicsSearch(); else if (window.RelicsScroll) window.RelicsScroll.top();
   };
   document.addEventListener('DOMContentLoaded', function () {
-    var r = root(); if (!r) return;
-    var canSearch = function () { return !!window.RelicsSearch; };
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'gfab';
-    b.innerHTML = '<svg viewBox="-40 -40 80 80" aria-hidden="true"><circle class="gf-track" r="36"/><circle class="gf-ring" r="36" pathLength="100"/><g class="gf-gear" transform="scale(.42)"><path d="' + GEAR + '" fill-rule="evenodd"/></g></svg>';
-    r.appendChild(b);
-    function label() { var t = canSearch() ? 'Search the handbook' : 'Back to top'; b.setAttribute('aria-label', t); b.title = t; }
-    var ring = b.querySelector('.gf-ring'), gear = b.querySelector('.gf-gear'), spun = 0, tk = false;
-    function upd() {
-      tk = false;
-      var max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      ring.style.strokeDashoffset = String(100 - p * 100);
-      b.classList.toggle('show', window.scrollY > 240);
-    }
+    var g = document.querySelector('.gind'); if (!g) return;
+    function label() { var t = window.RelicsSearch ? 'Search the handbook' : 'Back to top'; g.setAttribute('aria-label', t); g.title = t; }
+    g.removeAttribute('aria-hidden'); g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0');
+    var spin = g.querySelector('.gspin'), turns = 0, tk = false;
+    function upd() { tk = false; g.classList.toggle('live', window.scrollY > 300); }
     window.addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(upd); } }, { passive: true });
-    window.addEventListener('resize', upd);
-    b.addEventListener('click', function () {
-      spun += 1; gear.style.transform = 'scale(.42) rotate(' + (spun * 360) + 'deg)';
-      window.RelicsGear();
-    });
+    function act() { window.RelicsGear(); }
+    g.addEventListener('click', act);
+    g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
     window.addEventListener('load', function () { label(); upd(); });
     label(); upd();
   });

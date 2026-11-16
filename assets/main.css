@@ -432,18 +432,17 @@ html{scroll-padding-top:128px}
 .cur-vignette::after{content:none!important;display:none!important}
 .vig{position:fixed;inset:0;pointer-events:none;z-index:60;background:radial-gradient(circle 340px at var(--vx,50%) var(--vy,50%),transparent 0,rgba(0,0,0,.12) 100%)}
 
-/* Gear button: progress ring, search or back to top */
-.gfab{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;padding:0;border:0;border-radius:50%;background:#161617;box-shadow:0 8px 28px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.1);cursor:pointer;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.4,.5,1)}
-.gfab.show{opacity:1;transform:none;pointer-events:auto}
-.gfab:hover{transform:scale(1.06)}
-.gfab:active{transform:scale(.94)}
-.gfab:focus-visible{outline:2px solid var(--ac2);outline-offset:3px}
-.gfab svg{display:block;width:100%;height:100%;overflow:visible}
-.gfab .gf-track{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2.5}
-.gfab .gf-ring{fill:none;stroke:#2997ff;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transition:stroke-dashoffset .15s linear}
-.gfab .gf-gear{fill:#2997ff;transition:transform .9s cubic-bezier(.15,.8,.2,1)}
-@media (max-width:820px){.gfab{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:50px;height:50px}}
-@media (prefers-reduced-motion:reduce){.gfab,.gfab .gf-gear,.gfab .gf-ring{transition:none}}
+/* The corner gear is a button once it has flown in */
+.gind.live{pointer-events:auto;cursor:pointer}
+.gind.live:hover{filter:drop-shadow(0 6px 22px rgba(41,151,255,.7));scale:1.06}
+.gind.live:active{scale:.94}
+.gind:focus-visible{outline:2px solid var(--ac2);outline-offset:3px;border-radius:50%}
+.gind{transition:scale .3s cubic-bezier(.3,1.4,.5,1)}
+@media (max-width:820px){
+  .root .gind{display:block!important;top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:14px;width:50px;height:50px;animation:none!important;opacity:0;transform:none;transition:opacity .35s ease,scale .3s}
+  .root .gind svg{width:50px;height:50px}
+  .root .gind.live{opacity:1}
+}
 
 /* Moving between pages: fade, the menu stays put (browsers without cross-page transitions just load the page) */
 @view-transition{navigation:auto}
