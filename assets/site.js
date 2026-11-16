@@ -153,12 +153,14 @@
     });
     if (!cand.length) return;
     var pend = [], tm = 0;
+    var HIDE = 'inset(-.3em 100% -.7em -.3em)', SHOW = 'inset(-.3em -.3em -.7em -.3em)';
     function flush() {
       tm = 0; var b = pend; pend = [];
       b.sort(function (x, y) { var rx = x.getBoundingClientRect(), ry = y.getBoundingClientRect(); return (rx.top - ry.top) || (rx.left - ry.left); });
       b.forEach(function (el, i) {
-        el.animate([{ clipPath: 'inset(-.3em 100% -.7em -.3em)', opacity: 0.2 }, { clipPath: 'inset(-.3em -.3em -.7em -.3em)', opacity: 1 }],
-          { duration: 950, delay: Math.min(i, 8) * 55, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+        var an = el.animate([{ clipPath: HIDE, opacity: 1 }, { clipPath: SHOW, opacity: 1 }], { duration: 950, delay: Math.min(i, 8) * 55, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' });
+        el.style.opacity = ''; /* the animation now keeps it empty until its turn */
+        an.onfinish = function () { an.cancel(); };
       });
     }
     var io = new IntersectionObserver(function (es) {
@@ -169,8 +171,73 @@
     cand.forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.top < h && r.bottom > 0) return; /* visible at load: the entrance covers it */
+      el.style.opacity = '0'; /* empty until it is written in (clip-path would hide it from the observer) */
       io.observe(el);
     });
+  });
+
+  /* ---- Gear in the hero art: click (or Enter) to spin it with a ripple (and search in handbooks) ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    Array.prototype.forEach.call(document.querySelectorAll('svg.artsvg'), function (svg) {
+      var g = svg.querySelector('g[transform^="translate"]'); if (!g) return;
+      var paths = g.querySelectorAll('path'); if (!paths.length) return;
+      var spin = document.createElementNS(NS, 'g');
+      spin.setAttribute('class', 'gear-spin'); spin.setAttribute('role', 'button'); spin.setAttribute('tabindex', '0'); spin.setAttribute('aria-label', 'Spin the gear');
+      var ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('class', 'gear-ring'); ring.setAttribute('r', '70');
+      Array.prototype.forEach.call(paths, function (pa) { spin.appendChild(pa); });
+      g.appendChild(ring); g.appendChild(spin);
+      var turns = 0;
+      function go() {
+        if (window.RelicsSearch) window.RelicsSearch();
+        turns += 1;
+        spin.style.transform = 'rotate(' + (turns * 540) + 'deg) scale(' + (turns % 2 ? 1.12 : 1) + ')';
+        ring.classList.remove('go'); void ring.getBoundingClientRect(); ring.classList.add('go');
+      }
+      spin.addEventListener('click', go);
+      spin.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+  });
+
+  /* ---- Where you are in the menu (scroll spy): the link of the current section gets .on, a highlight slides to it ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side .jl a[href^="#"]'));
+    var pairs = links.map(function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; }).filter(function (p) { return p[1]; });
+    if (!pairs.length) return;
+    var ticking = false, nav = pairs[0][0].closest('.nvl'), ind = null, curLink = null;
+    var desk = window.matchMedia('(min-width:821px)');
+    if (nav) { ind = document.createElement('div'); ind.className = 'jind'; ind.setAttribute('aria-hidden', 'true'); nav.insertBefore(ind, nav.firstChild); }
+    function place(first) {
+      if (!ind || !curLink) return;
+      if (!desk.matches) { ind.classList.remove('ready'); return; }
+      var x, y, w = curLink.offsetWidth, hh = curLink.offsetHeight;
+      if (curLink.offsetParent === nav) { x = curLink.offsetLeft; y = curLink.offsetTop; } else { var nb = nav.getBoundingClientRect(), ab = curLink.getBoundingClientRect(); x = ab.left - nb.left; y = ab.top - nb.top; }
+      if (first) ind.style.transition = 'none';
+      ind.style.width = (w + 24) + 'px'; ind.style.height = (hh + 4) + 'px';
+      ind.style.transform = 'translate(' + (x - 12) + 'px,' + (y - 2) + 'px)';
+      ind.classList.add('ready');
+      if (first) { void ind.offsetWidth; ind.style.transition = ''; }
+    }
+    function update() {
+      ticking = false;
+      var line = innerHeight * 0.35, cur = pairs[0];
+      pairs.forEach(function (p) { if (p[1].getBoundingClientRect().top <= line) cur = p; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = pairs[pairs.length - 1];
+      var changed = curLink !== cur[0];
+      pairs.forEach(function (p) {
+        var on = p === cur;
+        p[0].classList.toggle('on', on);
+        if (on) p[0].setAttribute('aria-current', 'location'); else p[0].removeAttribute('aria-current');
+      });
+      curLink = cur[0];
+      if (changed) place(!ind || !ind.classList.contains('ready'));
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    addEventListener('scroll', req, { passive: true });
+    addEventListener('resize', function () { req(); place(false); });
+    addEventListener('load', function () { setTimeout(function () { place(true); }, 1200); });
+    update();
   });
 
   /* ---- Entrance + direction of travel between pages ---- */
