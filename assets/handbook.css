@@ -615,3 +615,5 @@ h1,h2,h3{overflow:visible}
 }
 @media (prefers-reduced-motion:reduce){.jind,.root .side .jl a{transition:none}}
 @media(min-width:721px){.root .side .lkb{align-self:center!important;margin-left:auto!important;margin-right:auto!important}}
+.grid:has(>.card[href^="#"]){display:grid!important;grid-template-columns:repeat(auto-fit,minmax(max(260px,calc((100% - 2*var(--g))/3)),1fr))}
+.grid>.card[href^="#"]{min-height:0!important;gap:20px!important}
