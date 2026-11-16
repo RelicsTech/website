@@ -83,7 +83,7 @@
     }
     document.addEventListener('mousemove', function (e) {
       ptr = e; px = e.clientX; py = e.clientY;
-      if (!gl && !scrolling) gl = requestAnimationFrame(glow);
+      if (!gl) gl = requestAnimationFrame(glow);
       if (raf || scrolling) return;
       raf = requestAnimationFrame(function () {
         raf = 0;
@@ -93,6 +93,10 @@
           var c = t.getBoundingClientRect();
           t.style.setProperty('--cx', (ptr.clientX - c.left) + 'px');
           t.style.setProperty('--cy', (ptr.clientY - c.top) + 'px');
+          if (t.parentElement && t.parentElement.classList.contains('grid') && c.width < 560) {
+            t.style.setProperty('--tx', String(((ptr.clientX - c.left) / c.width - 0.5) * 2));
+            t.style.setProperty('--ty', String(((ptr.clientY - c.top) / c.height - 0.5) * 2));
+          }
           if (t.classList.contains('hero')) {
             t.style.setProperty('--nx', String(((ptr.clientX - c.left) / c.width - 0.5) * 2));
             t.style.setProperty('--ny', String(((ptr.clientY - c.top) / c.height - 0.5) * 2));
@@ -101,6 +105,36 @@
       });
     }, { passive: true });
   }
+
+  /* ---- Cards in grids rise in one by one when they come into view (once, no overshoot) ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    if (noMotion || !('IntersectionObserver' in window) || !document.documentElement.animate) return;
+    var cards = Array.prototype.slice.call(document.querySelectorAll(':is(.rv,.grid) > :is(.card,.dkc):not(.rv):not(.hero):not(.cta), .grid > a'));
+    if (!cards.length) return;
+    var pending = [], timer = 0;
+    function flush() {
+      timer = 0;
+      var batch = pending; pending = [];
+      batch.sort(function (a, b) { var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect(); return (ra.top - rb.top) || (ra.left - rb.left); });
+      batch.forEach(function (el, i) {
+        el.animate([{ opacity: 0, transform: 'translateY(30px) scale(.985)' }, { opacity: 1, transform: 'none' }],
+          { duration: 900, delay: Math.min(i, 6) * 90, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
+      });
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target); pending.push(e.target);
+      });
+      if (pending.length && !timer) timer = setTimeout(flush, 30);
+    }, { rootMargin: '0px 0px 12% 0px', threshold: 0.05 });
+    var h = innerHeight;
+    cards.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < h && r.bottom > 0) return; /* already on screen at load: the entrance handles it */
+      io.observe(el);
+    });
+  });
 
   /* ---- Entrance + direction of travel between pages ---- */
   var RANK = { '/': 0, '/handbook/': 1, '/handbook/specialist/': 2, '/handbook/moderation/': 3 };
@@ -165,8 +199,21 @@
   };
   document.addEventListener('DOMContentLoaded', function () {
     var g = document.querySelector('.gind'); if (!g) return;
-    function label() { var t = window.RelicsSearch ? 'Search the handbook' : 'Back to top'; g.setAttribute('aria-label', t); g.title = t; }
+    function label() { var t = window.RelicsSearch ? 'Search the handbook' : 'Back to top'; g.setAttribute('aria-label', t); var tp = g.querySelector('.gtip'); if (tp) tp.textContent = window.RelicsSearch ? 'Search' : 'Back to top'; }
     g.removeAttribute('aria-hidden'); g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0');
+    var svg = g.querySelector('svg'), NS = 'http://www.w3.org/2000/svg';
+    if (svg && !svg.querySelector('#gindG')) {
+      var defs = document.createElementNS(NS, 'defs');
+      defs.innerHTML = '<linearGradient id="gindG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe8ff"/><stop offset=".5" stop-color="#2997ff"/><stop offset="1" stop-color="#0a4fb3"/></linearGradient><linearGradient id="gindR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#2997ff"/></linearGradient><radialGradient id="gindD" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#14233a"/><stop offset="1" stop-color="#05080f"/></radialGradient>';
+      svg.insertBefore(defs, svg.firstChild);
+      var bg = svg.querySelector('.gbg circle'); if (bg) bg.style.fill = 'url(#gindD)';
+      var ring = svg.querySelector('.gring'); if (ring) ring.style.stroke = 'url(#gindR)';
+      var gp = svg.querySelector('.gspin path'); if (gp) gp.setAttribute('fill', 'url(#gindG)');
+      var ico = document.createElementNS(NS, 'g'); ico.setAttribute('class', 'gico'); ico.setAttribute('fill', 'none'); ico.setAttribute('stroke', '#cfe8ff'); ico.setAttribute('stroke-width', '9'); ico.setAttribute('stroke-linecap', 'round'); ico.setAttribute('stroke-linejoin', 'round');
+      ico.innerHTML = window.RelicsSearch ? '<circle cx="-6" cy="-6" r="22"/><path d="M10 10 L30 30"/>' : '<path d="M0 26 V-24 M-22 -2 L0 -26 L22 -2"/>';
+      svg.appendChild(ico);
+    }
+    var tip = document.createElement('span'); tip.className = 'gtip'; g.appendChild(tip);
     var spin = g.querySelector('.gspin'), turns = 0, tk = false;
     function upd() { tk = false; g.classList.toggle('live', window.scrollY > 300); }
     window.addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(upd); } }, { passive: true });
