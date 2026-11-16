@@ -67,6 +67,7 @@
   var pin = $('#pin'), plist = $('#plist'), opener = null;
 
   function openPal() { opener = document.activeElement; pal.classList.add('open'); pin.value = ''; renderPal(); setTimeout(function () { pin.focus(); }, 10); }
+  window.RelicsSearch = function () { if (pal.classList.contains('open')) { closePal(); } else { openPal(); } };
   function closePal() { pal.classList.remove('open'); if (opener && opener.focus) opener.focus(); }
   function renderPal() {
     var v = pin.value.trim().toLowerCase();
@@ -87,10 +88,10 @@
     if (i.row) {
       var flt = i.row.closest('.tbl').previousElementSibling;
       if (flt && flt.classList.contains('flt')) { flt.value = ''; $$('tbody tr', i.row.closest('.tbl')).forEach(function (r) { r.classList.remove('hidden'); }); }
-      i.row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      if (window.RelicsScroll) window.RelicsScroll.to(i.row, { center: true }); else i.row.scrollIntoView({ block: 'center', behavior: 'smooth' });
       i.row.classList.remove('flash'); void i.row.offsetWidth; i.row.classList.add('flash');
     } else if (sec) {
-      sec.scrollIntoView({ behavior: 'smooth' });
+      if (window.RelicsScroll) window.RelicsScroll.to(sec); else sec.scrollIntoView({ behavior: 'smooth' });
     }
     if (history.replaceState) history.replaceState(null, '', '#' + i.id);
   }

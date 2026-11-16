@@ -403,7 +403,6 @@ html{scroll-padding-top:128px}
 /* Current chapter in the menu: a small accent bar (hover keeps the dot) */
 .root .side .jl a.on{color:var(--tx)!important;font-weight:600}
 .root .side .nvl a.on::before{width:3px;height:18px;margin-top:-9px;left:-16px;border-radius:3px;transform:scale(1)}
-@media (max-width:820px){.root .jl a.on{background:var(--tx);color:var(--bg)!important;border-color:var(--tx)}}
 
 /* Theme button: round, with a little spin when it switches */
 .tt svg{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
@@ -411,9 +410,6 @@ html{scroll-padding-top:128px}
 @keyframes ttspin{0%{transform:rotate(-140deg) scale(.4);opacity:0}100%{transform:none;opacity:1}}
 .tt:active{transform:scale(.92)}
 /* Light/dark switch: circular reveal (View Transitions), colour fade as fallback */
-::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
-::view-transition-old(root){z-index:1}
-::view-transition-new(root){z-index:2}
 .theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after{transition:background-color .55s ease,color .55s ease,border-color .55s ease,fill .55s ease,stroke .55s ease,box-shadow .55s ease!important}
 
 /* Gear in the hero art: click to spin */
@@ -431,3 +427,59 @@ html{scroll-padding-top:128px}
 .root footer #privacy strong{color:var(--tx)}
 .root footer>span{order:3;font-size:12px}
 @media (prefers-reduced-motion:reduce){.tt.spin svg{animation:none}.gear-spin{transition:none}}
+
+/* Vignette follows the pointer on its own viewport-sized layer (was a page-tall overlay) */
+.cur-vignette::after{content:none!important;display:none!important}
+.vig{position:fixed;inset:0;pointer-events:none;z-index:60;background:radial-gradient(circle 340px at var(--vx,50%) var(--vy,50%),transparent 0,rgba(0,0,0,.12) 100%)}
+
+/* Gear button: progress ring, search or back to top */
+.gfab{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;padding:0;border:0;border-radius:50%;background:#161617;box-shadow:0 8px 28px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.1);cursor:pointer;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.4,.5,1)}
+.gfab.show{opacity:1;transform:none;pointer-events:auto}
+.gfab:hover{transform:scale(1.06)}
+.gfab:active{transform:scale(.94)}
+.gfab:focus-visible{outline:2px solid var(--ac2);outline-offset:3px}
+.gfab svg{display:block;width:100%;height:100%;overflow:visible}
+.gfab .gf-track{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2.5}
+.gfab .gf-ring{fill:none;stroke:#2997ff;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transition:stroke-dashoffset .15s linear}
+.gfab .gf-gear{fill:#2997ff;transition:transform .9s cubic-bezier(.15,.8,.2,1)}
+@media (max-width:820px){.gfab{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:50px;height:50px}}
+@media (prefers-reduced-motion:reduce){.gfab,.gfab .gf-gear,.gfab .gf-ring{transition:none}}
+
+/* Moving between pages: fade, the menu stays put (browsers without cross-page transitions just load the page) */
+@view-transition{navigation:auto}
+.side{view-transition-name:rail}
+::view-transition-old(root){animation:vtOut .22s ease both}
+::view-transition-new(root){animation:vtIn .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vtOut{to{opacity:0}}
+@keyframes vtIn{from{opacity:0;transform:translateY(16px)}}
+::view-transition-group(rail){animation-duration:.4s}
+html.vt-theme .side{view-transition-name:none}
+html.vt-theme::view-transition-old(root),html.vt-theme::view-transition-new(root){animation:none;mix-blend-mode:normal}
+html.vt-theme::view-transition-old(root){z-index:1}
+html.vt-theme::view-transition-new(root){z-index:2}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+
+/* Phones */
+@media (max-width:820px){
+  /* chapter chips: the one you are in is blue */
+  .root .side .nvl a.on::before{display:none!important}
+  .root .jl a.on,.root .jl a:target-current{background:var(--ac)!important;color:var(--onac)!important;border-color:var(--ac)!important;font-weight:600}
+  /* smaller cards, less empty scrolling */
+  .root.root{--th:104px;--cp:20px;--sec:56px}
+  .root [style*="min-height"]{min-height:0!important}
+  .root a.card,.root .stp{gap:12px!important}
+  .root .dkc[style*="height:var(--th)"]{height:auto!important;padding:22px 0!important}
+  .root .dkc[style*="height:var(--th)"] img{width:52px!important;height:52px!important;margin-top:8px!important}
+  .root [style*="min-height:520px"]{min-height:300px!important;padding:20px 0!important}
+  .root .stack{scale:.78;transform-origin:center}
+  .root .stp img.ic{display:none!important}
+  .root .stp{padding:20px!important}
+  .root .sec>.rv.grid>a.card,.root .sec>.rv.grid>a.dkc{padding:18px 20px!important}
+  .root .sec>.rv.grid>a.card .ic,.root .sec>.rv.grid>a.dkc .ic{width:44px!important;height:44px!important}
+  /* closing block: readable, no restless gear */
+  .root .cta .ctabg{opacity:.22!important}
+  .root .cta svg,.root .cta svg *{animation:none!important}
+  .root .cta{padding:32px 22px!important}
+  .root footer{color:color-mix(in srgb,var(--tx) 78%,transparent)!important;font-size:14px!important}
+  .root footer>span{font-size:13px!important}
+}
