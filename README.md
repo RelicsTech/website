@@ -7,6 +7,7 @@ Static site for [relicstech.site](https://relicstech.site), served by GitHub Pag
 | `index.html` | Public landing page |
 | `handbook/` | Public handbooks: hub, `specialist/` and `moderation/` |
 | `guides/` | Short public PC help guides (hub + 3 guides, HowTo structured data), listed in the sitemap |
+| `assets/og/` | One 1200x630 share image per page (referenced by og:image/twitter:image) |
 | `dashboard/` | Staff dashboard placeholder, the only page behind login |
 | `login/` | Staff login page (Discord) |
 | `assets/main.css`, `site.js` | Landing page styling; theme toggle, pointer effects, smooth scrolling (all pages) |
