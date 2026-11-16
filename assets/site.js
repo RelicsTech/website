@@ -148,9 +148,6 @@
   window.addEventListener('pageswap', function (e) {
     try { e._dir = dirFor(new URL(e.activation.from.url).pathname, new URL(e.activation.entry.url).pathname); addType(e); } catch (x) {}
   });
-  window.addEventListener('pagereveal', function (e) {
-    try { e._dir = dirFor(new URL(navigation.activation.from.url).pathname, new URL(navigation.activation.entry.url).pathname); addType(e); } catch (x) {}
-  });
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function enter() {
     if (noMotion || !document.documentElement.animate) return;
