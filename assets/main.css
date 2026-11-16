@@ -389,9 +389,10 @@ html{scroll-padding-top:128px}
   .root .side .nvc>.lnk,.root .side .nvc>.note{order:7}
 }
 @media (min-width:821px) and (max-height:980px){
-  .root .side .lk-ic,.root .side .note{display:none!important}
+  .root .side .note{display:none!important}
 }
 @media (min-width:821px) and (max-height:760px){
+  .root .side .lk-ic{display:none!important}
   .root .side .grp,.root .side .lk-sub,.root .side .nvc .lnk,.root .side .nvc p{display:none!important}
   .root .side .nvl a:not(.lkb){font-size:15px}
 }
