@@ -8,7 +8,10 @@ Static site for [relicstech.site](https://relicstech.site), served by GitHub Pag
 | `handbook/` | Public handbooks: hub, `specialist/` and `moderation/` |
 | `dashboard/` | Staff dashboard placeholder, the only page behind login |
 | `login/` | Staff login page (Discord) |
-| `assets/handbook.css`, `handbook.js` | Shared handbook styling and behaviour |
+| `assets/main.css`, `site.js` | Landing page styling; theme toggle, pointer effects, smooth scrolling (all pages) |
+| `assets/handbook.css`, `handbook.js` | Handbook styling; search palette (Ctrl K or /), table filters, copy-on-click, phone cards for tables |
+| `assets/staff.css` | Styles of `login/`, `dashboard/` and `404.html` |
+| `assets/img/`, `assets/fonts/` | Logo marks; self-hosted Hanken Grotesk (no Google Fonts) |
 | `assets/auth.js` | Login guard (frontend only) |
 
 ## Dashboard login: frontend only for now
