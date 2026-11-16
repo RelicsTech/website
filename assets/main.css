@@ -521,3 +521,5 @@ html.vt-theme::view-transition-new(root){z-index:2}
   .bgm-aurora::before{inset:-10%}
   .har-shift .fl{translate:none}
 }
+
+.ich-bob :is(.card,.dkc):hover .ic{animation:icBob 1.4s ease-in-out infinite}
