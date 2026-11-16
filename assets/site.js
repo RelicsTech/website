@@ -104,6 +104,28 @@
     });
   });
 
+  /* ---- Current chapter in the menu (scroll spy): the link of the section you are in gets .on ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side .jl a[href^="#"]'));
+    var pairs = links.map(function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; }).filter(function (p) { return p[1]; });
+    if (!pairs.length) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var line = innerHeight * 0.35, cur = pairs[0];
+      pairs.forEach(function (p) { if (p[1].getBoundingClientRect().top <= line) cur = p; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = pairs[pairs.length - 1];
+      pairs.forEach(function (p) {
+        var on = p === cur;
+        p[0].classList.toggle('on', on);
+        if (on) p[0].setAttribute('aria-current', 'location'); else p[0].removeAttribute('aria-current');
+      });
+    }
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    addEventListener('scroll', req, { passive: true }); addEventListener('resize', req);
+    update();
+  });
+
   /* ---- Smooth wheel scrolling (inertia). Off for touch, reduced motion, nested scrollers, zoom. ---- */
   if (reduce || window.matchMedia('(pointer:coarse)').matches) return;
   var cur = window.scrollY, target = cur, running = false;
@@ -119,16 +141,16 @@
     }
     return false;
   }
-  var TAU = 130, last = 0, hist = [], idle = 0;
+  var TAU = 130, lastTs = 0, hist = [], idle = 0;
   function tick(ts) {
-    var dt = Math.min(48, Math.max(1, ts - (last || ts - 16))); last = ts;
+    var dt = Math.min(48, Math.max(1, ts - (lastTs || ts - 16))); lastTs = ts;
     var d = target - cur;
-    if (Math.abs(d) < 0.4) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); running = false; last = 0; return; }
+    if (Math.abs(d) < 0.4) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); running = false; lastTs = 0; return; }
     cur += d * (1 - Math.exp(-dt / TAU));
     window.scrollTo({ top: cur, behavior: 'instant' });
     requestAnimationFrame(tick);
   }
-  function go() { if (!running) { running = true; last = 0; requestAnimationFrame(tick); } }
+  function go() { if (!running) { running = true; lastTs = 0; requestAnimationFrame(tick); } }
   window.addEventListener('wheel', function (e) {
     if (e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
     if (innerScroll(e.target, e.deltaY)) return;
