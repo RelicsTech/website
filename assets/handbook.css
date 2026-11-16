@@ -554,3 +554,8 @@ html.vt-theme::view-transition-new(root){z-index:2}
   html:active-view-transition-type(forward)::view-transition-old(root),html:active-view-transition-type(back)::view-transition-old(root){animation:vtMOut .25s ease both}
   html:active-view-transition-type(forward)::view-transition-new(root),html:active-view-transition-type(back)::view-transition-new(root){animation:vtMIn .4s ease both}
 }
+
+/* One pointer light for every card: the blue glow flows from card to card, light and dark mode */
+.vig{background:radial-gradient(circle 440px at var(--vx,-999px) var(--vy,-999px),color-mix(in srgb,var(--ac2) 20%,transparent),transparent 72%),radial-gradient(circle 340px at var(--vx,-999px) var(--vy,-999px),transparent 0,rgba(0,0,0,var(--vga,.03)) 100%)!important}
+.root[data-eff=dark]{--vga:.10}
+.chv-liftspot .card,.chv-spot .card,.chv-liftspot .dkc{background-image:none!important}

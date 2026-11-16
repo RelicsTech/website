@@ -72,13 +72,22 @@
         vig = document.createElement('div'); vig.className = 'vig'; vig.setAttribute('aria-hidden', 'true'); r.appendChild(vig);
       }
     });
+    /* one light source for all cards: a soft glow follows the pointer on the viewport layer (eased) */
+    var gx = -999, gy = -999, px = -999, py = -999, gl = 0;
+    function glow() {
+      gl = 0;
+      if (!vig) return;
+      if (gx < -900) { gx = px; gy = py; } else { gx += (px - gx) * 0.18; gy += (py - gy) * 0.18; }
+      vig.style.setProperty('--vx', gx.toFixed(1) + 'px'); vig.style.setProperty('--vy', gy.toFixed(1) + 'px');
+      if (Math.abs(px - gx) > 0.5 || Math.abs(py - gy) > 0.5) gl = requestAnimationFrame(glow);
+    }
     document.addEventListener('mousemove', function (e) {
-      ptr = e;
+      ptr = e; px = e.clientX; py = e.clientY;
+      if (!gl && !scrolling) gl = requestAnimationFrame(glow);
       if (raf || scrolling) return;
       raf = requestAnimationFrame(function () {
         raf = 0;
         if (!ptr || scrolling) return;
-        if (vig) { vig.style.setProperty('--vx', ptr.clientX + 'px'); vig.style.setProperty('--vy', ptr.clientY + 'px'); }
         var t = ptr.target && ptr.target.closest ? ptr.target.closest('.card,.dkc,.hero') : null;
         if (t) {
           var c = t.getBoundingClientRect();
@@ -92,52 +101,6 @@
       });
     }, { passive: true });
   }
-
-  /* ---- Gear in the hero art: click (or Enter) to spin it with a ripple ---- */
-  document.addEventListener('DOMContentLoaded', function () {
-    var NS = 'http://www.w3.org/2000/svg';
-    Array.prototype.forEach.call(document.querySelectorAll('svg.artsvg'), function (svg) {
-      var g = svg.querySelector('g[transform^="translate"]'); if (!g) return;
-      var paths = g.querySelectorAll('path'); if (!paths.length) return;
-      var spin = document.createElementNS(NS, 'g');
-      spin.setAttribute('class', 'gear-spin'); spin.setAttribute('role', 'button'); spin.setAttribute('tabindex', '0'); spin.setAttribute('aria-label', 'Spin the gear');
-      var ring = document.createElementNS(NS, 'circle');
-      ring.setAttribute('class', 'gear-ring'); ring.setAttribute('r', '70');
-      Array.prototype.forEach.call(paths, function (pa) { spin.appendChild(pa); });
-      g.appendChild(ring); g.appendChild(spin);
-      var turns = 0;
-      function go() {
-        if (window.RelicsSearch) window.RelicsSearch();
-        turns += 1;
-        spin.style.transform = 'rotate(' + (turns * 540) + 'deg) scale(' + (turns % 2 ? 1.12 : 1) + ')';
-        ring.classList.remove('go'); void ring.getBoundingClientRect(); ring.classList.add('go');
-      }
-      spin.addEventListener('click', go);
-      spin.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-    });
-  });
-
-  /* ---- Current chapter in the menu (scroll spy): the link of the section you are in gets .on ---- */
-  document.addEventListener('DOMContentLoaded', function () {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.side .jl a[href^="#"]'));
-    var pairs = links.map(function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; }).filter(function (p) { return p[1]; });
-    if (!pairs.length) return;
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var line = innerHeight * 0.35, cur = pairs[0];
-      pairs.forEach(function (p) { if (p[1].getBoundingClientRect().top <= line) cur = p; });
-      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = pairs[pairs.length - 1];
-      pairs.forEach(function (p) {
-        var on = p === cur;
-        p[0].classList.toggle('on', on);
-        if (on) p[0].setAttribute('aria-current', 'location'); else p[0].removeAttribute('aria-current');
-      });
-    }
-    function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-    addEventListener('scroll', req, { passive: true }); addEventListener('resize', req);
-    update();
-  });
 
   /* ---- Entrance + direction of travel between pages ---- */
   var RANK = { '/': 0, '/handbook/': 1, '/handbook/specialist/': 2, '/handbook/moderation/': 3 };
