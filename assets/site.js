@@ -84,6 +84,10 @@
           var c = t.getBoundingClientRect();
           t.style.setProperty('--cx', (ptr.clientX - c.left) + 'px');
           t.style.setProperty('--cy', (ptr.clientY - c.top) + 'px');
+          if (t.classList.contains('hero')) {
+            t.style.setProperty('--nx', String(((ptr.clientX - c.left) / c.width - 0.5) * 2));
+            t.style.setProperty('--ny', String(((ptr.clientY - c.top) / c.height - 0.5) * 2));
+          }
         }
       });
     }, { passive: true });
@@ -133,6 +137,63 @@
     function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     addEventListener('scroll', req, { passive: true }); addEventListener('resize', req);
     update();
+  });
+
+  /* ---- Entrance + direction of travel between pages ---- */
+  var RANK = { '/': 0, '/handbook/': 1, '/handbook/specialist/': 2, '/handbook/moderation/': 3 };
+  function rank(path) { path = path.replace(/index\.html$/, ''); return path in RANK ? RANK[path] : 4; }
+  function dirFor(fromPath, toPath) { return rank(toPath) >= rank(fromPath) ? 'forward' : 'back'; }
+  var hasVT = 'PageSwapEvent' in window || 'PageRevealEvent' in window;
+  function addType(e) { try { if (e.viewTransition) e.viewTransition.types.add(e._dir); } catch (x) {} }
+  window.addEventListener('pageswap', function (e) {
+    try { e._dir = dirFor(new URL(e.activation.from.url).pathname, new URL(e.activation.entry.url).pathname); addType(e); } catch (x) {}
+  });
+  window.addEventListener('pagereveal', function (e) {
+    try { e._dir = dirFor(new URL(navigation.activation.from.url).pathname, new URL(navigation.activation.entry.url).pathname); addType(e); } catch (x) {}
+  });
+  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function enter() {
+    if (noMotion || !document.documentElement.animate) return;
+    var EASE = 'cubic-bezier(.16,1,.3,1)';
+    function a(sel, from, dur, delay, each) {
+      Array.prototype.forEach.call(document.querySelectorAll(sel), function (el, i) {
+        el.animate([from, { opacity: 1, transform: 'none' }], { duration: dur, delay: delay + (each || 0) * i, easing: EASE, fill: 'backwards' });
+      });
+    }
+    a('.side .lkb', { opacity: 0, transform: 'translateX(-32px)' }, 800, 0);
+    a('.side .jl a', { opacity: 0, transform: 'translateX(-32px)' }, 700, 200, 55);
+    a('.side .nvc > *', { opacity: 0, transform: 'translateY(24px)' }, 700, 500, 70);
+    a('.hero .artw', { opacity: 0, transform: 'translateY(80px) scale(.84) rotate(-3deg)' }, 1300, 150);
+    a('.hero .kick', { opacity: 0, transform: 'translateY(40px)' }, 900, 300);
+    a('.hero h1', { opacity: 0, transform: 'translateY(60px)' }, 1100, 380);
+    a('.hero .hrow', { opacity: 0, transform: 'translateY(40px)' }, 1000, 650);
+    if (!hasVT) {
+      var m = document.querySelector('main');
+      if (m && document.referrer) {
+        try {
+          var u = new URL(document.referrer);
+          if (u.origin === location.origin) {
+            var fwd = dirFor(u.pathname, location.pathname) === 'forward';
+            m.animate([{ opacity: 0, transform: 'translateX(' + (fwd ? '8%' : '-8%') + ')' }, { opacity: 1, transform: 'none' }], { duration: 700, easing: EASE });
+          }
+        } catch (x) {}
+      }
+    }
+  }
+  document.addEventListener('DOMContentLoaded', enter);
+  /* browsers without cross-page view transitions: slide the content out before leaving */
+  document.addEventListener('click', function (e) {
+    if (hasVT || noMotion || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.target || a.hasAttribute('download')) return;
+    var u; try { u = new URL(a.href); } catch (x) { return; }
+    if (u.origin !== location.origin || u.pathname === location.pathname) return;
+    var m = document.querySelector('main'); if (!m || !m.animate) return;
+    e.preventDefault();
+    var fwd = dirFor(location.pathname, u.pathname) === 'forward';
+    var an = m.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateX(' + (fwd ? '-8%' : '8%') + ')' }], { duration: 320, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
+    an.onfinish = function () { location.href = a.href; };
+    setTimeout(function () { location.href = a.href; }, 600);
   });
 
   /* ---- The corner gear (it flies in from the hero while you scroll): click = search in handbooks, back to top elsewhere ---- */
