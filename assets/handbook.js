@@ -62,28 +62,43 @@
 
   var pal = document.createElement('div');
   pal.id = 'pal'; pal.setAttribute('role', 'dialog'); pal.setAttribute('aria-modal', 'true'); pal.setAttribute('aria-label', 'Search the handbook');
-  pal.innerHTML = '<div class="pbox"><input id="pin" placeholder="Search pages, commands, tags..." autocomplete="off" aria-label="Search"><div id="plist" role="listbox"></div></div>';
+  pal.innerHTML = '<div class="pbox"><div class="pbar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg><input id="pin" placeholder="Search pages, commands, tags..." autocomplete="off" aria-label="Search"><kbd>Esc</kbd></div><div id="plist" role="listbox"><i class="phl" aria-hidden="true"></i><div id="pitems"></div></div><div class="pfoot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span id="pcount"></span></div></div>';
   root.appendChild(pal);
-  var pin = $('#pin'), plist = $('#plist'), opener = null;
+  var pin = $('#pin'), plist = $('#plist'), pitems = $('#pitems'), phl = $('.phl', plist), pcount = $('#pcount'), opener = null, closeT = 0;
 
-  function openPal() { opener = document.activeElement; pal.classList.add('open'); pin.value = ''; renderPal(); setTimeout(function () { pin.focus(); }, 10); }
+  function openPal() { clearTimeout(closeT); opener = document.activeElement; pal.classList.remove('closing'); pal.classList.add('open'); pin.value = ''; renderPal(); pin.focus({ preventScroll: true }); }
   window.RelicsSearch = function () { if (pal.classList.contains('open')) { closePal(); } else { openPal(); } };
-  function closePal() { pal.classList.remove('open'); if (opener && opener.focus) opener.focus(); }
+  function hidePal() { pal.classList.add('closing'); clearTimeout(closeT); closeT = setTimeout(function () { pal.classList.remove('open', 'closing'); }, 200); }
+  function closePal() { hidePal(); if (opener && opener.focus) opener.focus({ preventScroll: true }); opener = null; }
   function renderPal() {
     var v = pin.value.trim().toLowerCase();
     cur = (v ? items.filter(function (i) { return v.split(/\s+/).every(function (w) { return i.k.indexOf(w) > -1; }); }) : items.filter(function (i) { return i.s === 'Page'; })).slice(0, 40);
     sel = 0; paint();
   }
   function paint() {
-    if (!cur.length) { plist.innerHTML = '<div class="pe">Nothing found.</div>'; return; }
-    plist.innerHTML = cur.map(function (i, n) {
-      return '<div class="pi ' + (n === sel ? 'sel' : '') + '" data-n="' + n + '" role="option" aria-selected="' + (n === sel) + '"><span>' + (i.code ? '<span class="code">' + esc(i.l) + '</span>' : '<b>' + esc(i.l) + '</b>') + (i.d ? ' <span class="pd">' + esc(i.d.slice(0, 60)) + '</span>' : '') + '</span><small>' + esc(i.s) + '</small></div>';
+    pcount.textContent = cur.length ? cur.length + (cur.length === 1 ? ' result' : ' results') : '';
+    if (!cur.length) { pitems.innerHTML = '<div class="pe">Nothing found.</div>'; phl.style.opacity = 0; return; }
+    pitems.innerHTML = cur.map(function (i, n) {
+      return '<div class="pi ' + (n === sel ? 'sel' : '') + '" style="--i:' + Math.min(n, 12) + '" data-n="' + n + '" role="option" aria-selected="' + (n === sel) + '"><span>' + (i.code ? '<span class="code">' + esc(i.l) + '</span>' : '<b>' + esc(i.l) + '</b>') + (i.d ? ' <span class="pd">' + esc(i.d.slice(0, 60)) + '</span>' : '') + '</span><small>' + esc(i.s) + '</small></div>';
     }).join('');
-    var s = $('.pi.sel', plist); if (s) s.scrollIntoView({ block: 'nearest' });
+    moveHl(true);
+  }
+  // The blue bar glides to the row you are on (arrows or mouse). The list scrolls by itself, never the page.
+  function moveHl(instant) {
+    var s = $('.pi.sel', pitems); if (!s) return;
+    var t = s.offsetTop, b = t + s.offsetHeight;
+    if (t < plist.scrollTop) plist.scrollTop = t - 8; else if (b > plist.scrollTop + plist.clientHeight) plist.scrollTop = b - plist.clientHeight + 8;
+    phl.style.transition = instant ? 'none' : '';
+    phl.style.opacity = 1; phl.style.height = s.offsetHeight + 'px'; phl.style.transform = 'translateY(' + t + 'px)';
+    if (instant) { void phl.offsetWidth; phl.style.transition = ''; }
+  }
+  function select(n) {
+    if (n === sel) return;
+    sel = n; $$('.pi', pitems).forEach(function (el, k) { el.classList.toggle('sel', k === sel); el.setAttribute('aria-selected', k === sel); }); moveHl(false);
   }
   function go(n) {
     var i = cur[n]; if (!i) return;
-    pal.classList.remove('open'); opener = null;
+    hidePal(); opener = null;
     var sec = document.getElementById(i.id);
     if (i.row) {
       var flt = i.row.closest('.tbl').previousElementSibling;
@@ -96,7 +111,8 @@
     if (history.replaceState) history.replaceState(null, '', '#' + i.id);
   }
   pin.addEventListener('input', renderPal);
-  plist.addEventListener('click', function (e) { var r = e.target.closest('.pi'); if (r) go(+r.dataset.n); });
+  pitems.addEventListener('click', function (e) { var r = e.target.closest('.pi'); if (r) go(+r.dataset.n); });
+  pitems.addEventListener('mouseover', function (e) { var r = e.target.closest('.pi'); if (r) select(+r.dataset.n); });
   pal.addEventListener('click', function (e) { if (e.target === pal) closePal(); });
 
   // The "Search Ctrl K" buttons already in the page open the palette
@@ -106,13 +122,13 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    var open = pal.classList.contains('open');
+    var open = pal.classList.contains('open') && !pal.classList.contains('closing');
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); open ? closePal() : openPal(); return; }
     if (e.key === '/' && !open && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); openPal(); return; }
     if (!open) return;
     if (e.key === 'Escape') closePal();
-    if (e.key === 'ArrowDown') { e.preventDefault(); sel = Math.min(cur.length - 1, sel + 1); paint(); }
-    if (e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(0, sel - 1); paint(); }
+    if (e.key === 'ArrowDown') { e.preventDefault(); select(Math.min(cur.length - 1, sel + 1)); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); select(Math.max(0, sel - 1)); }
     if (e.key === 'Enter') { e.preventDefault(); go(sel); }
   });
 })();
