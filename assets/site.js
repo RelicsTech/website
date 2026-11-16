@@ -141,18 +141,27 @@
     }
     return false;
   }
-  var TAU = 130, lastTs = 0, hist = [], idle = 0;
+  var TAU = 170, lastTs = 0, hist = [], idle = 0, off = false, dog = 0;
+  /* safety net: if smoothing ever stops moving the page, give scrolling back to the browser */
+  function bail() { off = true; running = false; var t = isFinite(target) ? target : window.scrollY; window.scrollTo({ top: t, behavior: 'instant' }); }
   function tick(ts) {
     var dt = Math.min(48, Math.max(1, ts - (lastTs || ts - 16))); lastTs = ts;
     var d = target - cur;
+    if (!isFinite(d) || !isFinite(cur)) { cur = target = window.scrollY; bail(); return; }
     if (Math.abs(d) < 0.4) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); running = false; lastTs = 0; return; }
     cur += d * (1 - Math.exp(-dt / TAU));
     window.scrollTo({ top: cur, behavior: 'instant' });
     requestAnimationFrame(tick);
   }
-  function go() { if (!running) { running = true; lastTs = 0; requestAnimationFrame(tick); } }
+  function go() {
+    if (!running) {
+      running = true; lastTs = 0; requestAnimationFrame(tick);
+      var y0 = window.scrollY; clearTimeout(dog);
+      dog = setTimeout(function () { if (running && Math.abs(window.scrollY - y0) < 1 && Math.abs(target - y0) > 20) bail(); }, 400);
+    }
+  }
   window.addEventListener('wheel', function (e) {
-    if (e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    if (off || e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
     if (innerScroll(e.target, e.deltaY)) return;
     e.preventDefault();
     var dy = e.deltaMode === 1 ? e.deltaY * 34 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
