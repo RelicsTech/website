@@ -10,8 +10,8 @@ Static site for [relicstech.site](https://relicstech.site), served by GitHub Pag
 | `login/` | Staff login page (Discord) |
 | `assets/main.css`, `site.js` | Landing page styling; theme toggle, pointer effects, smooth scrolling (all pages) |
 | `assets/handbook.css`, `handbook.js` | Handbook styling; search palette (Ctrl K or /), table filters, copy-on-click, phone cards for tables |
-| `assets/staff.css` | Styles of `login/`, `dashboard/` and `404.html` |
-| `assets/img/`, `assets/fonts/` | Logo marks; self-hosted Hanken Grotesk (no Google Fonts) |
+| `login/`, `dashboard/`, `404.html` | Same shell as the handbooks (`handbook.css`), rail, theme button, gear, footer |
+| `assets/img/`, `assets/fonts/` | Logo marks; self-hosted Hanken Grotesk (no Google Fonts, no third-party requests) |
 | `assets/auth.js` | Login guard (frontend only) |
 
 ## Dashboard login: frontend only for now

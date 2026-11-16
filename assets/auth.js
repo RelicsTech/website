@@ -45,14 +45,14 @@
 
   function blocked(title, text, action) {
     var main = document.querySelector('main') || document.body;
-    main.innerHTML = '<div class="gate"><div class="box"><div class="eyebrow"><span class="dot"></span>Staff area</div><h1>' + esc(title) + '</h1><p>' + esc(text) + '</p>' + (action || '') + '</div></div>';
+    main.innerHTML = '<div class="sec" style="padding:calc(var(--sec)*.6) var(--px) 0;box-sizing:border-box"><div class="card" style="max-width:640px;padding:var(--cp);box-sizing:border-box"><div class="kick" style="font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:12px">Staff area</div><h1 style="margin:0 0 12px;font-size:calc(56px*var(--hs));line-height:1.05;font-weight:var(--hw)">' + esc(title) + '</h1><p style="margin:0 0 20px;color:var(--tx2)">' + esc(text) + '</p>' + (action || '') + '</div></div>';
   }
 
   function slot(session) {
     var s = document.getElementById('auth-slot');
     if (!s) return;
     if (!session) { s.innerHTML = '<a href="' + CFG.loginUrl(location.pathname) + '">Staff login</a>'; return; }
-    s.innerHTML = '<span>Signed in as <b>' + esc(session.user.name) + '</b></span><button class="button secondary small" id="logout" type="button">Log out</button>';
+    s.innerHTML = '<span>Signed in as <b>' + esc(session.user.name) + '</b></span><button class="btn bso" id="logout" type="button">Log out</button>';
     document.getElementById('logout').onclick = function () {
       fetch(CFG.api + '/auth/logout', { method: 'POST', credentials: 'include' })
         .catch(function () {})
@@ -88,13 +88,13 @@
         var ok = !requires || roles.indexOf(requires) > -1 || roles.indexOf('admin') > -1;
         ready(function () {
           slot(session);
-          if (!ok) blocked('No access', 'Your account is signed in but does not have the ' + requires + ' role.', '<a class="button secondary" href="/">Back to the site</a>');
+          if (!ok) blocked('No access', 'Your account is signed in but does not have the ' + requires + ' role.', '<a class="btn bso" href="/">Back to the site</a>');
           done();
         });
       })
       .catch(function () {
         ready(function () {
-          blocked('Could not check your login', 'The login service did not answer. Try again in a moment.', '<button class="button" onclick="location.reload()">Retry</button>');
+          blocked('Could not check your login', 'The login service did not answer. Try again in a moment.', '<button class="btn bp" onclick="location.reload()">Retry</button>');
           done();
         });
       });
