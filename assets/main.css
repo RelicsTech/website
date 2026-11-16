@@ -543,3 +543,12 @@ html.vt-theme::view-transition-new(root){z-index:2}
 .vig{background:radial-gradient(circle 440px at var(--vx,-999px) var(--vy,-999px),color-mix(in srgb,var(--ac2) 20%,transparent),transparent 72%),radial-gradient(circle 340px at var(--vx,-999px) var(--vy,-999px),transparent 0,rgba(0,0,0,var(--vga,.03)) 100%)!important}
 .root[data-eff=dark]{--vga:.10}
 .chv-liftspot .card,.chv-spot .card,.chv-liftspot .dkc{background-image:none!important}
+
+/* No flash before the load-in animation: hidden until site.js starts it (class "pre" is set in the head) */
+html.pre .side .lkb,html.pre .side .jl a,html.pre .side .nvc>*,html.pre .hero .artw,html.pre .hero .kick,html.pre .hero h1,html.pre .hero .hrow{opacity:0}
+
+/* Phones: the top bar differs in height from page to page, so morphing it between pages looked stretched; just fade the page */
+@media (max-width:820px){
+  .side{view-transition-name:none}
+  ::view-transition-group(rail){animation:none}
+}
