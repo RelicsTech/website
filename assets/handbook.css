@@ -381,3 +381,30 @@ tr.flash td{animation:flashrow 1.6s ease}
   .root .tbl td::before{content:attr(data-label);display:block;margin-bottom:3px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2)}
 }
 @media (prefers-reduced-motion:reduce){#toast{transition:none}tr.flash td{animation:none}}
+
+/* Left rail always fits the window (no scrolling): spacing follows the window height */
+@media (min-width:821px){
+  .root .side .sk{min-height:0!important;padding:clamp(12px,2.6vh,28px) 24px!important;gap:10px!important}
+  .root .side .lkb{margin-bottom:clamp(6px,1.6vh,22px)!important}
+  .root .side .nvl a:not(.lkb){padding-top:clamp(3px,.7vh,8px);padding-bottom:clamp(3px,.7vh,8px)}
+  .root .side .grp{padding:clamp(6px,1.4vh,18px) 0 2px}
+  .root .side .nvc{gap:8px!important}
+}
+@media (min-width:821px) and (max-height:980px){
+  .root .side .lk-ic,.root .side .note{display:none!important}
+}
+@media (min-width:821px) and (max-height:690px){
+  .root .side .grp,.root .side .lk-sub,.root .side .nvc .lnk,.root .side .nvc p{display:none!important}
+  .root .side .nvl a:not(.lkb){font-size:15px}
+}
+@media (min-width:821px) and (max-height:620px){
+  .root .side .nvc .btn,.root .side .lk-word{display:none!important}
+  .root .side .nvl a:not(.lkb){padding-top:2px;padding-bottom:2px}
+}
+
+/* Footer and privacy note: one tidy block under the content */
+.root footer{margin:72px var(--px) 0!important;padding:28px 0 40px!important;border-top:1px solid var(--ln);display:grid!important;grid-template-columns:1fr auto;gap:12px 32px!important;align-items:start;font-size:13px!important;line-height:1.5!important;color:var(--tx2)}
+.root footer .lnk{justify-self:end}
+.root footer #privacy{grid-column:1/-1;margin:0!important;max-width:640px;padding:14px 18px;border:1px solid var(--ln);border-radius:16px;background:var(--cb)}
+.root footer #privacy strong{color:var(--tx)}
+@media (max-width:820px){.root footer{grid-template-columns:1fr;padding-bottom:32px!important}.root footer .lnk{justify-self:start}}
