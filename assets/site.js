@@ -140,7 +140,9 @@
   var RANK = { '/': 0, '/handbook/': 1, '/handbook/specialist/': 2, '/handbook/moderation/': 3 };
   function rank(path) { path = path.replace(/index\.html$/, ''); return path in RANK ? RANK[path] : 4; }
   function dirFor(fromPath, toPath) { return rank(toPath) >= rank(fromPath) ? 'forward' : 'back'; }
-  var hasVT = 'PageSwapEvent' in window || 'PageRevealEvent' in window;
+  var hasVTApi = 'PageSwapEvent' in window || 'PageRevealEvent' in window, phoneMQ = window.matchMedia('(max-width:820px)');
+  /* phones skip the browser's page snapshots (they stretched when the address bar moved) and use a plain fade instead */
+  var hasVT = hasVTApi && !phoneMQ.matches;
   function addType(e) { try { if (e.viewTransition) e.viewTransition.types.add(e._dir); } catch (x) {} }
   window.addEventListener('pageswap', function (e) {
     try { e._dir = dirFor(new URL(e.activation.from.url).pathname, new URL(e.activation.entry.url).pathname); addType(e); } catch (x) {}
@@ -171,7 +173,7 @@
           var u = new URL(document.referrer);
           if (u.origin === location.origin) {
             var fwd = dirFor(u.pathname, location.pathname) === 'forward';
-            m.animate([{ opacity: 0, transform: 'translateX(' + (fwd ? '8%' : '-8%') + ')' }, { opacity: 1, transform: 'none' }], { duration: 700, easing: EASE });
+            m.animate([{ opacity: 0, transform: phoneNow ? 'translateY(18px)' : 'translateX(' + (fwd ? '8%' : '-8%') + ')' }, { opacity: 1, transform: 'none' }], { duration: phoneNow ? 500 : 700, easing: EASE });
           }
         } catch (x) {}
       }
@@ -188,7 +190,7 @@
     var m = document.querySelector('main'); if (!m || !m.animate) return;
     e.preventDefault();
     var fwd = dirFor(location.pathname, u.pathname) === 'forward';
-    var an = m.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateX(' + (fwd ? '-8%' : '8%') + ')' }], { duration: 320, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
+    var an = m.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: phoneMQ.matches ? 'translateY(-10px)' : 'translateX(' + (fwd ? '-8%' : '8%') + ')' }], { duration: phoneMQ.matches ? 220 : 320, easing: 'cubic-bezier(.5,0,.75,0)', fill: 'forwards' });
     an.onfinish = function () { location.href = a.href; };
     setTimeout(function () { location.href = a.href; }, 600);
   });
