@@ -651,3 +651,21 @@ h1,h2,h3{overflow:visible}
 .card::after,.dkc::after{background:radial-gradient(260px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 24%,transparent),transparent 62%),radial-gradient(560px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac) 9%,transparent),transparent 70%)}
 @media (hover:hover) and (pointer:fine){.card:hover::before,.dkc:hover::before{opacity:1}}
 .card.lit::before,.card.lit::after,.dkc.lit::before,.dkc.lit::after{opacity:1}
+
+/* Guides: the corner button is a visible magnifier (search). On load the gear from the page header flies into the corner and turns into it. */
+@keyframes gsIn{from{transform:translate(var(--gdx,0px),var(--gdy,0px)) scale(var(--gds,1)) rotate(-60deg)}to{transform:none}}
+@keyframes gsGear{from{opacity:1;rotate:0deg}50%{opacity:1}to{opacity:0;rotate:300deg}}
+@keyframes gsLens{from{opacity:0;transform:scale(.3) rotate(-45deg)}50%{opacity:0}to{opacity:1;transform:none}}
+@keyframes gsBg{from{opacity:0}55%{opacity:0}to{opacity:1}}
+.gsearch .gind{display:block;position:fixed;pointer-events:auto;cursor:pointer;animation:none;opacity:1;transform:none}
+.gsearch .gind .gbg{animation:none;opacity:1}
+.gsearch .gind .gring{animation:none;stroke-dashoffset:0}
+.gsearch .gind .gspin,.gsearch .gind.live:hover .gspin{animation:none;opacity:0}
+.gsearch .gind .gico{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference) and (min-width:821px){
+  .gsearch .gind{animation:gsIn 1.2s cubic-bezier(.45,.05,.25,1) .35s both}
+  .gsearch .gind .gbg{animation:gsBg 1.2s ease .35s both}
+  .gsearch .gind .gspin{animation:gsGear 1.2s ease .35s both}
+  .gsearch .gind .gico{animation:gsLens 1.2s ease .35s both}
+}
+@media (max-width:820px){#gheroic{display:none}}

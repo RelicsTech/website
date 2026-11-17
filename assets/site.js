@@ -314,7 +314,7 @@
   };
   document.addEventListener('DOMContentLoaded', function () {
     var g = document.querySelector('.gind'); if (!g) return;
-    function label() { var t = window.RelicsSearch ? 'Search the handbook' : 'Back to top'; g.setAttribute('aria-label', t); var tp = g.querySelector('.gtip'); if (tp) tp.textContent = window.RelicsSearch ? 'Search' : 'Back to top'; }
+    function label() { var t = window.RelicsSearch ? (window.RELICS_GUIDES ? 'Search the guides' : 'Search the handbook') : 'Back to top'; g.setAttribute('aria-label', t); var tp = g.querySelector('.gtip'); if (tp) tp.textContent = window.RelicsSearch ? 'Search' : 'Back to top'; }
     g.removeAttribute('aria-hidden'); g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0');
     var svg = g.querySelector('svg'), NS = 'http://www.w3.org/2000/svg';
     if (svg && !svg.querySelector('#gindG')) {
@@ -329,6 +329,21 @@
       svg.appendChild(ico);
     }
     var tip = document.createElement('span'); tip.className = 'gtip'; g.appendChild(tip);
+    /* Guides: the button is a visible magnifier from the start. The gear of the page header flies into the corner and turns into it. */
+    if (root() && root().classList.contains('gsearch')) {
+      g.classList.add('live');
+      var hg = document.getElementById('gheroic'), gp0 = svg && svg.querySelector('.gspin path');
+      if (hg && gp0) {
+        hg.innerHTML = '<svg viewBox="-90 -90 180 180" width="100%" height="100%" style="display:block;transition:opacity .25s ease .35s"><path d="' + gp0.getAttribute('d') + '" fill="url(#gindG)" fill-rule="' + (gp0.getAttribute('fill-rule') || 'nonzero') + '"/></svg>';
+        var gr = g.getBoundingClientRect(), hr = hg.getBoundingClientRect();
+        if (gr.width && getComputedStyle(g).animationName !== 'none' && !noMotion) {
+          g.style.setProperty('--gdx', (hr.left + hr.width / 2 - gr.left - gr.width / 2) + 'px');
+          g.style.setProperty('--gdy', (hr.top + hr.height / 2 - gr.top - gr.height / 2) + 'px');
+          g.style.setProperty('--gds', String(hr.width / gr.width));
+          hg.firstChild.style.opacity = '0';
+        }
+      }
+    }
     var spin = g.querySelector('.gspin'), turns = 0, tk = false;
     function upd() { tk = false; g.classList.toggle('live', window.scrollY > 300); }
     window.addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(upd); } }, { passive: true });

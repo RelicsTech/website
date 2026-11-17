@@ -50,7 +50,7 @@
     var id = a.getAttribute('href').slice(1), el = document.getElementById(id);
     if (!el) return;
     titles[id] = a.textContent.trim();
-    items.push({ l: titles[id], s: 'Page', id: id, k: titles[id].toLowerCase() });
+    if (!window.RELICS_GUIDES) items.push({ l: titles[id], s: 'Page', id: id, k: titles[id].toLowerCase() });
   });
   $$('.tbl tbody tr').forEach(function (r) {
     var td = $$('td', r); if (td.length < 2) return;
@@ -58,11 +58,13 @@
     var c = td[0].textContent.trim();
     items.push({ l: c, d: td[1].textContent.trim(), s: titles[sec.id] || sec.id, id: sec.id, row: r, k: (c + ' ' + td[1].textContent).toLowerCase(), code: /^[\/!]/.test(c) });
   });
+  var GUIDES = window.RELICS_GUIDES || [];
+  GUIDES.forEach(function (g) { items.push({ l: g.t, s: 'Guide', url: g.u, k: (g.t + ' ' + g.d).toLowerCase() }); });
   if (!items.length) return;
 
   var pal = document.createElement('div');
-  pal.id = 'pal'; pal.setAttribute('role', 'dialog'); pal.setAttribute('aria-modal', 'true'); pal.setAttribute('aria-label', 'Search the handbook');
-  pal.innerHTML = '<div class="pbox"><div class="pbar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg><input id="pin" placeholder="Search pages, commands, tags..." autocomplete="off" aria-label="Search"><kbd>Esc</kbd></div><div id="plist" role="listbox"><i class="phl" aria-hidden="true"></i><div id="pitems"></div></div><div class="pfoot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span id="pcount"></span></div></div>';
+  pal.id = 'pal'; pal.setAttribute('role', 'dialog'); pal.setAttribute('aria-modal', 'true'); pal.setAttribute('aria-label', GUIDES.length ? 'Search the guides' : 'Search the handbook');
+  pal.innerHTML = '<div class="pbox"><div class="pbar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg><input id="pin" placeholder="' + (GUIDES.length ? 'Search the guides...' : 'Search pages, commands, tags...') + '" autocomplete="off" aria-label="Search"><kbd>Esc</kbd></div><div id="plist" role="listbox"><i class="phl" aria-hidden="true"></i><div id="pitems"></div></div><div class="pfoot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span id="pcount"></span></div></div>';
   root.appendChild(pal);
   var pin = $('#pin'), plist = $('#plist'), pitems = $('#pitems'), phl = $('.phl', plist), pcount = $('#pcount'), opener = null, closeT = 0;
 
@@ -72,7 +74,7 @@
   function closePal() { hidePal(); if (opener && opener.focus) opener.focus({ preventScroll: true }); opener = null; }
   function renderPal() {
     var v = pin.value.trim().toLowerCase();
-    cur = (v ? items.filter(function (i) { return v.split(/\s+/).every(function (w) { return i.k.indexOf(w) > -1; }); }) : items.filter(function (i) { return i.s === 'Page'; })).slice(0, 40);
+    cur = (v ? items.filter(function (i) { return v.split(/\s+/).every(function (w) { return i.k.indexOf(w) > -1; }); }) : items.filter(function (i) { return i.s === 'Page' || i.s === 'Guide'; })).slice(0, 40);
     sel = 0; paint();
   }
   function paint() {
@@ -98,6 +100,7 @@
   }
   function go(n) {
     var i = cur[n]; if (!i) return;
+    if (i.url) { hidePal(); opener = null; window.location.href = i.url; return; }
     hidePal(); opener = null;
     var sec = document.getElementById(i.id);
     if (i.row) {
