@@ -606,5 +606,6 @@ h1,h2,h3{overflow:visible}
 .vig{display:none!important}
 .card,.dkc{position:relative}
 .card::after,.dkc::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;transition:opacity .35s ease;background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 16%,transparent),transparent 65%)}
-.dkc::after{background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),rgba(255,255,255,.10),transparent 65%)}
+.dkc::after{background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 24%,transparent),transparent 65%)}
+.chv-liftspot .hero::after,.hero::after{background:none!important}
 @media (hover:hover) and (pointer:fine){.card:hover::after,.dkc:hover::after{opacity:1}}
