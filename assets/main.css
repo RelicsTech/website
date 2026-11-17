@@ -601,3 +601,10 @@ h1,h2,h3{overflow:visible}
 }
 @media (prefers-reduced-motion:reduce){.jind,.root .side .jl a{transition:none}}
 @media(min-width:721px){.root .side .lkb{align-self:center!important;margin-left:auto!important;margin-right:auto!important}}
+
+/* Card light: the old page-wide blue pointer glow is gone. Every card (.card, .dkc) gets its own soft light that follows the pointer inside it and fades in/out. */
+.vig{display:none!important}
+.card,.dkc{position:relative}
+.card::after,.dkc::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;transition:opacity .35s ease;background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 16%,transparent),transparent 65%)}
+.dkc::after{background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),rgba(255,255,255,.10),transparent 65%)}
+@media (hover:hover) and (pointer:fine){.card:hover::after,.dkc:hover::after{opacity:1}}
