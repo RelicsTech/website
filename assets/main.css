@@ -609,3 +609,8 @@ h1,h2,h3{overflow:visible}
 .dkc::after{background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 24%,transparent),transparent 65%)}
 .chv-liftspot .hero::after,.hero::after{background:none!important}
 @media (hover:hover) and (pointer:fine){.card:hover::after,.dkc:hover::after{opacity:1}}
+
+/* Card light v2: a soft two-tone glow plus a bright rim that traces the card edge under the pointer */
+.card::before,.dkc::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;z-index:1;opacity:0;transition:opacity .4s ease;background:radial-gradient(240px circle at var(--cx,50%) var(--cy,50%),var(--ac2,var(--ac)),color-mix(in srgb,var(--ac) 45%,transparent) 45%,transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.card::after,.dkc::after{background:radial-gradient(260px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 24%,transparent),transparent 62%),radial-gradient(560px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac) 9%,transparent),transparent 70%)}
+@media (hover:hover) and (pointer:fine){.card:hover::before,.dkc:hover::before{opacity:1}}
