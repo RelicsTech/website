@@ -81,29 +81,38 @@
       vig.style.setProperty('--vx', gx.toFixed(1) + 'px'); vig.style.setProperty('--vy', gy.toFixed(1) + 'px');
       if (Math.abs(px - gx) > 0.5 || Math.abs(py - gy) > 0.5) gl = requestAnimationFrame(glow);
     }
+    /* The light follows the pointer, also while the page scrolls under it: the card is looked up from the last pointer
+       position every frame, not from the (stale) mouse event, and "lit" stands in for :hover, which freezes while scrolling. */
+    var lit = null;
+    function light() {
+      raf = 0;
+      if (px < -900) return;
+      var el = document.elementFromPoint(px, py);
+      var t = el && el.closest ? el.closest('.card,.dkc,.hero') : null;
+      if (lit && lit !== t) lit.classList.remove('lit');
+      lit = t;
+      if (!t) return;
+      if (!t.classList.contains('hero')) t.classList.add('lit');
+      var c = t.getBoundingClientRect();
+      t.style.setProperty('--cx', (px - c.left) + 'px');
+      t.style.setProperty('--cy', (py - c.top) + 'px');
+      if (t.parentElement && t.parentElement.classList.contains('grid') && c.width < 560 && !scrolling) {
+        t.style.setProperty('--tx', String(((px - c.left) / c.width - 0.5) * 2));
+        t.style.setProperty('--ty', String(((py - c.top) / c.height - 0.5) * 2));
+      }
+      if (t.classList.contains('hero')) {
+        t.style.setProperty('--nx', String(((px - c.left) / c.width - 0.5) * 2));
+        t.style.setProperty('--ny', String(((py - c.top) / c.height - 0.5) * 2));
+      }
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(light); }
     document.addEventListener('mousemove', function (e) {
       ptr = e; px = e.clientX; py = e.clientY;
       if (!gl) gl = requestAnimationFrame(glow);
-      if (raf || scrolling) return;
-      raf = requestAnimationFrame(function () {
-        raf = 0;
-        if (!ptr || scrolling) return;
-        var t = ptr.target && ptr.target.closest ? ptr.target.closest('.card,.dkc,.hero') : null;
-        if (t) {
-          var c = t.getBoundingClientRect();
-          t.style.setProperty('--cx', (ptr.clientX - c.left) + 'px');
-          t.style.setProperty('--cy', (ptr.clientY - c.top) + 'px');
-          if (t.parentElement && t.parentElement.classList.contains('grid') && c.width < 560) {
-            t.style.setProperty('--tx', String(((ptr.clientX - c.left) / c.width - 0.5) * 2));
-            t.style.setProperty('--ty', String(((ptr.clientY - c.top) / c.height - 0.5) * 2));
-          }
-          if (t.classList.contains('hero')) {
-            t.style.setProperty('--nx', String(((ptr.clientX - c.left) / c.width - 0.5) * 2));
-            t.style.setProperty('--ny', String(((ptr.clientY - c.top) / c.height - 0.5) * 2));
-          }
-        }
-      });
+      queue();
     }, { passive: true });
+    window.addEventListener('scroll', queue, { passive: true });
+    document.addEventListener('mouseleave', function () { if (lit) lit.classList.remove('lit'); lit = null; px = py = -999; });
   }
 
   /* ---- Cards in grids rise in one by one when they come into view (once, no overshoot) ---- */
