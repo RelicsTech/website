@@ -28,3 +28,5 @@
 @media(max-width:480px){.tag-content .tag-actions .btn,.tag-tools>button{width:100%}}
 .tags-main a.btn:not(.bp){color:var(--lk)}.tag-note a,.tag-markdown a{color:var(--lk)}
 .tag-actions code{flex:1 0 100%;margin:0}
+.tags-main .btn{display:inline-flex;align-items:center;justify-content:center}
+.tag-content figcaption .btn{margin-left:8px}

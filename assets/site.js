@@ -145,46 +145,6 @@
     });
   });
 
-  /* ---- Text writes itself in: body text, small labels and card text are uncovered left to right as they come into view ---- */
-  document.addEventListener('DOMContentLoaded', function () {
-    if (noMotion || !('IntersectionObserver' in window) || !document.documentElement.animate) return;
-    var main = document.querySelector('main'); if (!main) return;
-    var SKIP = 'a,button,code,kbd,td,th,table,footer,nav,.hero,.side,.gind,.msg,.tbl,.flt,#pal,#toast,h1,h2,h3,svg,.code,.jl,.prog';
-    var cand = Array.prototype.slice.call(main.querySelectorAll('p,div,li,span,b,h4')).filter(function (el) {
-      if (el.closest(SKIP)) return false;
-      if (el.children.length && !Array.prototype.every.call(el.children, function (c) { return c.tagName === 'BR' || c.tagName === 'STRONG' || c.tagName === 'EM' || c.tagName === 'B' || c.tagName === 'SPAN' || c.tagName === 'CODE'; })) return false;
-      var t = (el.textContent || '').trim();
-      if (t.length < 6) return false;
-      /* only the innermost text holder, not wrappers of other holders */
-      if (el.querySelector('p,div,li,h4')) return false;
-      var d = getComputedStyle(el).display;
-      return d !== 'inline' && d !== 'none' && d !== 'contents';
-    });
-    if (!cand.length) return;
-    var pend = [], tm = 0;
-    var HIDE = 'inset(-.3em 100% -.7em -.3em)', SHOW = 'inset(-.3em -.3em -.7em -.3em)';
-    function flush() {
-      tm = 0; var b = pend; pend = [];
-      b.sort(function (x, y) { var rx = x.getBoundingClientRect(), ry = y.getBoundingClientRect(); return (rx.top - ry.top) || (rx.left - ry.left); });
-      b.forEach(function (el, i) {
-        var an = el.animate([{ clipPath: HIDE, opacity: 1 }, { clipPath: SHOW, opacity: 1 }], { duration: 950, delay: Math.min(i, 8) * 55, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' });
-        el.style.opacity = ''; /* the animation now keeps it empty until its turn */
-        an.onfinish = function () { an.cancel(); };
-      });
-    }
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); pend.push(e.target); } });
-      if (pend.length && !tm) tm = setTimeout(flush, 40);
-    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.2 });
-    var h = innerHeight;
-    cand.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < h && r.bottom > 0) return; /* visible at load: the entrance covers it */
-      el.style.opacity = '0'; /* empty until it is written in (clip-path would hide it from the observer) */
-      io.observe(el);
-    });
-  });
-
   /* ---- Gear in the hero art: click (or Enter) to spin it with a ripple (and search in handbooks) ---- */
   document.addEventListener('DOMContentLoaded', function () {
     var NS = 'http://www.w3.org/2000/svg';

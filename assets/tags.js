@@ -42,6 +42,20 @@
     } catch (error) { notify(error.message || 'Could not copy. Use the manual Markdown field.'); }
     finally { button.disabled = false; }
   }));
+  document.querySelectorAll('[data-copy-image]').forEach(button => button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      if (!navigator.clipboard || !window.ClipboardItem || !window.isSecureContext) throw Error('Image copy is not supported here. Long-press or right-click the image and choose Copy image.');
+      const bitmap = await createImageBitmap(await (await fetch(button.dataset.copyImage)).blob());
+      const canvas = document.createElement('canvas');
+      canvas.width = bitmap.width; canvas.height = bitmap.height;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0);
+      const png = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': png })]);
+      notify('Image copied. Paste it into Discord.');
+    } catch (error) { notify(error.message || 'Could not copy the image.'); }
+    finally { button.disabled = false; }
+  }));
   document.querySelectorAll('.tag-raw').forEach(area => area.addEventListener('focus', () => area.select()));
   const search = document.getElementById('tag-search');
   if (!search) return;

@@ -122,12 +122,14 @@ for entry in ENTRIES:
     search = ' '.join([title, entry['name'], category, entry['description'], *[v['content'] for v in entry['variants']]])
     cards.append(f'''<article class="card tag-card" data-category="{escape(category, quote=True)}" data-search="{escape(search, quote=True)}" data-slug="{slug}">
 <span class="tag-category">{escape(category)}</span><h2><a href="/tags/{slug}/">{escape(title)}</a></h2><p>{escape(entry['description'])}</p>
-<div class="tag-actions"><code>{escape(entry['name'])}</code><a class="btn" href="/tags/{slug}/">Open tag</a><button type="button" class="btn" data-copy="{slug}:0">Copy for Discord</button></div></article>''')
+<div class="tag-actions"><code>{escape(entry['name'])}</code><a class="btn bp" href="/tags/{slug}/">Open tag</a><button type="button" class="btn" data-copy="{slug}:0">Copy for Discord</button></div></article>''')
     sections = []
     variants = entry['variants']
     variant_nav = '<nav class="variant-menu" aria-label="Versions">'+''.join(f'<a class="lnk" href="#version-{i}">{escape(v["label"])}</a>' for i,v in enumerate(variants))+'</nav>' if len(variants)>1 else ''
     for i, variant in enumerate(variants):
         image = f'<figure><img src="{variant["image"]}" alt="Hand width and hand length measurement guide" loading="lazy"><figcaption>Measure across your palm and from your wrist to the tip of your middle finger.</figcaption></figure>' if variant.get('image') else ''
+        if entry['name']=='photoguide':
+            image = f'<figure><img src="{variant["image"]}" alt="Example photos to send: motherboard center, 24-pin cable, front panel header, CPU power cable and graphics card power cable" loading="lazy" width="2000" height="1018"><figcaption>Example angles for the photos. <button type="button" class="btn" data-copy-image="{variant["image"]}">Copy image</button></figcaption></figure>'
         if entry['name']=='keyboard' and image:
             image = f'<figure><img src="{variant["image"]}" alt="Keyboard layout and size reference" loading="lazy"><figcaption>Keyboard reference shared with the questionnaire.</figcaption></figure>'
         sections.append(f'''<section id="version-{i}" class="card tag-content"><div class="tag-actions"><h2>{escape(variant['label'])}</h2>
