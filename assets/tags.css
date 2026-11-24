@@ -43,3 +43,10 @@
 .root .side .jl .tsub a{display:block;padding:5px 0;margin:0;line-height:1.3;color:var(--tx2);font-size:14px;font-weight:400;width:auto}
 .root .side .jl .tsub a:hover{color:var(--tx)}.root .side .jl .tsub a[aria-current]{color:var(--lk);font-weight:600}
 @media(max-width:820px){.root .side .jl .tsub{display:none}}
+
+/* Navigating between tag/guide pages: no animation, the page just swaps (html.calm is set when the previous page was a tag/guide page) */
+html.calm .rv,html.calm .side *,html.calm .gind,html.calm .gind *{animation:none!important}
+html.calm .jind{transition:none!important}
+html.calm.pre .side .lkb,html.calm.pre .side .jl a,html.calm.pre .side .nvc>*{opacity:1!important}
+html.calm::view-transition-old(root),html.calm::view-transition-new(root),html.calm::view-transition-group(rail),html.calm::view-transition-old(rail),html.calm::view-transition-new(rail){animation:none!important;mix-blend-mode:normal}
+html.calm::view-transition-old(root),html.calm::view-transition-old(rail){display:none}

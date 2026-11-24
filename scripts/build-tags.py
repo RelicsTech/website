@@ -72,9 +72,11 @@ LINKS = {  # guide slug -> related tag slugs (cross-links in both directions)
     'wifi-slow-or-dropping': ['spec-ify-system-report', 'tech-support-questionnaire', 'get-pc-support'],
     'pc-build-checklist': ['pc-build-questionnaire', 'pc-upgrade-questionnaire', 'bios-update', 'install-windows-usb']}
 GTITLE = {g: re.search(r'<h1[^>]*>(.*?)</h1>', (ROOT/'guides'/g/'index.html').read_text(), re.S)[1] for g in LINKS}
+CALM = '<script>try{var r=new URL(document.referrer);if(r.origin===location.origin&&/^\\/(tags|guides)\\//.test(r.pathname)&&/^\\/(tags|guides)\\//.test(location.pathname))document.documentElement.classList.add("calm")}catch(e){}</script>'
 GUIDES = (ROOT/"guides/index.html").read_text()
 V = re.search(r"\?v=(\d+)", GUIDES)[1]
-HEAD_PRE = GUIDES[GUIDES.index("<head>")+6:GUIDES.index('<meta name="viewport"')]
+HEAD_PRE = GUIDES[GUIDES.index("<head>")+6:GUIDES.index('<meta name="viewport"')].replace('<meta charset="utf-8">', '')
+HEAD_PRE = re.sub(r'<script>try\{var r=new URL\(document\.referrer\).*?</script>', '', HEAD_PRE)
 ROOT_OPEN = re.search(r'<div class="root [^>]*>', GUIDES)[0]
 GIND = re.search(r'<div class="gind".*?</svg></div>', GUIDES, re.S)[0]
 SIDE = GUIDES[GUIDES.index('<div class="side"'):GUIDES.index('<main')]
@@ -142,7 +144,7 @@ def shell(title, description, path, body, current=None):
     return f'''<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">{HEAD_PRE}<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">{CALM}{HEAD_PRE}<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(full)}</title>
 <meta name="description" content="{d}">
 <link rel="canonical" href="{url}">
@@ -268,5 +270,7 @@ for g, f in [(None, ROOT/'guides/index.html'), *[(g, ROOT/'guides'/g/'index.html
     page = re.sub(r'<script src="/assets/guides-index\.js[^"]*"></script>', '', page)
     page = re.sub(r'<link rel="stylesheet" href="/assets/tags\.css[^"]*">', '', page)
     page = re.sub(r'(<link rel="stylesheet" href="/assets/handbook\.css[^"]*">)', r'\1<link rel="stylesheet" href="/assets/tags.css?v='+V+'">', page, count=1)
+    page = re.sub(r'<script>try\{var r=new URL\(document\.referrer\).*?</script>', '', page)
+    page = page.replace('<meta charset="utf-8">', '<meta charset="utf-8">'+CALM, 1)
     page = page.replace('<script src="/assets/handbook.js', SEARCH_JS+'<script src="/assets/handbook.js', 1)
     f.write_text(page)

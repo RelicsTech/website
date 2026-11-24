@@ -223,7 +223,7 @@
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function enter() {
     var de = document.documentElement;
-    if (noMotion || !de.animate) { de.classList.remove('pre'); return; }
+    if (noMotion || !de.animate || de.classList.contains('calm')) { de.classList.remove('pre'); return; }
     var EASE = 'cubic-bezier(.16,1,.3,1)';
     function a(sel, from, dur, delay, each) {
       Array.prototype.forEach.call(document.querySelectorAll(sel), function (el, i) {
@@ -260,6 +260,7 @@
     if (!a || a.target || a.hasAttribute('download')) return;
     var u; try { u = new URL(a.href); } catch (x) { return; }
     if (u.origin !== location.origin || u.pathname === location.pathname) return;
+    if (/^\/(tags|guides)\//.test(location.pathname) && /^\/(tags|guides)\//.test(u.pathname)) return; /* inside tags/guides: no page animation */
     var m = document.querySelector('main'); if (!m || !m.animate) return;
     e.preventDefault();
     var fwd = dirFor(location.pathname, u.pathname) === 'forward';
