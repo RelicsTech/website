@@ -105,7 +105,8 @@ GCARDS = re.findall(r'<a class="card" href="/guides/([^"/]+)/"[^>]*><div[^>]*>([
 
 def guide_directory(current=None):
     links = ''.join(f'<a href="/guides/{g}/"'+(' aria-current="page"' if g == current else '')+f'>{t}</a>' for g, t in GCARDS)
-    return '<div class="tsub" aria-label="All guides"><div class="tlist">'+links+'</div></div>'
+    opened = ' open' if current else ''
+    return f'<div class="tsub" aria-label="All guides"><details{opened}><summary>All guides<span>{len(GCARDS)}</span></summary>{links}</details></div>'
 
 
 K = 'font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:16px'
