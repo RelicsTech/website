@@ -57,13 +57,20 @@ def markdown(text):
 
 
 LINKS = {  # guide slug -> related tag slugs (cross-links in both directions)
-    'clean-gpu-driver-install': ['display-driver-uninstaller'], 'games-stutter-low-fps': ['display-driver-uninstaller', 'occt-stability-testing'],
-    'gpu-not-detected': ['display-driver-uninstaller', 'spec-ify-system-report'], 'pc-wont-turn-on': ['pc-photo-guide', 'reset-cmos'],
-    'no-display-black-screen': ['reset-cmos', 'bios-update'], 'pc-restarts-randomly': ['occt-stability-testing', 'spec-ify-system-report'],
-    'blue-screen-bsod': ['occt-stability-testing', 'spec-ify-system-report'], 'high-cpu-temperature': ['occt-stability-testing'],
-    'check-ram-for-errors': ['occt-stability-testing'], 'pc-build-checklist': ['pc-build-questionnaire'],
-    'ssd-not-showing': ['diskpart-clean', 'install-windows-usb'], 'windows-11-running-slow': ['bulk-crap-uninstaller'],
-    'loud-pc-fans': ['occt-stability-testing'], 'wifi-slow-or-dropping': ['get-pc-support']}
+    'pc-wont-turn-on': ['pc-photo-guide', 'reset-cmos', 'tech-support-questionnaire', 'get-pc-support'],
+    'no-display-black-screen': ['reset-cmos', 'bios-update', 'pc-photo-guide', 'display-driver-uninstaller'],
+    'pc-restarts-randomly': ['spec-ify-system-report', 'occt-stability-testing', 'bios-update', 'tech-support-questionnaire'],
+    'blue-screen-bsod': ['spec-ify-system-report', 'occt-stability-testing', 'display-driver-uninstaller', 'tech-support-questionnaire'],
+    'high-cpu-temperature': ['occt-stability-testing', 'spec-ify-system-report', 'tech-support-questionnaire'],
+    'check-ram-for-errors': ['occt-stability-testing', 'spec-ify-system-report', 'bios-update', 'reset-cmos'],
+    'clean-gpu-driver-install': ['display-driver-uninstaller', 'spec-ify-system-report', 'tech-support-questionnaire'],
+    'gpu-not-detected': ['display-driver-uninstaller', 'spec-ify-system-report', 'pc-photo-guide', 'bios-update'],
+    'games-stutter-low-fps': ['display-driver-uninstaller', 'occt-stability-testing', 'spec-ify-system-report', 'bulk-crap-uninstaller'],
+    'windows-11-running-slow': ['bulk-crap-uninstaller', 'spec-ify-system-report', 'install-windows-usb', 'tech-support-questionnaire'],
+    'ssd-not-showing': ['diskpart-clean', 'diskpart-windows-installer', 'install-windows-usb', 'spec-ify-system-report'],
+    'loud-pc-fans': ['occt-stability-testing', 'spec-ify-system-report', 'tech-support-questionnaire'],
+    'wifi-slow-or-dropping': ['spec-ify-system-report', 'tech-support-questionnaire', 'get-pc-support'],
+    'pc-build-checklist': ['pc-build-questionnaire', 'pc-upgrade-questionnaire', 'bios-update', 'install-windows-usb']}
 GTITLE = {g: re.search(r'<h1[^>]*>(.*?)</h1>', (ROOT/'guides'/g/'index.html').read_text(), re.S)[1] for g in LINKS}
 GUIDES = (ROOT/"guides/index.html").read_text()
 V = re.search(r"\?v=(\d+)", GUIDES)[1]
