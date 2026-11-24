@@ -33,3 +33,5 @@
 .tag-top{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;border:2px solid var(--ac2);background:#05080f;color:#cfe8ff;display:grid;place-items:center;cursor:pointer;z-index:80;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;box-shadow:0 6px 18px rgba(41,151,255,.35)}
 .tag-top.show{opacity:1;pointer-events:auto;transform:none}.tag-top:hover{box-shadow:0 6px 22px rgba(41,151,255,.6)}
 .tag-top:focus-visible{outline:3px solid var(--lk);outline-offset:3px}
+@media(max-width:820px){.tag-top{right:14px;bottom:calc(78px + env(safe-area-inset-bottom,0px));width:44px;height:44px}.tag-top svg{width:20px;height:20px}
+.tag-actions .btn{flex:1 1 auto}.tag-card .tag-actions{gap:10px}.tag-content figcaption .btn{display:flex;margin:10px 0 0;width:100%}}
