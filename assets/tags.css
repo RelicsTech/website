@@ -57,3 +57,8 @@ html.calm .jind{display:none!important}
 html.calm .root .side .jl a.on{position:relative}
 html.calm .root .side .jl a.on::after{content:"";position:absolute;z-index:-1;pointer-events:none;border-radius:12px;background:color-mix(in srgb,var(--ac) 12%,transparent);box-shadow:inset 3px 0 0 var(--ac);left:calc(-12px/1.1);width:calc((100% + 24px)/1.1);top:calc((-2px - 50%)/1.1 + 50%);height:calc((100% + 4px)/1.1)}
 }
+
+/* Tags and guides: no cross-page view transition at all (it caused the dark/white flash of the sidebar), and the sidebar links never use the inverted :target-current pill */
+@view-transition{navigation:none}
+html .root .side .jl a:target-current,html .root .side .tsub a:target-current{background:none;color:inherit;border-color:transparent}
+html.calm .side{view-transition-name:none}
