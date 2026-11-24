@@ -30,3 +30,6 @@
 .tag-actions code{flex:1 0 100%;margin:0}
 .tags-main .btn{display:inline-flex;align-items:center;justify-content:center}
 .tag-content figcaption .btn{margin-left:8px}
+.tag-top{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;border:2px solid var(--ac2);background:#05080f;color:#cfe8ff;display:grid;place-items:center;cursor:pointer;z-index:80;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;box-shadow:0 6px 18px rgba(41,151,255,.35)}
+.tag-top.show{opacity:1;pointer-events:auto;transform:none}.tag-top:hover{box-shadow:0 6px 22px rgba(41,151,255,.6)}
+.tag-top:focus-visible{outline:3px solid var(--lk);outline-offset:3px}

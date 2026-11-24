@@ -274,7 +274,7 @@
   };
   document.addEventListener('DOMContentLoaded', function () {
     var g = document.querySelector('.gind'); if (!g) return;
-    function label() { var t = window.RelicsSearch ? (window.RELICS_GUIDES ? 'Search the guides' : 'Search the handbook') : 'Back to top'; g.setAttribute('aria-label', t); var tp = g.querySelector('.gtip'); if (tp) tp.textContent = window.RelicsSearch ? 'Search' : 'Back to top'; }
+    function label() { var t = window.RelicsSearch ? (window.RELICS_GUIDES ? (window.RELICS_SEARCH_LABEL || 'Search the guides') : 'Search the handbook') : 'Back to top'; g.setAttribute('aria-label', t); var tp = g.querySelector('.gtip'); if (tp) tp.textContent = window.RelicsSearch ? 'Search' : 'Back to top'; }
     g.removeAttribute('aria-hidden'); g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0');
     var svg = g.querySelector('svg'), NS = 'http://www.w3.org/2000/svg';
     if (svg && !svg.querySelector('#gindG')) {

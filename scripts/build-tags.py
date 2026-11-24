@@ -85,6 +85,12 @@ H1 = 'margin:0 0 20px;font-size:clamp(34px,5vw,64px);line-height:1.06;letter-spa
 LEAD = 'margin:0 0 24px;max-width:640px;font-size:var(--b);line-height:1.4;letter-spacing:-.022em;color:var(--tx2)'
 
 
+_guides_js = (ROOT/'assets/guides-index.js').read_text()
+SEARCH = [{**g, 's': 'Guide'} for g in json.loads(_guides_js[_guides_js.index('[') : _guides_js.rindex(']')+1])]
+SEARCH += [{'t': e['title'], 'd': ' '.join([e['description'], e['name'], e['category']]), 'u': '/tags/'+e['slug']+'/', 's': 'Tag'} for e in ENTRIES]
+SEARCH_JS = '<script>window.RELICS_SEARCH_LABEL="Search guides and tags";window.RELICS_GUIDES='+json.dumps(SEARCH).replace('<', chr(92)+'u003c')+'</script>'
+
+
 def shell(title, description, path, body, current=None):
     url = ORIGIN+path
     full = title if "Relics" in title else title+" | Relics"
@@ -128,7 +134,7 @@ def shell(title, description, path, body, current=None):
 <div class="tag-toast" role="status" aria-live="polite"></div>
 </div>
 <script>try{{var s=localStorage.getItem("relics-th"),r=document.querySelector(".root");if(r&&(s==="dark"||s==="light"))r.setAttribute("data-th",s)}}catch(e){{}}</script>
-<script src="/assets/tags.js?v={V}" defer></script><script src="/assets/handbook.js?v={V}" defer></script></body>
+{SEARCH_JS}<script src="/assets/tags.js?v={V}" defer></script><script src="/assets/handbook.js?v={V}" defer></script></body>
 </html>'''
 
 
