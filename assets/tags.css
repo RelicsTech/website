@@ -48,8 +48,6 @@
 html.calm .rv,html.calm .side *,html.calm .gind,html.calm .gind *{animation:none!important}
 html.calm .jind{transition:none!important}
 html.calm.pre .side .lkb,html.calm.pre .side .jl a,html.calm.pre .side .nvc>*{opacity:1!important}
-html.calm::view-transition-old(root),html.calm::view-transition-new(root),html.calm::view-transition-group(rail),html.calm::view-transition-old(rail),html.calm::view-transition-new(rail){animation:none!important;mix-blend-mode:normal}
-html.calm::view-transition-old(root),html.calm::view-transition-old(rail){display:none}
 
 /* calm navigation: the active pill is painted by CSS from the first frame (same geometry as the sliding .jind: link box +12px sides, +2px top/bottom, text scaled 1.1) so nothing pops in after the script runs */
 @media(min-width:821px){

@@ -157,7 +157,7 @@ def shell(title, description, path, body, current=None):
 <script src="/assets/site.js?v={V}" defer></script>
 <script type="application/ld+json">{json.dumps(schema).replace('<', chr(92)+'u003c')}</script></head>
 <body>
-{ROOT_OPEN}
+{ROOT_OPEN}<script data-early-th>try{{var s=localStorage.getItem("relics-th"),r=document.querySelector(".root");if(r&&(s==="dark"||s==="light"))r.setAttribute("data-th",s)}}catch(e){{}}</script>
 <a class="skip" href="#main">Skip to content</a>
 <div class="prog" aria-hidden="true"></div>
 {GIND}
