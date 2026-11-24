@@ -104,9 +104,10 @@ GCARDS = re.findall(r'<a class="card" href="/guides/([^"/]+)/"[^>]*><div[^>]*>([
 
 
 def guide_directory(current=None):
+    if not current:
+        return ''
     links = ''.join(f'<a href="/guides/{g}/"'+(' aria-current="page"' if g == current else '')+f'>{t}</a>' for g, t in GCARDS)
-    opened = ' open' if current else ''
-    return f'<div class="tsub" aria-label="All guides"><details{opened}><summary>All guides<span>{len(GCARDS)}</span></summary>{links}</details></div>'
+    return '<div class="tsub" aria-label="All guides"><div class="tlist">'+links+'</div></div>'
 
 
 K = 'font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:16px'
@@ -158,7 +159,7 @@ def shell(title, description, path, body, current=None):
 <a class="skip" href="#main">Skip to content</a>
 <div class="prog" aria-hidden="true"></div>
 {GIND}
-{SIDE.replace('<a href="#top">Tags &amp; questionnaires</a>', '<a href="#top">Tags &amp; questionnaires</a>'+tag_directory(current), 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
+{SIDE.replace('<a href="#top">Tags &amp; questionnaires</a>', ('<a class="on cur" href="/tags/">Tags &amp; questionnaires</a>' if current else '<a href="#top">Tags &amp; questionnaires</a>')+tag_directory(current), 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
 </main>
 <div class="tag-toast" role="status" aria-live="polite"></div>
 </div>
@@ -258,7 +259,8 @@ for g, ts in LINKS.items():
 
 # guide pages: same sidebar (Public site / Guides / Tags) and combined search as the tags (idempotent)
 def jl_new(g=None):
-    return '<div class="jl"><a href="/">Public site</a><a href="#top">Guides</a>'+guide_directory(g)+'<a href="/tags/">Tags &amp; questionnaires</a></div>'
+    own = '<a href="#top">Guides</a>' if not g else '<a class="on cur" href="/guides/">Guides</a>'
+    return '<div class="jl"><a href="/">Public site</a>'+own+guide_directory(g)+'<a href="/tags/">Tags &amp; questionnaires</a></div>'
 for g, f in [(None, ROOT/'guides/index.html'), *[(g, ROOT/'guides'/g/'index.html') for g in LINKS]]:
     page = f.read_text()
     page = re.sub(r'<div class="jl">.*(?=</nav><div class="nvc")', jl_new(g), page, count=1, flags=re.S)
