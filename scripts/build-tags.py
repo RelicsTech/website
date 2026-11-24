@@ -161,7 +161,7 @@ def shell(title, description, path, body, current=None):
 <a class="skip" href="#main">Skip to content</a>
 <div class="prog" aria-hidden="true"></div>
 {GIND}
-{SIDE.replace('<a href="#top">Tags &amp; questionnaires</a>', ('<a href="/tags/" data-spy="top">Tags &amp; questionnaires</a>' if current else '<a href="#top">Tags &amp; questionnaires</a>')+(tag_directory(current) if current else ''), 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
+{SIDE.replace('<a href="#top">Tags &amp; questionnaires</a>', ('<a class="on" href="/tags/" data-spy="top">Tags &amp; questionnaires</a>' if current else '<a class="on" href="#top">Tags &amp; questionnaires</a>')+(tag_directory(current) if current else ''), 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
 </main>
 <div class="tag-toast" role="status" aria-live="polite"></div>
 </div>
@@ -261,7 +261,7 @@ for g, ts in LINKS.items():
 
 # guide pages: same sidebar (Public site / Guides / Tags) and combined search as the tags (idempotent)
 def jl_new(g=None):
-    own = '<a href="#top">Guides</a>' if not g else '<a href="/guides/" data-spy="top">Guides</a>'
+    own = '<a class="on" href="#top">Guides</a>' if not g else '<a class="on" href="/guides/" data-spy="top">Guides</a>'
     return '<div class="jl"><a href="/">Public site</a>'+own+guide_directory(g)+'<a href="/tags/">Tags &amp; questionnaires</a></div>'
 for g, f in [(None, ROOT/'guides/index.html'), *[(g, ROOT/'guides'/g/'index.html') for g in LINKS]]:
     page = f.read_text()
