@@ -171,8 +171,8 @@
 
   /* ---- Where you are in the menu (scroll spy): the link of the current section gets .on, a highlight slides to it ---- */
   document.addEventListener('DOMContentLoaded', function () {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.side .jl a[href^="#"]'));
-    var pairs = links.map(function (a) { return [a, document.getElementById(a.getAttribute('href').slice(1))]; }).filter(function (p) { return p[1]; });
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side .jl a[href^="#"], .side .jl a[data-spy]'));
+    var pairs = links.map(function (a) { var h = a.getAttribute('href'); return [a, document.getElementById(h.charAt(0) === '#' ? h.slice(1) : a.getAttribute('data-spy'))]; }).filter(function (p) { return p[1]; });
     if (!pairs.length) return;
     var ticking = false, nav = pairs[0][0].closest('.nvl'), ind = null, curLink = null;
     var desk = window.matchMedia('(min-width:821px)');
