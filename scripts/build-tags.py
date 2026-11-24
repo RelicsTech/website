@@ -236,3 +236,13 @@ for g, ts in LINKS.items():
     links = ' · '.join(f'<a class="lnk" href="/tags/{t}/" style="color:var(--lk)">{escape(titles[t])}</a>' for t in ts)
     page = page.replace(marker, f'<p data-rel="tags" style="margin:32px 0 0;font-size:var(--b);color:var(--tx2)">Related tags: {links}</p>'+marker, 1)
     f.write_text(page)
+
+# guide pages: same sidebar (Public site / Guides / Tags) and combined search as the tags (idempotent)
+JL_NEW = '<div class="jl"><a href="/">Public site</a><a href="#top">Guides</a><a href="/tags/">Tags &amp; questionnaires</a></div>'
+for f in [ROOT/'guides/index.html', *[ROOT/'guides'/g/'index.html' for g in LINKS]]:
+    page = f.read_text()
+    page = re.sub(r'<div class="jl">.*?</div>(?=</nav>)', JL_NEW, page, count=1, flags=re.S)
+    page = re.sub(r'<script>window\.RELICS_SEARCH_LABEL=.*?</script>', '', page, flags=re.S)
+    page = re.sub(r'<script src="/assets/guides-index\.js[^"]*"></script>', '', page)
+    page = page.replace('<script src="/assets/handbook.js', SEARCH_JS+'<script src="/assets/handbook.js', 1)
+    f.write_text(page)
