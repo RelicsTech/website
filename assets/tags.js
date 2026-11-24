@@ -1,21 +1,4 @@
 (() => {
-  const root = document.querySelector('.tags-root');
-  const theme = document.querySelector('.tt');
-  const preferred = matchMedia('(prefers-color-scheme: dark)');
-  function applyTheme(value) {
-    root.setAttribute('data-th', value);
-    theme.setAttribute('aria-pressed', String(value === 'dark'));
-    theme.textContent = value === 'dark' ? 'Light mode' : 'Dark mode';
-    theme.setAttribute('aria-label', 'Use ' + (value === 'dark' ? 'light' : 'dark') + ' mode');
-  }
-  let saved;
-  try { saved = localStorage.getItem('relics-th'); } catch (_) {}
-  applyTheme(saved === 'dark' || saved === 'light' ? saved : preferred.matches ? 'dark' : 'light');
-  theme.addEventListener('click', () => {
-    const value = root.getAttribute('data-th') === 'dark' ? 'light' : 'dark';
-    applyTheme(value);
-    try { localStorage.setItem('relics-th', value); } catch (_) {}
-  });
   let library;
   const status = document.querySelector('.tag-toast');
   let timer;
