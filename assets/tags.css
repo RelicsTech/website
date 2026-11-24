@@ -33,3 +33,11 @@
 .tag-top{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;border:2px solid var(--ac2);background:#05080f;color:#cfe8ff;display:grid;place-items:center;cursor:pointer;z-index:80;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s;box-shadow:0 6px 18px rgba(41,151,255,.35)}
 .tag-top.show{opacity:1;pointer-events:auto;transform:none}.tag-top:hover{box-shadow:0 6px 22px rgba(41,151,255,.6)}
 .tag-top:focus-visible{outline:3px solid var(--lk);outline-offset:3px}
+.tsub{margin:12px 0 0 2px;display:flex;flex-direction:column;gap:2px;font-size:14px}
+.tsub details{border-left:1px solid var(--ln);padding-left:12px}
+.tsub summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:8px;padding:6px 0;color:var(--tx2);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.tsub summary::-webkit-details-marker{display:none}.tsub summary span{font-weight:500;opacity:.7}
+.tsub details[open]>summary{color:var(--tx)}
+.tsub a{display:block;padding:5px 0;line-height:1.3;color:var(--tx2);font-size:14px}.tsub a:hover{color:var(--tx)}
+.tsub a[aria-current]{color:var(--lk);font-weight:600}
+.tsub summary:focus-visible,.tsub a:focus-visible{outline:2px solid var(--lk);outline-offset:2px}
