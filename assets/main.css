@@ -615,3 +615,7 @@ h1,h2,h3{overflow:visible}
 .card::after,.dkc::after{background:radial-gradient(260px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac2,var(--ac)) 24%,transparent),transparent 62%),radial-gradient(560px circle at var(--cx,50%) var(--cy,50%),color-mix(in srgb,var(--ac) 9%,transparent),transparent 70%)}
 @media (hover:hover) and (pointer:fine){.card:hover::before,.dkc:hover::before{opacity:1}}
 .card.lit::before,.card.lit::after,.dkc.lit::before,.dkc.lit::after{opacity:1}
+
+/* Dark mode: no dotted background */
+:is(.th-dark:not([data-th=light]),.root[data-th=dark]).bg-dots .main{background-image:none}
+@media (prefers-color-scheme:dark){.th-auto:not([data-th=light]).bg-dots .main{background-image:none}}

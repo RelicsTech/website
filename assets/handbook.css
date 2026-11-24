@@ -669,3 +669,7 @@ h1,h2,h3{overflow:visible}
   .gsearch .gind .gico{animation:gsLens 1.2s ease .35s both}
 }
 @media (max-width:820px){#gheroic{display:none}}
+
+/* Dark mode: no dotted background */
+:is(.th-dark:not([data-th=light]),.root[data-th=dark]).bg-dots .main{background-image:none}
+@media (prefers-color-scheme:dark){.th-auto:not([data-th=light]).bg-dots .main{background-image:none}}
