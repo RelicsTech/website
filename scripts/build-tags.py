@@ -79,7 +79,7 @@ ROOT_OPEN = re.search(r'<div class="root [^>]*>', GUIDES)[0]
 GIND = re.search(r'<div class="gind".*?</svg></div>', GUIDES, re.S)[0]
 SIDE = GUIDES[GUIDES.index('<div class="side"'):GUIDES.index('<main')]
 SIDE = SIDE.replace('aria-label="Guides"', 'aria-label="Tags"').replace('>GUIDES</span>', '>TAGS</span>')
-SIDE = re.sub(r'<div class="jl">.*?</div>', '<div class="jl"><a href="/">Public site</a><a href="/guides/">Guides</a><a href="#top">Tags &amp; questionnaires</a></div>', SIDE, count=1, flags=re.S)
+SIDE = re.sub(r'<div class="jl">.*(?=</nav><div class="nvc")', '<div class="jl"><a href="/">Public site</a><a href="/guides/">Guides</a><a href="#top">Tags &amp; questionnaires</a></div>', SIDE, count=1, flags=re.S)
 def tag_directory(current=None):
     groups = []
     for category in dict.fromkeys(e['category'] for e in ENTRIES):
@@ -88,6 +88,24 @@ def tag_directory(current=None):
         opened = ' open' if any(e['slug'] == current for e in items) else ''
         groups.append(f'<details{opened}><summary>{escape(category)}<span>{len(items)}</span></summary>{links}</details>')
     return '<div class="tsub" aria-label="Tag categories">'+''.join(groups)+'</div>'
+
+
+def tag_directory(current=None):
+    groups = []
+    for category in dict.fromkeys(e['category'] for e in ENTRIES):
+        items = [e for e in ENTRIES if e['category'] == category]
+        links = ''.join(f'<a href="/tags/{e["slug"]}/"'+(' aria-current="page"' if e['slug'] == current else '')+f'>{escape(e["title"])}</a>' for e in items)
+        opened = ' open' if any(e['slug'] == current for e in items) else ''
+        groups.append(f'<details{opened}><summary>{escape(category)}<span>{len(items)}</span></summary>{links}</details>')
+    return '<div class="tsub" aria-label="Tag categories">'+''.join(groups)+'</div>'
+
+
+GCARDS = re.findall(r'<a class="card" href="/guides/([^"/]+)/"[^>]*><div[^>]*>([^<]+)</div>', GUIDES)
+
+
+def guide_directory(current=None):
+    links = ''.join(f'<a href="/guides/{g}/"'+(' aria-current="page"' if g == current else '')+f'>{t}</a>' for g, t in GCARDS)
+    return '<div class="tsub" aria-label="All guides"><div class="tlist">'+links+'</div></div>'
 
 
 K = 'font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);margin-bottom:16px'
@@ -139,7 +157,7 @@ def shell(title, description, path, body, current=None):
 <a class="skip" href="#main">Skip to content</a>
 <div class="prog" aria-hidden="true"></div>
 {GIND}
-{SIDE}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
+{SIDE.replace('<a href="#top">Tags &amp; questionnaires</a>', '<a href="#top">Tags &amp; questionnaires</a>'+tag_directory(current), 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
 </main>
 <div class="tag-toast" role="status" aria-live="polite"></div>
 </div>
@@ -238,11 +256,14 @@ for g, ts in LINKS.items():
     f.write_text(page)
 
 # guide pages: same sidebar (Public site / Guides / Tags) and combined search as the tags (idempotent)
-JL_NEW = '<div class="jl"><a href="/">Public site</a><a href="#top">Guides</a><a href="/tags/">Tags &amp; questionnaires</a></div>'
-for f in [ROOT/'guides/index.html', *[ROOT/'guides'/g/'index.html' for g in LINKS]]:
+def jl_new(g=None):
+    return '<div class="jl"><a href="/">Public site</a><a href="#top">Guides</a>'+guide_directory(g)+'<a href="/tags/">Tags &amp; questionnaires</a></div>'
+for g, f in [(None, ROOT/'guides/index.html'), *[(g, ROOT/'guides'/g/'index.html') for g in LINKS]]:
     page = f.read_text()
-    page = re.sub(r'<div class="jl">.*?</div>(?=</nav>)', JL_NEW, page, count=1, flags=re.S)
+    page = re.sub(r'<div class="jl">.*(?=</nav><div class="nvc")', jl_new(g), page, count=1, flags=re.S)
     page = re.sub(r'<script>window\.RELICS_SEARCH_LABEL=.*?</script>', '', page, flags=re.S)
     page = re.sub(r'<script src="/assets/guides-index\.js[^"]*"></script>', '', page)
+    page = re.sub(r'<link rel="stylesheet" href="/assets/tags\.css[^"]*">', '', page)
+    page = re.sub(r'(<link rel="stylesheet" href="/assets/handbook\.css[^"]*">)', r'\1<link rel="stylesheet" href="/assets/tags.css?v='+V+'">', page, count=1)
     page = page.replace('<script src="/assets/handbook.js', SEARCH_JS+'<script src="/assets/handbook.js', 1)
     f.write_text(page)
