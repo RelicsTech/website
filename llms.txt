@@ -1,0 +1,55 @@
+# Relics
+
+> Relics is a free, human-run tech support and PC building community on Discord. Specialists help with PC troubleshooting, builds and peripherals. No AI support, no fees.
+
+Join: https://discord.gg/GBMChN9PAj
+
+## Main pages
+- [Home](https://relicstech.site/): what Relics is and how to get help
+- [PC guides](https://relicstech.site/guides/): free step-by-step PC troubleshooting and build guides
+- [Tags & questionnaires](https://relicstech.site/tags/): Discord tags and PC help questionnaires with full copyable text
+- [Staff handbooks](https://relicstech.site/handbook/): how the Relics team works
+
+## PC guides
+- [PC won't turn on](https://relicstech.site/guides/pc-wont-turn-on/): No lights, no fans, no display? Work through these power and hardware checks in order, from the wall socket to the motherboard.
+- [Clean GPU driver install](https://relicstech.site/guides/clean-gpu-driver-install/): Fix crashes, black screens and stutter with a clean graphics driver reinstall using Display Driver Uninstaller (DDU).
+- [PC build checklist](https://relicstech.site/guides/pc-build-checklist/): A short checklist for planning a PC build: budget split, compatibility checks, and the mistakes that waste the most money.
+- [PC restarts randomly](https://relicstech.site/guides/pc-restarts-randomly/): Fix a PC that reboots on its own: check temperatures, read the Windows crash log, and test the power supply and RAM.
+- [High CPU temperature](https://relicstech.site/guides/high-cpu-temperature/): Fix a CPU that runs too hot: measure the temperatures, clean the dust, check the cooler mount and set a better fan curve.
+- [Test RAM for errors](https://relicstech.site/guides/check-ram-for-errors/): Check if your RAM is faulty with Windows Memory Diagnostic or MemoryTest86, and find the bad stick or slot.
+- [Windows 11 running slow](https://relicstech.site/guides/windows-11-running-slow/): Speed up a slow Windows 11 PC: updates, startup apps, free disk space, drive health, malware scan and power mode.
+- [Blue screen (BSOD)](https://relicstech.site/guides/blue-screen-bsod/): What to do after a Windows blue screen: write down the stop code, roll back drivers, repair system files and test RAM and drive.
+- [No display / black screen](https://relicstech.site/guides/no-display-black-screen/): PC turns on but the monitor shows nothing? Check the cable and input, the graphics card, the RAM and the motherboard LEDs.
+- [Loud PC fans](https://relicstech.site/guides/loud-pc-fans/): Make a loud PC quieter: find the noisy fan, clean the dust, check the temperatures and set a smoother fan curve.
+- [Wi-Fi slow or dropping](https://relicstech.site/guides/wifi-slow-or-dropping/): Fix slow or dropping Wi-Fi on a PC: test with a cable, restart the router, use 5 GHz, update the driver and turn off power saving.
+- [GPU not detected](https://relicstech.site/guides/gpu-not-detected/): Graphics card not showing up? Check Device Manager and BIOS, reseat the card and power cables, try another slot and reinstall the driver.
+- [SSD not showing up](https://relicstech.site/guides/ssd-not-showing/): A new SSD or hard drive missing in Windows? Check the BIOS, cables and slot, then initialize and format it in Disk Management.
+- [Games stutter or low FPS](https://relicstech.site/guides/games-stutter-low-fps/): Fix stutter and low FPS in games: check the GPU is used, the temperatures, the driver, RAM settings and the game settings.
+
+## Discord tags and questionnaires
+- [PC Build Questionnaire](https://relicstech.site/tags/pc-build-questionnaire/): Plan a new PC build: share your budget, country, purchase date, games, resolution and component preferences with Relics on Discord.
+- [PC Upgrade Questionnaire](https://relicstech.site/tags/pc-upgrade-questionnaire/): Get useful PC upgrade advice by sharing your current parts, budget, purchase date, performance goals and connectivity needs.
+- [Laptop Recommendation Questionnaire](https://relicstech.site/tags/laptop-questionnaire/): Find a suitable laptop: share your budget, workloads, portability needs, screen preferences and battery priorities on Discord.
+- [PC Troubleshooting Photo Guide](https://relicstech.site/tags/pc-photo-guide/): Help Discord specialists troubleshoot your PC with clear photos of the motherboard, power connections, graphics card and cables.
+- [Getting Started with OCCT](https://relicstech.site/tags/occt-stability-testing/): Download and open OCCT from its official website to prepare for hardware stability testing with help from Relics specialists.
+- [How to Update Your BIOS](https://relicstech.site/tags/bios-update/): Prepare for a motherboard BIOS update: identify the exact model, save your BitLocker recovery key and follow manufacturer instructions.
+- [How to Reset CMOS](https://relicstech.site/tags/reset-cmos/): Reset motherboard BIOS settings using the procedure in your motherboard manual, with power disconnected and settings recorded first.
+- [Controller Features Explained](https://relicstech.site/tags/controller-features/): Understand hair triggers, remappable buttons, modular parts, gyro aiming and rumble before choosing a controller for your setup.
+- [Controller Recommendation Questionnaire](https://relicstech.site/tags/controller-questionnaire/): Share your budget, platforms, favourite games, grip, hand measurements and feature preferences to get controller advice on Discord.
+- [After Your Support Session](https://relicstech.site/tags/support-follow-up/): Find the Relics specialist rating channel, staff applications, website and ways to share or support the Discord community.
+- [How to Get PC Help on Discord](https://relicstech.site/tags/get-pc-support/): Find the right Relics Discord help channel for PC troubleshooting, choosing components or planning a build, then start your request.
+- [Share a Spec-ify System Report](https://relicstech.site/tags/spec-ify-system-report/): Prepare a hardware and software report for PC troubleshooting, review privacy settings and share the report with your Discord specialist.
+- [Install Windows from USB](https://relicstech.site/tags/install-windows-usb/): Find the Windows installation guide and prepare a USB installer before reinstalling Windows, with a backup of files you want to keep.
+- [Display Driver Uninstaller (DDU)](https://relicstech.site/tags/display-driver-uninstaller/): Find DDU, Safe Mode instructions and official NVIDIA, AMD and Intel driver downloads for a clean graphics driver reinstall.
+- [Clean a Disk in Windows Setup](https://relicstech.site/tags/diskpart-windows-installer/): Use DiskPart from Windows Setup only after backing up your files and verifying the target disk. Cleaning removes its partitions.
+- [Bulk Crap Uninstaller (BCU)](https://relicstech.site/tags/bulk-crap-uninstaller/): Find the official Bulk Crap Uninstaller download to remove multiple Windows applications and review leftover files before deletion.
+- [Track USB Events with USBLogView](https://relicstech.site/tags/usb-log-view/): Log USB device connections and disconnections in Windows to help troubleshoot intermittent USB hubs, peripherals and driver issues.
+- [Clean a Disk with DiskPart](https://relicstech.site/tags/diskpart-clean/): Check and clean a selected disk with DiskPart, understand the data-loss consequences, and optionally prepare a new data partition.
+- [Prebuilt PC Questionnaire](https://relicstech.site/tags/prebuilt-pc-questionnaire/): Compare prebuilt PCs with useful advice: share your budget, country, purchase date, games, resolution and design preferences.
+- [PC Troubleshooting Questionnaire](https://relicstech.site/tags/tech-support-questionnaire/): Start a technical support request on Discord by describing your PC problem, what you have already tried and your operating system.
+- [Mouse Recommendation Questionnaire](https://relicstech.site/tags/mouse-questionnaire/): Find a mouse that fits your hand: share your budget, grip style, hand measurements, previous mice and connection preferences.
+- [Monitor Recommendation Questionnaire](https://relicstech.site/tags/monitor-questionnaire/): Choose a monitor by sharing your PC hardware, budget, resolution, refresh rate, panel preferences and how you plan to use it.
+- [Keyboard Recommendation Questionnaire](https://relicstech.site/tags/keyboard-questionnaire/): Find a suitable keyboard: share your budget, layout, size, switch preferences, gaming needs and wired or wireless requirements.
+- [Chair Recommendation Questionnaire](https://relicstech.site/tags/chair-questionnaire/): Describe your desk chair needs, budget, dimensions, sitting habits and adjustment preferences to help the Relics community make suggestions.
+- [Audio Recommendation Questionnaire](https://relicstech.site/tags/audio-questionnaire/): Get headphone, headset or earbud advice by sharing your budget, listening needs, preferred sound, connectivity and current audio equipment.
+- [Other Peripheral Recommendations](https://relicstech.site/tags/other-peripherals-questionnaire/): Ask for advice on a peripheral not covered by our other forms: describe the device, your budget, country and important preferences.

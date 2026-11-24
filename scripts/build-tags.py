@@ -173,3 +173,17 @@ for path in ['/tags/']+['/tags/'+e['slug']+'/' for e in ENTRIES]:
 ET.indent(tree, space='  ')
 tree.write(ROOT/'sitemap.xml', encoding='utf-8', xml_declaration=True)
 print(f'Built library and {len(ENTRIES)} tag pages; sitemap updated.')
+
+# llms.txt: plain-language site map for AI assistants (generated together with the tags)
+guide_links = re.findall(r'<a class="card" href="(/guides/[^"]+/)"[^>]*><div[^>]*>([^<]+)</div><div[^>]*>([^<]+)</div>', GUIDES)
+lines = ["# Relics", "",
+         "> Relics is a free, human-run tech support and PC building community on Discord. Specialists help with PC troubleshooting, builds and peripherals. No AI support, no fees.", "",
+         "Join: https://discord.gg/GBMChN9PAj", "",
+         "## Main pages", f"- [Home]({ORIGIN}/): what Relics is and how to get help",
+         f"- [PC guides]({ORIGIN}/guides/): free step-by-step PC troubleshooting and build guides",
+         f"- [Tags & questionnaires]({ORIGIN}/tags/): Discord tags and PC help questionnaires with full copyable text",
+         f"- [Staff handbooks]({ORIGIN}/handbook/): how the Relics team works", "", "## PC guides"]
+lines += [f"- [{html.unescape(t)}]({ORIGIN}{u}): {html.unescape(d)}" for u, t, d in guide_links]
+lines += ["", "## Discord tags and questionnaires"]
+lines += [f"- [{e['title']}]({ORIGIN}/tags/{e['slug']}/): {e['description']}" for e in ENTRIES]
+(ROOT/'llms.txt').write_text("\n".join(lines)+"\n")
