@@ -79,7 +79,7 @@ ROOT_OPEN = re.search(r'<div class="root [^>]*>', GUIDES)[0]
 GIND = re.search(r'<div class="gind".*?</svg></div>', GUIDES, re.S)[0]
 SIDE = GUIDES[GUIDES.index('<div class="side"'):GUIDES.index('<main')]
 SIDE = SIDE.replace('aria-label="Guides"', 'aria-label="Tags"').replace('>GUIDES</span>', '>TAGS</span>')
-SIDE = re.sub(r'<div class="jl">.*?</div>', '<div class="jl"><a href="/">Public site</a><a href="/guides/">Guides</a><a href="/tags/" aria-current="page">Tags &amp; questionnaires</a></div>', SIDE, count=1, flags=re.S)
+SIDE = re.sub(r'<div class="jl">.*?</div>', '<div class="jl"><a href="/">Public site</a><a href="/guides/">Guides</a><a href="#top">Tags &amp; questionnaires</a></div>', SIDE, count=1, flags=re.S)
 def tag_directory(current=None):
     groups = []
     for category in dict.fromkeys(e['category'] for e in ENTRIES):
@@ -139,7 +139,7 @@ def shell(title, description, path, body, current=None):
 <a class="skip" href="#main">Skip to content</a>
 <div class="prog" aria-hidden="true"></div>
 {GIND}
-{SIDE.replace('</div></nav>', '</div>'+tag_directory(current)+'</nav>', 1)}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
+{SIDE}<main class="main tags-main" id="main" style="flex:1 1 760px;min-width:0"><div class="sec" style="padding:calc(var(--sec)*.5) var(--px) 0;box-sizing:border-box;max-width:1100px">{body}</div><footer style="margin:32px 0 48px;padding:0 var(--px);font-size:12px;line-height:1.333;color:var(--tx2);display:flex;flex-wrap:wrap;gap:8px 24px"><span>© 2026 Relics · Tags</span><a class="lnk" href="/" style="color:var(--tx2)">Back to relicstech.site</a><a class="lnk" href="/guides/" style="color:var(--tx2)">PC guides</a></footer>
 </main>
 <div class="tag-toast" role="status" aria-live="polite"></div>
 </div>
