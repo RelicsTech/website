@@ -56,6 +56,15 @@ def markdown(text):
     return "\n".join(blocks)
 
 
+LINKS = {  # guide slug -> related tag slugs (cross-links in both directions)
+    'clean-gpu-driver-install': ['display-driver-uninstaller'], 'games-stutter-low-fps': ['display-driver-uninstaller', 'occt-stability-testing'],
+    'gpu-not-detected': ['display-driver-uninstaller', 'spec-ify-system-report'], 'pc-wont-turn-on': ['pc-photo-guide', 'reset-cmos'],
+    'no-display-black-screen': ['reset-cmos', 'bios-update'], 'pc-restarts-randomly': ['occt-stability-testing', 'spec-ify-system-report'],
+    'blue-screen-bsod': ['occt-stability-testing', 'spec-ify-system-report'], 'high-cpu-temperature': ['occt-stability-testing'],
+    'check-ram-for-errors': ['occt-stability-testing'], 'pc-build-checklist': ['pc-build-questionnaire'],
+    'ssd-not-showing': ['diskpart-clean', 'install-windows-usb'], 'windows-11-running-slow': ['bulk-crap-uninstaller'],
+    'loud-pc-fans': ['occt-stability-testing'], 'wifi-slow-or-dropping': ['get-pc-support']}
+GTITLE = {g: re.search(r'<h1[^>]*>(.*?)</h1>', (ROOT/'guides'/g/'index.html').read_text(), re.S)[1] for g in LINKS}
 GUIDES = (ROOT/"guides/index.html").read_text()
 V = re.search(r"\?v=(\d+)", GUIDES)[1]
 HEAD_PRE = GUIDES[GUIDES.index("<head>")+6:GUIDES.index('<meta name="viewport"')]
@@ -127,21 +136,24 @@ for entry in ENTRIES:
     variants = entry['variants']
     variant_nav = '<nav class="variant-menu" aria-label="Versions">'+''.join(f'<a class="lnk" href="#version-{i}">{escape(v["label"])}</a>' for i,v in enumerate(variants))+'</nav>' if len(variants)>1 else ''
     for i, variant in enumerate(variants):
-        image = f'<figure><img src="{variant["image"]}" alt="Hand width and hand length measurement guide" loading="lazy"><figcaption>Measure across your palm and from your wrist to the tip of your middle finger.</figcaption></figure>' if variant.get('image') else ''
+        image = f'<figure><img src="{variant["image"]}" alt="Hand width and hand length measurement guide" loading="lazy" width="225" height="225"><figcaption>Measure across your palm and from your wrist to the tip of your middle finger.</figcaption></figure>' if variant.get('image') else ''
         if entry['name']=='photoguide':
             image = f'<figure><img src="{variant["image"]}" alt="Example photos to send: motherboard center, 24-pin cable, front panel header, CPU power cable and graphics card power cable" loading="lazy" width="2000" height="1018"><figcaption>Example angles for the photos. <button type="button" class="btn" data-copy-image="{variant["image"]}">Copy image</button></figcaption></figure>'
         if entry['name']=='keyboard' and image:
-            image = f'<figure><img src="{variant["image"]}" alt="Keyboard layout and size reference" loading="lazy"><figcaption>Keyboard reference shared with the questionnaire.</figcaption></figure>'
+            image = f'<figure><img src="{variant["image"]}" alt="Keyboard layout and size reference" loading="lazy" width="1024" height="620"><figcaption>Keyboard reference shared with the questionnaire.</figcaption></figure>'
         sections.append(f'''<section id="version-{i}" class="card tag-content"><div class="tag-actions"><h2>{escape(variant['label'])}</h2>
 <button class="btn bp" type="button" data-copy="{slug}:{i}">Copy full text for Discord</button></div>
 <div class="tag-markdown">{markdown(variant['content'])}</div>{image}
 <details><summary>Discord Markdown &amp; manual copy</summary><textarea class="tag-raw" rows="10" readonly aria-label="{escape(variant['label'], quote=True)} Markdown">{escape(variant['copy'])}</textarea></details></section>''')
     siblings = [e for e in ENTRIES if e['category']==category and e['slug']!=slug]
+    guide_rel = [g for g, ts in LINKS.items() if slug in ts]
+    guide_html = ''.join(f'<a class="lnk" href="/guides/{g}/">{GTITLE[g]}</a>' for g in guide_rel)
     related = ''.join(f'<a class="lnk" href="/tags/{e["slug"]}/">{escape(e["title"])}</a>' for e in siblings)
     body = f'''<nav class="tag-breadcrumb" aria-label="Breadcrumb"><a class="lnk" href="/">Relics</a> / <a class="lnk" href="/tags/">Tags</a> / {escape(title)}</nav>
 <div id="top" class="kick" style="{K}">{escape(category)} · <code>{escape(entry['name'])}</code></div><h1 style="{H1}">{escape(title)}</h1><p style="{LEAD}">{escape(entry['description'])}</p>
 <p class="tag-note">Copy the full text, paste it into your Relics Discord help conversation and add your answers where relevant. Links to Discord channels require server membership.</p>
 {variant_nav}{''.join(sections)}<section class="tag-related"><h2>More in {escape(category)}</h2>{related or '<a class="lnk" href="/tags/">Browse the complete library</a>'}</section>
+{('<section class="tag-related"><h2>Related PC guides</h2>'+guide_html+'</section>') if guide_html else ''}
 <p style="margin:32px 0 0"><a class="btn bp" href="https://discord.gg/GBMChN9PAj">Get free help on Discord</a></p>'''
     directory = ROOT / 'tags' / slug
     directory.mkdir(exist_ok=True)
@@ -187,3 +199,17 @@ lines += [f"- [{html.unescape(t)}]({ORIGIN}{u}): {html.unescape(d)}" for u, t, d
 lines += ["", "## Discord tags and questionnaires"]
 lines += [f"- [{e['title']}]({ORIGIN}/tags/{e['slug']}/): {e['description']}" for e in ENTRIES]
 (ROOT/'llms.txt').write_text("\n".join(lines)+"\n")
+
+# cross-link guides -> tags (idempotent)
+titles = {e['slug']: e['title'] for e in ENTRIES}
+for g, ts in LINKS.items():
+    f = ROOT/'guides'/g/'index.html'
+    page = f.read_text()
+    if 'Related tags:' in page:
+        page = re.sub(r'<p data-rel="tags".*?</p>', '', page, flags=re.S)
+    marker = '<p style="margin:40px 0 0;font-size:var(--b);color:var(--tx2)">More guides:'
+    if marker not in page:
+        continue
+    links = ' · '.join(f'<a class="lnk" href="/tags/{t}/" style="color:var(--lk)">{escape(titles[t])}</a>' for t in ts)
+    page = page.replace(marker, f'<p data-rel="tags" style="margin:32px 0 0;font-size:var(--b);color:var(--tx2)">Related tags: {links}</p>'+marker, 1)
+    f.write_text(page)
