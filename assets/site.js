@@ -29,6 +29,7 @@
     var next = effective(r) ? 'light' : 'dark';
     function apply() {
       r.setAttribute('data-th', next);
+      document.documentElement.style.colorScheme = next; document.documentElement.style.background = next === 'dark' ? '#000' : '#f5f5f7';
       sync();
       try { localStorage.setItem('relics-th', next); } catch (x) {}
     }
