@@ -28,3 +28,11 @@ Static site for [relicstech.site](https://relicstech.site), served by GitHub Pag
 Only `/dashboard/` is guarded (any signed-in staff session). The handbooks are public. To require a role, add `data-requires="moderator"` to the page's `<html>` tag.
 
 **Important:** hiding a page in the browser is not access control. Static files on GitHub Pages are public. Real protection for the dashboard needs the backend (or a proxy) to serve it only to authenticated staff.
+
+## Tags and questionnaires
+
+`/tags/` is a public, searchable library with six categories, 26 static tag pages and all 12 current bot questionnaires. The 18 imported Discord tags and overlapping bot questionnaires share a page with separate versions and copy buttons. The site menu and home/guide links expose the library without JavaScript. Each page includes visible content, a unique title, description, canonical URL, Open Graph metadata, breadcrumbs and Article structured data; the library uses CollectionPage/ItemList. All pages are in the sitemap.
+
+Edit reviewed public text in `tags/data.json`, then run `python3 scripts/build-tags.py` (Python standard library, no installation or runtime build). The generator escapes content and permits HTTPS links; it never interprets content as instructions or HTML. `assets/tags.js` provides full-text search, category filtering, shareable filters, per-version full Discord Markdown copy and copy all filtered results. Reference image URLs are included in copied text. Raw Markdown remains available for manual selection, with a clipboard fallback. Long copies may exceed Discord message limits and should be split or sent as a text file. Bot questionnaire buttons remain available through `/getstarted`.
+
+Uploaded hand-measurement and keyboard references are stored locally in `assets/tags/`; the expired photo-guide attachment is described in text rather than embedding a broken image. Public text uses readable Discord channel links. BIOS guidance follows the manufacturer and Microsoft BitLocker guidance; destructive DiskPart steps include a backup/target check and corrected partition syntax.

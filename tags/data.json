@@ -1,0 +1,389 @@
+[
+  {
+    "name": "bhq",
+    "slug": "pc-build-questionnaire",
+    "title": "PC Build Questionnaire",
+    "description": "Plan a new PC build: share your budget, country, purchase date, games, resolution and component preferences with Relics on Discord.",
+    "category": "PC building",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# PC Build Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n**Important:** If you don't plan on purchasing your components within the next 7 days, please wait until you're closer to your intended purchase date before submitting your request. This helps us provide recommendations based on current pricing, availability and hardware options.\n*(Reason is [here](https://discord.com/channels/1354544808273772626/1566961999315861535))*\n\n**1.** When are you planning to purchase your PC parts? (If it is more than 7 days please come back later)\n\n**2.** What's your total budget, and which country are you purchasing from? *(Please use your local currency.)*\n\n**3.** If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?\n\n**4.** What will you primarily use the PC for, and at which resolution? *(Please mention the games you play or professional applications you work with.)*\n\n**5.** Do you have any particular preferences regarding the build's appearance or design? *(For example: AIO cooling, case size, overall style, preferred colors, etc.)*\n\n**6.** Should peripherals be included in your budget? *(Monitor, keyboard, mouse, headset, etc.)*\n\n**7.** Which connectivity options are required? *(Ethernet, Wi-Fi, Bluetooth, etc.)*\n\n**8.** Are there any other requirements or details we should consider? *(Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)*",
+        "copy": "# PC Build Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n**Important:** If you don't plan on purchasing your components within the next 7 days, please wait until you're closer to your intended purchase date before submitting your request. This helps us provide recommendations based on current pricing, availability and hardware options.\n*(Reason is [here](https://discord.com/channels/1354544808273772626/1566961999315861535))*\n\n**1.** When are you planning to purchase your PC parts? (If it is more than 7 days please come back later)\n\n**2.** What's your total budget, and which country are you purchasing from? *(Please use your local currency.)*\n\n**3.** If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?\n\n**4.** What will you primarily use the PC for, and at which resolution? *(Please mention the games you play or professional applications you work with.)*\n\n**5.** Do you have any particular preferences regarding the build's appearance or design? *(For example: AIO cooling, case size, overall style, preferred colors, etc.)*\n\n**6.** Should peripherals be included in your budget? *(Monitor, keyboard, mouse, headset, etc.)*\n\n**7.** Which connectivity options are required? *(Ethernet, Wi-Fi, Bluetooth, etc.)*\n\n**8.** Are there any other requirements or details we should consider? *(Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)*"
+      },
+      {
+        "label": "Discord tag",
+        "content": "# PC Build Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n***(ONLY FILL OUT THIS FORM IF YOU PLAN TO PURCHASE WITHIN THE NEXT 7 DAYS. IF NOT, PLEASE COME BACK CLOSER TO YOUR PURCHASE DATE. DETAILED REASONING [here](https://discord.com/channels/1354544808273772626/1566961999315861535))***\n\n1. **When are you planning to purchase your PC parts?**\n\n2. **What's your total budget, and which country are you purchasing from?** (Please use your local currency.)\n\n3. **If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?**\n\n4. **What will you primarily use the PC for, and at which resolution?** (Please mention the games you play or professional applications you work with.)\n\n5. **Do you have any particular preferences regarding the build's appearance or design?** (For example: AIO cooling, case size, overall style, preferred colors, etc.)\n\n6. **Should peripherals be included in your budget?** (Monitor, keyboard, mouse, headset, etc.)\n\n7. **Which connectivity options are required?** (Ethernet, Wi-Fi, Bluetooth, etc.)\n\n8. **Are there any other requirements or details we should consider?** (Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)",
+        "copy": "# PC Build Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n***(ONLY FILL OUT THIS FORM IF YOU PLAN TO PURCHASE WITHIN THE NEXT 7 DAYS. IF NOT, PLEASE COME BACK CLOSER TO YOUR PURCHASE DATE. DETAILED REASONING [here](https://discord.com/channels/1354544808273772626/1566961999315861535))***\n\n1. **When are you planning to purchase your PC parts?**\n\n2. **What's your total budget, and which country are you purchasing from?** (Please use your local currency.)\n\n3. **If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?**\n\n4. **What will you primarily use the PC for, and at which resolution?** (Please mention the games you play or professional applications you work with.)\n\n5. **Do you have any particular preferences regarding the build's appearance or design?** (For example: AIO cooling, case size, overall style, preferred colors, etc.)\n\n6. **Should peripherals be included in your budget?** (Monitor, keyboard, mouse, headset, etc.)\n\n7. **Which connectivity options are required?** (Ethernet, Wi-Fi, Bluetooth, etc.)\n\n8. **Are there any other requirements or details we should consider?** (Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)"
+      }
+    ]
+  },
+  {
+    "name": "uhq",
+    "slug": "pc-upgrade-questionnaire",
+    "title": "PC Upgrade Questionnaire",
+    "description": "Get useful PC upgrade advice by sharing your current parts, budget, purchase date, performance goals and connectivity needs.",
+    "category": "PC building",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# PC Upgrade Questionnaire\n\n*(Please answer all questions in a **single message**, use Shift + Enter for your answers)*\n\n__**If you are not buying within 1 week of the current date, please answer at a later date. [Here's why](https://discord.com/channels/1354544808273772626/1566961999315861535)**__\n\n**1.** When do you intend to buy the parts? (If it is more than 7 days please come back later)\n— Make a calculated guess.\n\n**2.** What is your country and budget for the upgrade?\n— Include your local currency.\n\n**3.** Which parts do you want to upgrade?\n— CPU, GPU, RAM, Peripherals, etc.\n\n**4.** What are your aims for the upgrade?\n— Better performance in a specific task or type of games, etc.\n\n**5.** What are your preferences?\n— This includes size, color, AIO, fishtank style, etc.\n\n**6.** What parts are in your current build?\n— Make a [PC Part Picker](https://pcpartpicker.com/list) list.\n\n**7.** Which one of these do you use?\n— Ethernet (internet cable), Wi-Fi, or Bluetooth.",
+        "copy": "# PC Upgrade Questionnaire\n\n*(Please answer all questions in a **single message**, use Shift + Enter for your answers)*\n\n__**If you are not buying within 1 week of the current date, please answer at a later date. [Here's why](https://discord.com/channels/1354544808273772626/1566961999315861535)**__\n\n**1.** When do you intend to buy the parts? (If it is more than 7 days please come back later)\n— Make a calculated guess.\n\n**2.** What is your country and budget for the upgrade?\n— Include your local currency.\n\n**3.** Which parts do you want to upgrade?\n— CPU, GPU, RAM, Peripherals, etc.\n\n**4.** What are your aims for the upgrade?\n— Better performance in a specific task or type of games, etc.\n\n**5.** What are your preferences?\n— This includes size, color, AIO, fishtank style, etc.\n\n**6.** What parts are in your current build?\n— Make a [PC Part Picker](https://pcpartpicker.com/list) list.\n\n**7.** Which one of these do you use?\n— Ethernet (internet cable), Wi-Fi, or Bluetooth."
+      },
+      {
+        "label": "Discord tag",
+        "content": "## Upgrade Help Questions\n(*Please answer all questions in a **single message**, use [shift + enter] for your answers*)\n\n**(__IF YOU ARE NOT BUYING WITHIN 1 WEEK OF THE CURRENT DATE, PLEASE ANSWER AT A LATER DATE, [HERE'S WHY](https://discord.com/channels/1354544808273772626/1566961999315861535)__)**\n\n1. **When do you intend to buy the Parts?**\n   - Make a calculated guess.\n2. **What is your country and budget for the upgrade?**\n   - Include your local currency.\n3. **Which parts do you want to upgrade?**\n   -  CPU, GPU, RAM, Peripherals etc.\n4. **What are your aims for the upgrade?**\n   -  Better performance in a specific task or type games etc.\n5. **What are your preferences?**\n   - This includes size, color, AIO, fishtank style etc.\n6. **What parts are in your current build?**\n   - Make a [PC Part Picker](<https://pcpartpicker.com/list>) list.\n7. **Which one of these do you use?**\n   - Ethernet (internet cable), Wi-Fi, Bluetooth.",
+        "copy": "## Upgrade Help Questions\n(*Please answer all questions in a **single message**, use [shift + enter] for your answers*)\n\n**(__IF YOU ARE NOT BUYING WITHIN 1 WEEK OF THE CURRENT DATE, PLEASE ANSWER AT A LATER DATE, [HERE'S WHY](https://discord.com/channels/1354544808273772626/1566961999315861535)__)**\n\n1. **When do you intend to buy the Parts?**\n   - Make a calculated guess.\n2. **What is your country and budget for the upgrade?**\n   - Include your local currency.\n3. **Which parts do you want to upgrade?**\n   -  CPU, GPU, RAM, Peripherals etc.\n4. **What are your aims for the upgrade?**\n   -  Better performance in a specific task or type games etc.\n5. **What are your preferences?**\n   - This includes size, color, AIO, fishtank style etc.\n6. **What parts are in your current build?**\n   - Make a [PC Part Picker](<https://pcpartpicker.com/list>) list.\n7. **Which one of these do you use?**\n   - Ethernet (internet cable), Wi-Fi, Bluetooth."
+      }
+    ]
+  },
+  {
+    "name": "lhq",
+    "slug": "laptop-questionnaire",
+    "title": "Laptop Recommendation Questionnaire",
+    "description": "Find a suitable laptop: share your budget, workloads, portability needs, screen preferences and battery priorities on Discord.",
+    "category": "PC building",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Laptop Recommendation Questionnaire\n\n*(Please answer all questions in one message. Use Shift + Enter to create new lines.)*\n\n**Please only submit a request if you're planning to purchase within the next 7 days. Otherwise, come back closer to your planned purchase date. [More info here](https://discord.com/channels/1354544808273772626/1566961999315861535)**\n\n**0.** Where are you roughly from?\n\n**1.** When are you planning to purchase your laptop?\n\n**2.** What's your maximum budget, and which country are you buying from? *(Please specify your currency.)*\n\n**3.** What software, workloads, or games do you intend to use?\n\n**4.** Do you have any preferences regarding screen size, weight, design, or portability?\n\n**5.** How long should the battery last during typical use?\n\n**6.** Are there any additional requirements or limitations? *(e.g. noise levels, durability, specific ports)*\n\n**⭐ Feature Priorities**\n*Rate each category from **1 (low priority)** to **4 (very important)**:*\n— Performance\n— Build Quality\n— Display Quality\n— Battery Life\n— Connectivity & Ports",
+        "copy": "# Laptop Recommendation Questionnaire\n\n*(Please answer all questions in one message. Use Shift + Enter to create new lines.)*\n\n**Please only submit a request if you're planning to purchase within the next 7 days. Otherwise, come back closer to your planned purchase date. [More info here](https://discord.com/channels/1354544808273772626/1566961999315861535)**\n\n**0.** Where are you roughly from?\n\n**1.** When are you planning to purchase your laptop?\n\n**2.** What's your maximum budget, and which country are you buying from? *(Please specify your currency.)*\n\n**3.** What software, workloads, or games do you intend to use?\n\n**4.** Do you have any preferences regarding screen size, weight, design, or portability?\n\n**5.** How long should the battery last during typical use?\n\n**6.** Are there any additional requirements or limitations? *(e.g. noise levels, durability, specific ports)*\n\n**⭐ Feature Priorities**\n*Rate each category from **1 (low priority)** to **4 (very important)**:*\n— Performance\n— Build Quality\n— Display Quality\n— Battery Life\n— Connectivity & Ports"
+      },
+      {
+        "label": "Discord tag",
+        "content": "## 💻 Laptop Recommendation Form\n\n*(Please answer all questions in one message. Use Shift + Enter to create new lines.)*\n\n**Please only submit a request if you're planning to purchase within the next 7 days. Otherwise, come back closer to your planned purchase date. [More Info here](https://discord.com/channels/1354544808273772626/1566961999315861535)**\n\n**0.** Where are you roughly from?\n\n**1.** When are you planning to purchase your laptop?\n\n**2.** What's your maximum budget, and which country are you buying from? (Please specify your currency.)\n\n**3.** What software, workloads, or games do you intend to use?\n\n**4.** Do you have any preferences regarding screen size, weight, design, or portability?\n\n**5.** How long should the battery last during typical use?\n\n**6.** Are there any additional requirements or limitations? (e.g. noise levels, durability, specific ports)\n\n### ⭐ Feature Priorities\n\n*Rate each category from **1 (low priority) to 4 (very important).***\n\n- Performance\n- Build Quality\n- Display Quality\n- Battery Life\n- Connectivity & Ports",
+        "copy": "## 💻 Laptop Recommendation Form\n\n*(Please answer all questions in one message. Use Shift + Enter to create new lines.)*\n\n**Please only submit a request if you're planning to purchase within the next 7 days. Otherwise, come back closer to your planned purchase date. [More Info here](https://discord.com/channels/1354544808273772626/1566961999315861535)**\n\n**0.** Where are you roughly from?\n\n**1.** When are you planning to purchase your laptop?\n\n**2.** What's your maximum budget, and which country are you buying from? (Please specify your currency.)\n\n**3.** What software, workloads, or games do you intend to use?\n\n**4.** Do you have any preferences regarding screen size, weight, design, or portability?\n\n**5.** How long should the battery last during typical use?\n\n**6.** Are there any additional requirements or limitations? (e.g. noise levels, durability, specific ports)\n\n### ⭐ Feature Priorities\n\n*Rate each category from **1 (low priority) to 4 (very important).***\n\n- Performance\n- Build Quality\n- Display Quality\n- Battery Life\n- Connectivity & Ports"
+      }
+    ]
+  },
+  {
+    "name": "photoguide",
+    "slug": "pc-photo-guide",
+    "title": "PC Troubleshooting Photo Guide",
+    "description": "Help Discord specialists troubleshoot your PC with clear photos of the motherboard, power connections, graphics card and cables.",
+    "category": "Hardware",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# Provide the Following Pictures\nMake sure pictures are **NOT BLURRY** and at the **CORRECT ANGLE**.\n\nIf you have a modular PSU, also photograph the cables plugged into it.\n\nPhotograph the full interior, motherboard model, RAM, graphics card, motherboard power connectors and the rear cable connections. Keep the PC off and unplugged while inspecting internal cables. Never open the PSU enclosure. Avoid showing serial numbers or personal information.\n\nThe original example image is currently unavailable; ask your Discord specialist if you need help choosing the angles.",
+        "copy": "# Provide the Following Pictures\nMake sure pictures are **NOT BLURRY** and at the **CORRECT ANGLE**.\n\nIf you have a modular PSU, also photograph the cables plugged into it.\n\nPhotograph the full interior, motherboard model, RAM, graphics card, motherboard power connectors and the rear cable connections. Keep the PC off and unplugged while inspecting internal cables. Never open the PSU enclosure. Avoid showing serial numbers or personal information.\n\nThe original example image is currently unavailable; ask your Discord specialist if you need help choosing the angles."
+      }
+    ]
+  },
+  {
+    "name": "occt",
+    "slug": "occt-stability-testing",
+    "title": "Getting Started with OCCT",
+    "description": "Download and open OCCT from its official website to prepare for hardware stability testing with help from Relics specialists.",
+    "category": "Hardware",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "### Getting Started with OCCT\n\nOCCT provides a range of tools for testing system stability and identifying potential hardware problems.\n\n**Download & Launch**\n\n1. Visit the [official OCCT download page](https://www.ocbase.com/download/edition:Personal) and download the latest available version.\n2. Once the download is complete, locate the downloaded file on your system.\n3. Open `OCCT.exe` to start the program.",
+        "copy": "### Getting Started with OCCT\n\nOCCT provides a range of tools for testing system stability and identifying potential hardware problems.\n\n**Download & Launch**\n\n1. Visit the [official OCCT download page](https://www.ocbase.com/download/edition:Personal) and download the latest available version.\n2. Once the download is complete, locate the downloaded file on your system.\n3. Open `OCCT.exe` to start the program."
+      }
+    ]
+  },
+  {
+    "name": "biosupdate",
+    "slug": "bios-update",
+    "title": "How to Update Your BIOS",
+    "description": "Prepare for a motherboard BIOS update: identify the exact model, save your BitLocker recovery key and follow manufacturer instructions.",
+    "category": "Hardware",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# How to Update Your BIOS\n1. Identify your exact motherboard model and hardware revision, or your exact prebuilt/laptop model. Use the manufacturer’s support page and manual for that model.\n2. Back up important files and save your BitLocker recovery key somewhere you can access without this PC. If BitLocker is enabled, follow the manufacturer’s instructions to suspend protection before the update and resume it afterwards.\n3. Read the BIOS release notes and update instructions, including any required intermediate version. Download the correct firmware directly from the manufacturer.\n4. Prepare and extract the update exactly as instructed. The USB format, file name and update method vary by model.\n5. Enter the firmware update utility (often Q-Flash, EZ Flash, M-Flash or Instant Flash) and select the correct file. Use stable power and do not interrupt the update.\n6. After completion, review BIOS settings and boot order, then confirm that BitLocker protection has resumed.\n\n**Do not turn off the PC while the firmware update is running.**\n\n[Microsoft: suspend BitLocker for firmware updates](https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-Microsoft-updates)",
+        "copy": "# How to Update Your BIOS\n1. Identify your exact motherboard model and hardware revision, or your exact prebuilt/laptop model. Use the manufacturer’s support page and manual for that model.\n2. Back up important files and save your BitLocker recovery key somewhere you can access without this PC. If BitLocker is enabled, follow the manufacturer’s instructions to suspend protection before the update and resume it afterwards.\n3. Read the BIOS release notes and update instructions, including any required intermediate version. Download the correct firmware directly from the manufacturer.\n4. Prepare and extract the update exactly as instructed. The USB format, file name and update method vary by model.\n5. Enter the firmware update utility (often Q-Flash, EZ Flash, M-Flash or Instant Flash) and select the correct file. Use stable power and do not interrupt the update.\n6. After completion, review BIOS settings and boot order, then confirm that BitLocker protection has resumed.\n\n**Do not turn off the PC while the firmware update is running.**\n\n[Microsoft: suspend BitLocker for firmware updates](https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-Microsoft-updates)"
+      }
+    ]
+  },
+  {
+    "name": "cmos",
+    "slug": "reset-cmos",
+    "title": "How to Reset CMOS",
+    "description": "Reset motherboard BIOS settings using the procedure in your motherboard manual, with power disconnected and settings recorded first.",
+    "category": "Hardware",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# How to Reset CMOS\nResetting CMOS restores BIOS settings. Record important settings first and have your BitLocker recovery key available.\n\n1. Check your motherboard or device manual for the correct CMOS reset procedure. Methods and waiting times differ by model.\n2. Shut down, switch off the power supply and unplug the power cable. Never open the power supply itself.\n3. Follow the manual’s instructions for the Clear CMOS button, designated pins or removable coin-cell battery. Do not short unidentified pins or force a battery connector.\n4. If the manual calls for battery removal, note its orientation and reinstall it as instructed.\n5. Reconnect power and start the PC. Enter BIOS to review the clock, boot order and other settings.\n\nFor a laptop or a device with an internal battery, ask a specialist before opening it.",
+        "copy": "# How to Reset CMOS\nResetting CMOS restores BIOS settings. Record important settings first and have your BitLocker recovery key available.\n\n1. Check your motherboard or device manual for the correct CMOS reset procedure. Methods and waiting times differ by model.\n2. Shut down, switch off the power supply and unplug the power cable. Never open the power supply itself.\n3. Follow the manual’s instructions for the Clear CMOS button, designated pins or removable coin-cell battery. Do not short unidentified pins or force a battery connector.\n4. If the manual calls for battery removal, note its orientation and reinstall it as instructed.\n5. Reconnect power and start the PC. Enter BIOS to review the clock, boot order and other settings.\n\nFor a laptop or a device with an internal battery, ask a specialist before opening it."
+      }
+    ]
+  },
+  {
+    "name": "cfeatures",
+    "slug": "controller-features",
+    "title": "Controller Features Explained",
+    "description": "Understand hair triggers, remappable buttons, modular parts, gyro aiming and rumble before choosing a controller for your setup.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "## Controller Features\n1. **Hair trigger**: shorter travel for faster firing, useful in shooters.\n2. **Macro / turbo functions**: automate repeated button presses or combos.\n3. **Remappable buttons**: customize which buttons do what.\n4. **Adjustable stick tension**: change joystick resistance for precision or speed.\n5. **modularity**: the ability to change the layout of a controller (Xbox (asymmetric)/PS (symm)/Custom). Or swap specific parts only, i.e joysticks.\n6. **Swappable face buttons**: change button style or layout (Xbox/Switch).\n7. **Gyro controls**: motion-based aiming or movement.\n8. **Rumble motors**: mechanical components that create physical vibrations to improve immersion.",
+        "copy": "## Controller Features\n1. **Hair trigger**: shorter travel for faster firing, useful in shooters.\n2. **Macro / turbo functions**: automate repeated button presses or combos.\n3. **Remappable buttons**: customize which buttons do what.\n4. **Adjustable stick tension**: change joystick resistance for precision or speed.\n5. **modularity**: the ability to change the layout of a controller (Xbox (asymmetric)/PS (symm)/Custom). Or swap specific parts only, i.e joysticks.\n6. **Swappable face buttons**: change button style or layout (Xbox/Switch).\n7. **Gyro controls**: motion-based aiming or movement.\n8. **Rumble motors**: mechanical components that create physical vibrations to improve immersion."
+      }
+    ]
+  },
+  {
+    "name": "chq",
+    "slug": "controller-questionnaire",
+    "title": "Controller Recommendation Questionnaire",
+    "description": "Share your budget, platforms, favourite games, grip, hand measurements and feature preferences to get controller advice on Discord.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Controller Recommendation Questionnaire\n\nLooking for a new controller? Fill out the questionnaire below so we can help you find one that suits your needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**2. Platform Compatibility**\nWhich platforms will you use the controller on?\n-# E.g. PC, Xbox, PlayStation, Nintendo Switch or mobile.\n\n**3. Games & Usage**\nWhat types of games do you primarily play? Include a few game titles as examples.\n\n**4. Connectivity**\nDo you prefer a wired controller, a wireless controller or one that supports both?\n\n**5. Features & Functionality**\nWhich features are important to you?\n- Hair triggers / trigger stops\n- Macro or turbo functionality\n- Remappable buttons\n- Adjustable stick tension\n- Modular or replaceable components\n- Swappable face buttons (Xbox/Switch layout)\n- Gyroscopic controls\n- Vibration / rumble\n\n-# Use [Controller Features](https://relicstech.site/tags/controller-features/) for a brief explanation of each feature.\n\n**6. Hand Measurements**\nWhat are your hand's length and width? Follow the measurement guide attached below.\n-# You may skip this question if you cannot measure your hands.\n\n**7. Previous Controller Experience**\nWhich controllers have you used before? What did you like or dislike about their comfort, ergonomics and functionality?\n\n**8. Stick Layout**\nWhich analogue stick configuration do you prefer?\n- Asymmetric (Xbox style)\n- Symmetric (PlayStation style)\n- Custom / No preference\n\n**9. Shape & Ergonomics**\nWhich controller shape feels most comfortable to you?\n- Xbox\n- Nintendo Switch Pro\n- DualShock 1–4\n- DualSense\n- Other / No preference\n\n**10. Additional Requirements**\nIs there anything else you're looking for in your next controller?\n-# E.g. Hall Effect or TMR sticks, polling rate, battery life, weight or build quality.\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "image": "/assets/tags/b484ffc7e84d33089af677bccdd999aa1bdfea39221e605bac0a541876a55de5.png",
+        "copy": "# Controller Recommendation Questionnaire\n\nLooking for a new controller? Fill out the questionnaire below so we can help you find one that suits your needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**2. Platform Compatibility**\nWhich platforms will you use the controller on?\n-# E.g. PC, Xbox, PlayStation, Nintendo Switch or mobile.\n\n**3. Games & Usage**\nWhat types of games do you primarily play? Include a few game titles as examples.\n\n**4. Connectivity**\nDo you prefer a wired controller, a wireless controller or one that supports both?\n\n**5. Features & Functionality**\nWhich features are important to you?\n- Hair triggers / trigger stops\n- Macro or turbo functionality\n- Remappable buttons\n- Adjustable stick tension\n- Modular or replaceable components\n- Swappable face buttons (Xbox/Switch layout)\n- Gyroscopic controls\n- Vibration / rumble\n\n-# Use [Controller Features](https://relicstech.site/tags/controller-features/) for a brief explanation of each feature.\n\n**6. Hand Measurements**\nWhat are your hand's length and width? Follow the measurement guide attached below.\n-# You may skip this question if you cannot measure your hands.\n\n**7. Previous Controller Experience**\nWhich controllers have you used before? What did you like or dislike about their comfort, ergonomics and functionality?\n\n**8. Stick Layout**\nWhich analogue stick configuration do you prefer?\n- Asymmetric (Xbox style)\n- Symmetric (PlayStation style)\n- Custom / No preference\n\n**9. Shape & Ergonomics**\nWhich controller shape feels most comfortable to you?\n- Xbox\n- Nintendo Switch Pro\n- DualShock 1–4\n- DualSense\n- Other / No preference\n\n**10. Additional Requirements**\nIs there anything else you're looking for in your next controller?\n-# E.g. Hall Effect or TMR sticks, polling rate, battery life, weight or build quality.\n\n-# The more information you provide, the more accurate our recommendations will be.\n\nhttps://relicstech.site/assets/tags/b484ffc7e84d33089af677bccdd999aa1bdfea39221e605bac0a541876a55de5.png"
+      },
+      {
+        "label": "Discord tag",
+        "content": "## Controller Preference Questionnaire\n*(Please answer all questions in a single post, use [shift + enter] for your answers)*\n1. What is your **budget** for the controller?\n2. Which **platform** will you use this controller on? (PC, Xbox, PlayStation, Switch, etc.)\n3. What type of **games** do you usually play? (mention some titles as examples.)\n4. Which **connection type** do you want? (Wired, wireless, or both)\n5. What **features** do you desire? (Use [Controller Features](https://relicstech.site/tags/controller-features/) for a brief explanation of each feature)\n     * **1)** Hair trigger; **2)** Macro / turbo functions; **3)** Remappable buttons; **4)** Adjustable stick tension; **5)** Modularity; **6)**  Swappable face buttons (Xbox/Switch styles) **7)** Gyro controls; **8)** Rumble motors;\n6. What is your **hand size** *(skip if you can't measure)*\n     * (Measure as shown in the picture below)\n7. Have you **owned** or **used** any controllers before? What are they? Do you find them comfortable? Any dislikes?\n8. **Stick Layout Preference**\n     * Asymmetric (Xbox style); Symmetric (PlayStation style); Custom\n9. **Grip / Hand Feel Preference**\n   * Xbox **|** Nintendo Switch **|** DualShock 1–4 / DualSense **|** Other / No preference",
+        "copy": "## Controller Preference Questionnaire\n*(Please answer all questions in a single post, use [shift + enter] for your answers)*\n1. What is your **budget** for the controller?\n2. Which **platform** will you use this controller on? (PC, Xbox, PlayStation, Switch, etc.)\n3. What type of **games** do you usually play? (mention some titles as examples.)\n4. Which **connection type** do you want? (Wired, wireless, or both)\n5. What **features** do you desire? (Use [Controller Features](https://relicstech.site/tags/controller-features/) for a brief explanation of each feature)\n     * **1)** Hair trigger; **2)** Macro / turbo functions; **3)** Remappable buttons; **4)** Adjustable stick tension; **5)** Modularity; **6)**  Swappable face buttons (Xbox/Switch styles) **7)** Gyro controls; **8)** Rumble motors;\n6. What is your **hand size** *(skip if you can't measure)*\n     * (Measure as shown in the picture below)\n7. Have you **owned** or **used** any controllers before? What are they? Do you find them comfortable? Any dislikes?\n8. **Stick Layout Preference**\n     * Asymmetric (Xbox style); Symmetric (PlayStation style); Custom\n9. **Grip / Hand Feel Preference**\n   * Xbox **|** Nintendo Switch **|** DualShock 1–4 / DualSense **|** Other / No preference"
+      }
+    ]
+  },
+  {
+    "name": "endmessage",
+    "slug": "support-follow-up",
+    "title": "After Your Support Session",
+    "description": "Find the Relics specialist rating channel, staff applications, website and ways to share or support the Discord community.",
+    "category": "Community",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "### Thank You For Contacting Support!\n**⭐ Rate Your Specialist!**\nPlease rate your specialist!!! Go to <#1356781760532320387> to rate.\n\n**💼 We're Hiring!**\nCheck out our staff application in https://discord.com/channels/1354544808273772626/1354547780219179183.\n\n**🌐 View our website!**\nhttps://relicstech.site/\n\nIf you enjoyed our services, share this server with friends to help us grow!\n\n**🚀 Support Us With a Boost!**\nIf you think our services were worth a boost, please consider boosting the server to help us grow!",
+        "copy": "### Thank You For Contacting Support!\n**⭐ Rate Your Specialist!**\nPlease rate your specialist!!! Go to <#1356781760532320387> to rate.\n\n**💼 We're Hiring!**\nCheck out our staff application in https://discord.com/channels/1354544808273772626/1354547780219179183.\n\n**🌐 View our website!**\nhttps://relicstech.site/\n\nIf you enjoyed our services, share this server with friends to help us grow!\n\n**🚀 Support Us With a Boost!**\nIf you think our services were worth a boost, please consider boosting the server to help us grow!"
+      }
+    ]
+  },
+  {
+    "name": "support",
+    "slug": "get-pc-support",
+    "title": "How to Get PC Help on Discord",
+    "description": "Find the right Relics Discord help channel for PC troubleshooting, choosing components or planning a build, then start your request.",
+    "category": "Community",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# Need Help with Your PC?\nOpen the appropriate Relics Discord help channel:\n\n- **PC building and upgrades:** <#1566825645810655393>\n- **Technical troubleshooting:** <#1574605845508005989>\n- **Peripherals:** <#1574792975895232563>\n\nRun `/getstarted` in that channel, choose the relevant questionnaire and answer all questions in a single message. A specialist will help when available.",
+        "copy": "# Need Help with Your PC?\nOpen the appropriate Relics Discord help channel:\n\n- **PC building and upgrades:** <#1566825645810655393>\n- **Technical troubleshooting:** <#1574605845508005989>\n- **Peripherals:** <#1574792975895232563>\n\nRun `/getstarted` in that channel, choose the relevant questionnaire and answer all questions in a single message. A specialist will help when available."
+      }
+    ]
+  },
+  {
+    "name": "specify",
+    "slug": "spec-ify-system-report",
+    "title": "Share a Spec-ify System Report",
+    "description": "Prepare a hardware and software report for PC troubleshooting, review privacy settings and share the report with your Discord specialist.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# Spec-ify\nSpec-ify generates a detailed overview of your PC's hardware and software. This information can be very useful when we're trying to identify and troubleshoot issues with your system.\n\nStep 1 - Download Spec-ify\nDownload Spec-ify from the official website: https://spec-ify.com/\n\nStep 2 - Open Spec-ify\nRun Specify.exe after downloading it. Only run the download if you trust its source and have verified that it came from the official website. Ask a specialist if a security warning appears.\nIf you'd like to keep certain information private, open Settings and disable the collection of details such as your Windows username, serial numbers, and network information.\n\nStep 3 - Run the scan\nClick Start and allow Spec-ify to scan your system. Wait until the process has finished.\n\nStep 4 - Share your results\nAfter the scan, Spec-ify will open a webpage containing your system report and automatically copy the URL.\nReturn to Discord and send the link here.\n\nReview the report before sharing. Do not post passwords, recovery keys or other private information.",
+        "copy": "# Spec-ify\nSpec-ify generates a detailed overview of your PC's hardware and software. This information can be very useful when we're trying to identify and troubleshoot issues with your system.\n\nStep 1 - Download Spec-ify\nDownload Spec-ify from the official website: https://spec-ify.com/\n\nStep 2 - Open Spec-ify\nRun Specify.exe after downloading it. Only run the download if you trust its source and have verified that it came from the official website. Ask a specialist if a security warning appears.\nIf you'd like to keep certain information private, open Settings and disable the collection of details such as your Windows username, serial numbers, and network information.\n\nStep 3 - Run the scan\nClick Start and allow Spec-ify to scan your system. Wait until the process has finished.\n\nStep 4 - Share your results\nAfter the scan, Spec-ify will open a webpage containing your system report and automatically copy the URL.\nReturn to Discord and send the link here.\n\nReview the report before sharing. Do not post passwords, recovery keys or other private information."
+      }
+    ]
+  },
+  {
+    "name": "usb",
+    "slug": "install-windows-usb",
+    "title": "Install Windows from USB",
+    "description": "Find the Windows installation guide and prepare a USB installer before reinstalling Windows, with a backup of files you want to keep.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "**Back up the files you want to keep. Creating an installer erases the USB drive; reinstalling can erase files on the target disk.**\n\n# How to re/install Windows\nNote: You will need an USB-Drive with at least 8 GB of Storage\n\n[Written Guide](<https://rtech.support/installations/install-11>)\n[Video Guide](<https://www.youtube.com/watch?v=TiqcfvO_8Tc&pp=ygUJcGNoZWxwaHVi>)",
+        "copy": "**Back up the files you want to keep. Creating an installer erases the USB drive; reinstalling can erase files on the target disk.**\n\n# How to re/install Windows\nNote: You will need an USB-Drive with at least 8 GB of Storage\n\n[Written Guide](<https://rtech.support/installations/install-11>)\n[Video Guide](<https://www.youtube.com/watch?v=TiqcfvO_8Tc&pp=ygUJcGNoZWxwaHVi>)"
+      }
+    ]
+  },
+  {
+    "name": "ddu",
+    "slug": "display-driver-uninstaller",
+    "title": "Display Driver Uninstaller (DDU)",
+    "description": "Find DDU, Safe Mode instructions and official NVIDIA, AMD and Intel driver downloads for a clean graphics driver reinstall.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# 🧹 Display Driver Uninstaller (DDU)\nNeed to fully remove GPU drivers before reinstalling? Here's how:\n🔗 Download DDU\n[Latest Version](<https://www.wagnardsoft.com/forums/viewforum.php?f=5>)\n🎥 YouTube Tutorial\n[Watch Guide](<https://www.youtube.com/results?search_query=how+to+use+DDU>)\n⚠️ Important\nRun DDU in Safe Mode for best results.\n[How to Start in Safe Mode](<https://support.microsoft.com/en-us/windows/start-your-pc-in-safe-mode-92c27cff-db89-8644-1475-dcefe25a4b72>)\n🧩 Download Latest GPU Drivers\n[NVIDIA](<https://www.nvidia.com/Download/index.aspx>)\n[AMD](<https://www.amd.com/en/support>)\n[Intel](<https://www.intel.com/content/www/us/en/support/detect.html>)\nAlways restart your PC after using DDU.",
+        "copy": "# 🧹 Display Driver Uninstaller (DDU)\nNeed to fully remove GPU drivers before reinstalling? Here's how:\n🔗 Download DDU\n[Latest Version](<https://www.wagnardsoft.com/forums/viewforum.php?f=5>)\n🎥 YouTube Tutorial\n[Watch Guide](<https://www.youtube.com/results?search_query=how+to+use+DDU>)\n⚠️ Important\nRun DDU in Safe Mode for best results.\n[How to Start in Safe Mode](<https://support.microsoft.com/en-us/windows/start-your-pc-in-safe-mode-92c27cff-db89-8644-1475-dcefe25a4b72>)\n🧩 Download Latest GPU Drivers\n[NVIDIA](<https://www.nvidia.com/Download/index.aspx>)\n[AMD](<https://www.amd.com/en/support>)\n[Intel](<https://www.intel.com/content/www/us/en/support/detect.html>)\nAlways restart your PC after using DDU."
+      }
+    ]
+  },
+  {
+    "name": "cleanw",
+    "slug": "diskpart-windows-installer",
+    "title": "Clean a Disk in Windows Setup",
+    "description": "Use DiskPart from Windows Setup only after backing up your files and verifying the target disk. Cleaning removes its partitions.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# Clean a Disk with DiskPart\n**Warning: `clean` removes all partitions from the selected disk, making its files inaccessible. Back up anything you need before proceeding. Do not use this to troubleshoot a disk that contains files you want to recover.**\n\nIn Windows Setup, press **Shift + F10** to open Command Prompt.\n\n1. Start DiskPart: `diskpart`\n2. List disks: `list disk`\n3. Select the intended disk: `select disk X` (replace X with its disk number).\n4. Verify the disk model, size and volumes: `detail disk`. Stop if you are unsure.\n5. Only when you have confirmed the correct disk and your backup: `clean`\n6. For a GPT setup, optionally run: `convert gpt`\n\nRun `exit`, close Command Prompt, then refresh the drive list in Windows Setup. Select the unallocated space on the intended disk and continue; Windows creates the required partitions.\n\n[Microsoft: DiskPart clean](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/clean)\n[Microsoft: create partition primary](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/create-partition-primary)",
+        "copy": "# Clean a Disk with DiskPart\n**Warning: `clean` removes all partitions from the selected disk, making its files inaccessible. Back up anything you need before proceeding. Do not use this to troubleshoot a disk that contains files you want to recover.**\n\nIn Windows Setup, press **Shift + F10** to open Command Prompt.\n\n1. Start DiskPart: `diskpart`\n2. List disks: `list disk`\n3. Select the intended disk: `select disk X` (replace X with its disk number).\n4. Verify the disk model, size and volumes: `detail disk`. Stop if you are unsure.\n5. Only when you have confirmed the correct disk and your backup: `clean`\n6. For a GPT setup, optionally run: `convert gpt`\n\nRun `exit`, close Command Prompt, then refresh the drive list in Windows Setup. Select the unallocated space on the intended disk and continue; Windows creates the required partitions.\n\n[Microsoft: DiskPart clean](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/clean)\n[Microsoft: create partition primary](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/create-partition-primary)"
+      }
+    ]
+  },
+  {
+    "name": "bcu",
+    "slug": "bulk-crap-uninstaller",
+    "title": "Bulk Crap Uninstaller (BCU)",
+    "description": "Find the official Bulk Crap Uninstaller download to remove multiple Windows applications and review leftover files before deletion.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# BCU (Bulk Crap Uninstaller)\nBulk Crap Uninstaller is an open-source program, bulk program uninstaller with advanced automation. It excels at removing large amounts of applications with minimal to no user input, while requiring next to no technical knowledge. It can detect most applications and games (even portable or not registered), clean up leftovers, force uninstall, automatically uninstall according to premade lists, and much more.\n\nLink for the download:\nhttps://www.bcuninstaller.com/",
+        "copy": "# BCU (Bulk Crap Uninstaller)\nBulk Crap Uninstaller is an open-source program, bulk program uninstaller with advanced automation. It excels at removing large amounts of applications with minimal to no user input, while requiring next to no technical knowledge. It can detect most applications and games (even portable or not registered), clean up leftovers, force uninstall, automatically uninstall according to premade lists, and much more.\n\nLink for the download:\nhttps://www.bcuninstaller.com/"
+      }
+    ]
+  },
+  {
+    "name": "usblog",
+    "slug": "usb-log-view",
+    "title": "Track USB Events with USBLogView",
+    "description": "Log USB device connections and disconnections in Windows to help troubleshoot intermittent USB hubs, peripherals and driver issues.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# USBLogView\n\nUSBLogView is a lightweight, portable freeware utility developed by NirSoft that runs in the background to track every USB plug and unplug event on Windows. This software is commonly used for troubleshooting if the User has problems with a USB HUB, a USB device or a related driver issue.\n\nDownload link:\nhttps://www.nirsoft.net/utils/usb_log_view.html",
+        "copy": "# USBLogView\n\nUSBLogView is a lightweight, portable freeware utility developed by NirSoft that runs in the background to track every USB plug and unplug event on Windows. This software is commonly used for troubleshooting if the User has problems with a USB HUB, a USB device or a related driver issue.\n\nDownload link:\nhttps://www.nirsoft.net/utils/usb_log_view.html"
+      }
+    ]
+  },
+  {
+    "name": "clean",
+    "slug": "diskpart-clean",
+    "title": "Clean a Disk with DiskPart",
+    "description": "Check and clean a selected disk with DiskPart, understand the data-loss consequences, and optionally prepare a new data partition.",
+    "category": "Windows & software",
+    "variants": [
+      {
+        "label": "Discord tag",
+        "content": "# Clean a Disk with DiskPart\n**Warning: `clean` removes all partitions from the selected disk, making its files inaccessible. Back up anything you need before proceeding. Do not use this to troubleshoot a disk that contains files you want to recover.**\n\nOpen Command Prompt or Terminal as administrator.\n\n1. Start DiskPart: `diskpart`\n2. List disks: `list disk`\n3. Select the intended disk: `select disk X` (replace X with its disk number).\n4. Verify the disk model, size and volumes: `detail disk`. Stop if you are unsure.\n5. Only when you have confirmed the correct disk and your backup: `clean`\n6. For a GPT setup, optionally run: `convert gpt`\n\nFor a new data partition only (not Windows system installation), optionally run:\n`create partition primary`\n`format quick fs=ntfs`\n`assign`\n`exit`\n\nThe `assign` command selects an available drive letter.\n\n[Microsoft: DiskPart clean](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/clean)\n[Microsoft: create partition primary](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/create-partition-primary)",
+        "copy": "# Clean a Disk with DiskPart\n**Warning: `clean` removes all partitions from the selected disk, making its files inaccessible. Back up anything you need before proceeding. Do not use this to troubleshoot a disk that contains files you want to recover.**\n\nOpen Command Prompt or Terminal as administrator.\n\n1. Start DiskPart: `diskpart`\n2. List disks: `list disk`\n3. Select the intended disk: `select disk X` (replace X with its disk number).\n4. Verify the disk model, size and volumes: `detail disk`. Stop if you are unsure.\n5. Only when you have confirmed the correct disk and your backup: `clean`\n6. For a GPT setup, optionally run: `convert gpt`\n\nFor a new data partition only (not Windows system installation), optionally run:\n`create partition primary`\n`format quick fs=ntfs`\n`assign`\n`exit`\n\nThe `assign` command selects an available drive letter.\n\n[Microsoft: DiskPart clean](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/clean)\n[Microsoft: create partition primary](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/create-partition-primary)"
+      }
+    ]
+  },
+  {
+    "name": "prebuilt",
+    "slug": "prebuilt-pc-questionnaire",
+    "title": "Prebuilt PC Questionnaire",
+    "description": "Compare prebuilt PCs with useful advice: share your budget, country, purchase date, games, resolution and design preferences.",
+    "category": "PC building",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Prebuilt PC Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n**Important:** If you don't plan on purchasing your components within the next 7 days, please wait until you're closer to your intended purchase date before submitting your request. This helps us provide recommendations based on current pricing, availability and hardware options.\n*(Reason is [here](https://discord.com/channels/1354544808273772626/1566961999315861535))*\n\n**1.** When are you planning to purchase your Prebuilt?\n\n**2.** What's your total budget, and which country are you purchasing from? *(Please use your local currency.)*\n\n**3.** If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?\n\n**4.** What will you primarily use the PC for, and at which resolution? *(Please mention the games you play or professional applications you work with.)*\n\n**5.** Do you have any particular preferences regarding the build's appearance or design? *(For example: AIO cooling, case size, overall style, preferred colors, etc.)*\n\n**6.** Should peripherals be included in your budget? *(Monitor, keyboard, mouse, headset, etc.)*\n\n**7.** Which connectivity options are required? *(Ethernet, Wi-Fi, Bluetooth, etc.)*\n\n**8.** Are there any other requirements or details we should consider? *(Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)*",
+        "copy": "# Prebuilt PC Questionnaire\n\nPlease provide answers to all questions in one message. Use **Shift + Enter** on PC or **Enter** on mobile to move to the next line.\n\n**Important:** If you don't plan on purchasing your components within the next 7 days, please wait until you're closer to your intended purchase date before submitting your request. This helps us provide recommendations based on current pricing, availability and hardware options.\n*(Reason is [here](https://discord.com/channels/1354544808273772626/1566961999315861535))*\n\n**1.** When are you planning to purchase your Prebuilt?\n\n**2.** What's your total budget, and which country are you purchasing from? *(Please use your local currency.)*\n\n**3.** If you're located in the US or Canada, do you have access to a nearby Micro Center or Canada Computers store?\n\n**4.** What will you primarily use the PC for, and at which resolution? *(Please mention the games you play or professional applications you work with.)*\n\n**5.** Do you have any particular preferences regarding the build's appearance or design? *(For example: AIO cooling, case size, overall style, preferred colors, etc.)*\n\n**6.** Should peripherals be included in your budget? *(Monitor, keyboard, mouse, headset, etc.)*\n\n**7.** Which connectivity options are required? *(Ethernet, Wi-Fi, Bluetooth, etc.)*\n\n**8.** Are there any other requirements or details we should consider? *(Storage capacity, overclocking, components you already own, willingness to buy used or refurbished hardware, etc.)*"
+      }
+    ]
+  },
+  {
+    "name": "tech-support",
+    "slug": "tech-support-questionnaire",
+    "title": "PC Troubleshooting Questionnaire",
+    "description": "Start a technical support request on Discord by describing your PC problem, what you have already tried and your operating system.",
+    "category": "Troubleshooting",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# PC Troubleshooting Questionnaire\n\n1. **What is the problem?** Describe the symptoms and when they started.\n2. **What have you tried so far?** Include the outcome of each troubleshooting step.\n3. **Which operating system do you use?** Include the version if you know it.",
+        "copy": "# PC Troubleshooting Questionnaire\n\n1. **What is the problem?** Describe the symptoms and when they started.\n2. **What have you tried so far?** Include the outcome of each troubleshooting step.\n3. **Which operating system do you use?** Include the version if you know it."
+      }
+    ]
+  },
+  {
+    "name": "mouse",
+    "slug": "mouse-questionnaire",
+    "title": "Mouse Recommendation Questionnaire",
+    "description": "Find a mouse that fits your hand: share your budget, grip style, hand measurements, previous mice and connection preferences.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Mouse Recommendation Questionnaire\n\nLooking for a new mouse? Please fill out the questionnaire below so we can recommend something that suits your needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Grip Style\nHow do you usually hold your mouse? (Palm, Claw, Fingertip or a hybrid grip)\nRefer to the pinned grip guide and mark the areas where your hand touches the mouse.\n\n3. Hand Measurements\nWhat are your hand's length and width? Follow the measurement guide attached below.\n\n4. Previous Mouse Experience\nWhich mouse are you currently using or have used in the past? What did you like or dislike about its shape, size and overall feel?\n\n5. Personal Preferences\nIs there anything specific you're looking for in your next mouse?\n-# E.g. weight, wired/wireless, shape, buttons, colour or intended use.\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "image": "/assets/tags/b484ffc7e84d33089af677bccdd999aa1bdfea39221e605bac0a541876a55de5.png",
+        "copy": "# Mouse Recommendation Questionnaire\n\nLooking for a new mouse? Please fill out the questionnaire below so we can recommend something that suits your needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Grip Style\nHow do you usually hold your mouse? (Palm, Claw, Fingertip or a hybrid grip)\nRefer to the pinned grip guide and mark the areas where your hand touches the mouse.\n\n3. Hand Measurements\nWhat are your hand's length and width? Follow the measurement guide attached below.\n\n4. Previous Mouse Experience\nWhich mouse are you currently using or have used in the past? What did you like or dislike about its shape, size and overall feel?\n\n5. Personal Preferences\nIs there anything specific you're looking for in your next mouse?\n-# E.g. weight, wired/wireless, shape, buttons, colour or intended use.\n\n-# The more information you provide, the more accurate our recommendations will be.\n\nhttps://relicstech.site/assets/tags/b484ffc7e84d33089af677bccdd999aa1bdfea39221e605bac0a541876a55de5.png"
+      }
+    ]
+  },
+  {
+    "name": "monitor",
+    "slug": "monitor-questionnaire",
+    "title": "Monitor Recommendation Questionnaire",
+    "description": "Choose a monitor by sharing your PC hardware, budget, resolution, refresh rate, panel preferences and how you plan to use it.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Monitor Recommendation Questionnaire\n\nLooking for a new monitor? Fill out the questionnaire below so we can help you find one that suits your setup and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. System Specifications**\nWhat are your current PC specifications?\n-# Include your CPU, GPU and RAM.\n\n**2. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**3. Intended Usage**\nWhat will you primarily use the monitor for? Include specific games or applications if applicable.\n-# E.g. competitive gaming, casual gaming, content creation, productivity or media consumption.\n\n**4. Resolution**\nWhich display resolution are you aiming for?\n-# E.g. 1080p, 1440p, 4K or Ultrawide.\n\n**5. Refresh Rate**\nWhat refresh rate are you looking for?\n-# E.g. 60Hz, 144Hz, 240Hz or 360Hz.\n\n**6. Size & Curvature**\nDo you have a preferred screen size, aspect ratio or curvature?\n-# E.g. 24\", 27\", 32\", flat or curved.\n\n**7. Panel Technology**\nDo you have a preference for a particular panel type?\n-# E.g. IPS, VA, TN, OLED or no preference.\n\n**8. Monitor Configuration**\nAre you purchasing a single monitor or multiple monitors? Will you be keeping any existing monitors?\n\n**9. Additional Requirements**\nAre there any specific features or requirements you would like us to consider?\n-# E.g. HDR, VRR, colour accuracy, USB-C, VESA mounting or adjustable stands.\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "copy": "# Monitor Recommendation Questionnaire\n\nLooking for a new monitor? Fill out the questionnaire below so we can help you find one that suits your setup and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. System Specifications**\nWhat are your current PC specifications?\n-# Include your CPU, GPU and RAM.\n\n**2. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**3. Intended Usage**\nWhat will you primarily use the monitor for? Include specific games or applications if applicable.\n-# E.g. competitive gaming, casual gaming, content creation, productivity or media consumption.\n\n**4. Resolution**\nWhich display resolution are you aiming for?\n-# E.g. 1080p, 1440p, 4K or Ultrawide.\n\n**5. Refresh Rate**\nWhat refresh rate are you looking for?\n-# E.g. 60Hz, 144Hz, 240Hz or 360Hz.\n\n**6. Size & Curvature**\nDo you have a preferred screen size, aspect ratio or curvature?\n-# E.g. 24\", 27\", 32\", flat or curved.\n\n**7. Panel Technology**\nDo you have a preference for a particular panel type?\n-# E.g. IPS, VA, TN, OLED or no preference.\n\n**8. Monitor Configuration**\nAre you purchasing a single monitor or multiple monitors? Will you be keeping any existing monitors?\n\n**9. Additional Requirements**\nAre there any specific features or requirements you would like us to consider?\n-# E.g. HDR, VRR, colour accuracy, USB-C, VESA mounting or adjustable stands.\n\n-# The more information you provide, the more accurate our recommendations will be."
+      }
+    ]
+  },
+  {
+    "name": "keyboard",
+    "slug": "keyboard-questionnaire",
+    "title": "Keyboard Recommendation Questionnaire",
+    "description": "Find a suitable keyboard: share your budget, layout, size, switch preferences, gaming needs and wired or wireless requirements.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Keyboard Recommendation Questionnaire\n\nLooking for a new keyboard? Fill out the questionnaire below so we can help you find one that suits your preferences and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Form Factor & Layout\nWhat keyboard size and layout do you prefer?\n-# E.g. Full-size, TKL, 75%, 65%, 60%, ANSI or ISO.\n\n3. Switch Preferences\nWhat type of switches do you prefer?\n-# E.g. Linear, tactile, clicky, magnetic or no preference.\n\n4. Design & Aesthetics\nDo you have a preferred colour scheme, theme or overall design? Is RGB lighting important to you?\n\n5. Customisation & Assembly\nWould you be comfortable building or modifying a keyboard yourself, or would you prefer a prebuilt option?\n\n6. Intended Usage\nWhat will you primarily use the keyboard for? Do you play competitive games?\n-# E.g. competitive gaming, casual gaming, programming, typing or office work.\n\n7. Connectivity\nDo you prefer wired, wireless or both?\n\n8. Previous Keyboard Experience\nWhich keyboards have you used before? What did you like or dislike about them?\n\n9. Additional Requirements\nAre there any specific features or requirements you would like us to consider?\n-# E.g. Rapid Trigger, adjustable actuation, hot-swappable switches, sound profile, keycap material or dedicated media controls.\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "image": "/assets/tags/3ebcb1fc2c383130aab51060f72c354168032e06d25dfcbc3ce158538452dae3.png",
+        "copy": "# Keyboard Recommendation Questionnaire\n\nLooking for a new keyboard? Fill out the questionnaire below so we can help you find one that suits your preferences and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Form Factor & Layout\nWhat keyboard size and layout do you prefer?\n-# E.g. Full-size, TKL, 75%, 65%, 60%, ANSI or ISO.\n\n3. Switch Preferences\nWhat type of switches do you prefer?\n-# E.g. Linear, tactile, clicky, magnetic or no preference.\n\n4. Design & Aesthetics\nDo you have a preferred colour scheme, theme or overall design? Is RGB lighting important to you?\n\n5. Customisation & Assembly\nWould you be comfortable building or modifying a keyboard yourself, or would you prefer a prebuilt option?\n\n6. Intended Usage\nWhat will you primarily use the keyboard for? Do you play competitive games?\n-# E.g. competitive gaming, casual gaming, programming, typing or office work.\n\n7. Connectivity\nDo you prefer wired, wireless or both?\n\n8. Previous Keyboard Experience\nWhich keyboards have you used before? What did you like or dislike about them?\n\n9. Additional Requirements\nAre there any specific features or requirements you would like us to consider?\n-# E.g. Rapid Trigger, adjustable actuation, hot-swappable switches, sound profile, keycap material or dedicated media controls.\n\n-# The more information you provide, the more accurate our recommendations will be.\n\nhttps://relicstech.site/assets/tags/3ebcb1fc2c383130aab51060f72c354168032e06d25dfcbc3ce158538452dae3.png"
+      }
+    ]
+  },
+  {
+    "name": "chair",
+    "slug": "chair-questionnaire",
+    "title": "Chair Recommendation Questionnaire",
+    "description": "Describe your desk chair needs, budget, dimensions, sitting habits and adjustment preferences to help the Relics community make suggestions.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Chair Recommendation Questionnaire\n\nLooking for a new chair? Fill out the questionnaire below so we can help you find one that suits your comfort, posture and preferences.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. Height & Weight**\nWhat is your height and weight?\n-# This helps us recommend a chair with suitable dimensions and weight capacity.\n\n**2. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**3. Intended Usage**\nWhat will you primarily use the chair for, and how many hours a day do you typically spend sitting?\n-# E.g. gaming, office work or general everyday use.\n\n**4. Sitting Habits**\nHow do you usually sit? Do you sit cross-legged, tuck your legs underneath you or frequently change positions?\n\n**5. Posture & Ergonomics**\nAre there any posture-related concerns, discomfort or physical limitations we should consider?\n-# E.g. lower back pain, neck discomfort or specific support requirements.\n\n**6. Design & Aesthetics**\nDo you have a preferred chair style, colour or material?\n-# E.g. ergonomic office chair, gaming chair, mesh, fabric or leather.\n\n**7. Adjustability & Features**\nAre there any features you specifically want?\n-# E.g. adjustable lumbar support, headrest, adjustable armrests, seat depth or reclining mechanism.\n\n**8. Previous Chair Experience**\nWhat chair are you currently using? What do you like or dislike about it?\n\n**9. Additional Requirements**\nIs there anything else you would like us to consider? Are you open to refurbished or second-hand chairs?\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "copy": "# Chair Recommendation Questionnaire\n\nLooking for a new chair? Fill out the questionnaire below so we can help you find one that suits your comfort, posture and preferences.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n**1. Height & Weight**\nWhat is your height and weight?\n-# This helps us recommend a chair with suitable dimensions and weight capacity.\n\n**2. Budget & Availability**\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n**3. Intended Usage**\nWhat will you primarily use the chair for, and how many hours a day do you typically spend sitting?\n-# E.g. gaming, office work or general everyday use.\n\n**4. Sitting Habits**\nHow do you usually sit? Do you sit cross-legged, tuck your legs underneath you or frequently change positions?\n\n**5. Posture & Ergonomics**\nAre there any posture-related concerns, discomfort or physical limitations we should consider?\n-# E.g. lower back pain, neck discomfort or specific support requirements.\n\n**6. Design & Aesthetics**\nDo you have a preferred chair style, colour or material?\n-# E.g. ergonomic office chair, gaming chair, mesh, fabric or leather.\n\n**7. Adjustability & Features**\nAre there any features you specifically want?\n-# E.g. adjustable lumbar support, headrest, adjustable armrests, seat depth or reclining mechanism.\n\n**8. Previous Chair Experience**\nWhat chair are you currently using? What do you like or dislike about it?\n\n**9. Additional Requirements**\nIs there anything else you would like us to consider? Are you open to refurbished or second-hand chairs?\n\n-# The more information you provide, the more accurate our recommendations will be."
+      }
+    ]
+  },
+  {
+    "name": "audio",
+    "slug": "audio-questionnaire",
+    "title": "Audio Recommendation Questionnaire",
+    "description": "Get headphone, headset or earbud advice by sharing your budget, listening needs, preferred sound, connectivity and current audio equipment.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Audio Recommendation Questionnaire\n\nLooking for a new audio device? Fill out the questionnaire below so we can help you find one that suits your listening preferences and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Device Type\nWhat type of audio device are you looking for?\n-# E.g. headphones, gaming headsets, IEMs or earbuds.\n\n3. Intended Usage\nWhat will you primarily use the device for?\n-# E.g. competitive gaming, casual gaming, music, office work or commuting.\n\n4. Open-Back vs. Closed-Back\nDo you prefer an open-back or closed-back design?\n-# Open-back headphones generally offer a more spacious soundstage but leak sound and provide little isolation. Closed-back headphones typically offer better isolation and privacy.\n\n5. Connectivity\nDo you prefer wired, wireless or both?\n\n6. Sound Preferences\nDo you have a preferred sound signature?\n-# E.g. bass-heavy, neutral, warm, bright or no preference.\n\n7. Audio Equipment\nWhat device or audio equipment will you connect your headphones to?\n-# E.g. motherboard audio, dedicated sound card, DAC/AMP, console or smartphone.\n\n8. Previous Audio Experience\nWhich audio devices have you used before? What did you like or dislike about their sound quality, comfort or functionality?\n\n9. Additional Requirements\nAre there any specific features or requirements you would like us to consider?\n-# E.g. microphone, active noise cancellation, battery life, comfort, weight or replaceable cables.\n\n-# The more information you provide, the more accurate our recommendations will be.",
+        "copy": "# Audio Recommendation Questionnaire\n\nLooking for a new audio device? Fill out the questionnaire below so we can help you find one that suits your listening preferences and needs.\n\n-# Answer all questions in a single message using Shift + Enter for line breaks.\n\n1. Budget & Availability\nHow much are you willing to spend? Include your local currency, country and any preferred retailers.\n\n2. Device Type\nWhat type of audio device are you looking for?\n-# E.g. headphones, gaming headsets, IEMs or earbuds.\n\n3. Intended Usage\nWhat will you primarily use the device for?\n-# E.g. competitive gaming, casual gaming, music, office work or commuting.\n\n4. Open-Back vs. Closed-Back\nDo you prefer an open-back or closed-back design?\n-# Open-back headphones generally offer a more spacious soundstage but leak sound and provide little isolation. Closed-back headphones typically offer better isolation and privacy.\n\n5. Connectivity\nDo you prefer wired, wireless or both?\n\n6. Sound Preferences\nDo you have a preferred sound signature?\n-# E.g. bass-heavy, neutral, warm, bright or no preference.\n\n7. Audio Equipment\nWhat device or audio equipment will you connect your headphones to?\n-# E.g. motherboard audio, dedicated sound card, DAC/AMP, console or smartphone.\n\n8. Previous Audio Experience\nWhich audio devices have you used before? What did you like or dislike about their sound quality, comfort or functionality?\n\n9. Additional Requirements\nAre there any specific features or requirements you would like us to consider?\n-# E.g. microphone, active noise cancellation, battery life, comfort, weight or replaceable cables.\n\n-# The more information you provide, the more accurate our recommendations will be."
+      }
+    ]
+  },
+  {
+    "name": "other-peripherals",
+    "slug": "other-peripherals-questionnaire",
+    "title": "Other Peripheral Recommendations",
+    "description": "Ask for advice on a peripheral not covered by our other forms: describe the device, your budget, country and important preferences.",
+    "category": "Peripherals",
+    "variants": [
+      {
+        "label": "Bot questionnaire",
+        "content": "# Other Peripheral Recommendations\n\nThis questionnaire is for peripheral recommendations.\n\n1. Budget (local Currency)\n2. Other Preferences",
+        "copy": "# Other Peripheral Recommendations\n\nThis questionnaire is for peripheral recommendations.\n\n1. Budget (local Currency)\n2. Other Preferences"
+      }
+    ]
+  }
+]
